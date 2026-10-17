@@ -1,0 +1,27 @@
+# dea-catalog-information-system-functions :  OpenDEAM Identifier Map
+# CR-IS-CAT-01 closure artefact. Local copy of the OpenDEAM-to-metamodel
+# identifier map for the IS sub-tree. The canonical map is in
+# dea-architecture-framework/docs/is-semantic-architecture/opendeam-identifier-map.yaml.
+
+profile:
+  id: dea:is-semantic-architecture
+  cr: CR-IS-CAT-01
+  effective: 2026-10-16
+  catalog: dea-catalog-information-system-functions
+  catalog_status: rename-pending-org-admin-transfer
+  legacy_catalog: dea-catalog-system-functions
+
+covered_entities:
+  - id: dea:InformationSystemFunction
+    legacy_id: dea:entity-system-function
+    class_alias: ISF
+    legacy_class_alias: SF
+    cr: CR-018
+    disposition: D-1
+    note: "EGV-004 identity continuity; the legacy SF identity is retained in OpenDEAM and in the legacy catalog repo."
+
+related_documents:
+  - "technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md (introduces the canonical entity)"
+  - "technehub-labs/dea-metamodel/change-requests/CR-022-metamodel-artifact-and-conformance-closure.md (artifact closure)"
+  - "technehub-labs/dea-architecture-framework/change-requests/CR-AR-FMWK-04-information-system-entity-allocation.md (OpenDEAM extension; v0.6.0 -> v0.7.0)"
+  - "technehub-labs/dea-architecture-framework/docs/is-semantic-architecture/opendeam-identifier-map.yaml (canonical map)"

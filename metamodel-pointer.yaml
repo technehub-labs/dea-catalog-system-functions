@@ -1,25 +1,61 @@
-# Metamodel Pointer — System Function
-# Auto-generated from OpenDEAM v0.2.1 (dea-architecture-framework, ADR-0002).
-# Do not edit manually — allocation changes go through the root model
+# Metamodel Pointer :  Information System Function
+# CR-IS-CAT-01 (post-CR-AR-FMWK-04 merge 2026-10-16). The catalog is the
+# rename target of the legacy dea-catalog-system-functions (per CR-IS-CAT-01).
+# The rename to dea-catalog-information-system-functions is performed by an
+# org admin via GitHub repository transfer; this pointer records the new
+# canonical entity and the migration path.
+#
+# Auto-generated from OpenDEAM v0.7.0 (dea-architecture-framework, CR-AR-FMWK-04).
+# Do not edit manually :  allocation changes go through the root model
 # (structural: ADR + minor bump; additive: PR + patch bump).
 metamodel:
-  version: v0.2.1
-  entity_id: dea:entity-system-function
-  class_alias: SF
+  version: v0.7.0
+  entity_id: dea:InformationSystemFunction
+  class_alias: ISF
   layer: L5
   building_block: L5-systems
-  viewer_url: "https://technehub-labs.github.io/metamodel/?entity=SF"
+  status: planned
+  supersedes: dea:entity-system-function
+  viewer_url: "https://technehub-labs.github.io/metamodel/?entity=ISF"
 
 catalog:
-  name: System Function
-  repo: technehub-labs/dea-catalog-system-functions
+  name: Information System Function
+  repo: technehub-labs/dea-catalog-information-system-functions
+  legacy_repo: technehub-labs/dea-catalog-system-functions
   status: planned
+  rename:
+    target: technehub-labs/dea-catalog-information-system-functions
+    cr: CR-IS-CAT-01
+    status: pending-org-admin-transfer
+    note: "The GitHub repository rename is performed by an org admin. Until the rename is complete, the legacy repo URL (technehub-labs/dea-catalog-system-functions) continues to resolve. The canonical reference in OpenDEAM model/opendeam-model.yaml is dea-catalog-information-system-functions (v0.7.0)."
 
 description: |
-  A functional capability exposed by a single application or system.
+  A defined unit of functional behaviour performed by an information system or
+  one of its components. CR-IS-CAT-01 (post-CR-AR-FMWK-04 merge 2026-10-16);
+  introduced in dea-metamodel CR-018 (D-1 disposition); supersedes
+  dea:entity-system-function (the legacy SF identity retained for EGV-004
+  identity continuity). The legacy repo is the rename source; the new repo
+  is the canonical home. Existing scaffold content is preserved.
+
+migration:
+  legacy_records:
+    - id: dea:entity-system-function
+      class_alias: SF
+      note: "Retained in OpenDEAM for EGV-004 identity continuity. Existing records that reference SF continue to resolve. New records should use ISF (dea:InformationSystemFunction)."
+  records_to_migrate:
+    - "All existing records in entities/v1-alpha/ are preserved as-is; their dea:entity-system-function reference is annotated with the supersedes link to dea:InformationSystemFunction."
+  disposition: "Conditional merge: existing SF records continue to be valid; new records are added as ISF. The catalog's two identities (SF legacy + ISF canonical) coexist per the EGV-004 identity continuity posture."
+
+artifacts:
+  json_schema: schemas/entities/information-system-function.json
+  sqlite_table: information_system_functions
+  pydantic_model: pydantic/information_system_function.py
+  ts_interface: typescript/src/interfaces.ts
+  note: "Artifact paths mirror the canonical metamodel source (dea-metamodel CR-022 closure 2026-10-16)."
 
 links:
   metamodel_repo: https://github.com/technehub-labs/dea-metamodel
   root_model: https://github.com/technehub-labs/dea-architecture-framework
-  viewer: "https://technehub-labs.github.io/metamodel/?entity=SF"
-  github: https://github.com/technehub-labs/dea-catalog-system-functions
+  viewer: "https://technehub-labs.github.io/metamodel/?entity=ISF"
+  github_pending: https://github.com/technehub-labs/dea-catalog-information-system-functions
+  github_legacy: https://github.com/technehub-labs/dea-catalog-system-functions
