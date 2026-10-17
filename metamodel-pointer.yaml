@@ -10,7 +10,7 @@
 # (structural: ADR + minor bump; additive: PR + patch bump).
 metamodel:
   version: v0.7.0
-  entity_id: dea:InformationSystemFunction
+  entity_id: dea:entity-information-system-function
   class_alias: ISF
   layer: L5
   building_block: L5-systems
@@ -36,6 +36,8 @@ description: |
   dea:entity-system-function (the legacy SF identity retained for EGV-004
   identity continuity). The legacy repo is the rename source; the new repo
   is the canonical home. Existing scaffold content is preserved.
+  OpenDEAM-local entity_id: dea:entity-information-system-function
+  Metamodel canonical id: dea:InformationSystemFunction.
 
 migration:
   legacy_records:
