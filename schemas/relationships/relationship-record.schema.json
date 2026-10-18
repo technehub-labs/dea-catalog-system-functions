@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://technehub-labs.github.io/dea-catalog-information-system-functions/schemas/relationships/relationship-record.schema.json",
+  "title": "RelationshipRecord",
+  "description": "JSON Schema for a cross-catalogue relationship record. CR-IS-CAT-01D (2026-10-18). Mirrors the relationship registry in relationships/v1-alpha/relationships.yaml. The relationship_type is cross-referenced to the metamodel's relationship vocabulary (dea:realizes, dea:enables, dea:executes, dea:provides, dea:exposes, dea:specifies, dea:consumes, dea:produces, dea:measuredBy [OpenDEAM allocation]).",
+  "type": "object",
+  "required": [
+    "id",
+    "source_id",
+    "relationship_type",
+    "target_id",
+    "relationship_description",
+    "provenance",
+    "validity_status",
+    "effective_version"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^rel:[a-z0-9-]+$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^dea:[a-z0-9-]+$"
+    },
+    "relationship_type": {
+      "type": "string",
+      "enum": [
+        "dea:realizes",
+        "dea:enables",
+        "dea:executes",
+        "dea:provides",
+        "dea:exposes",
+        "dea:specifies",
+        "dea:consumes",
+        "dea:produces",
+        "dea:measured_by",
+        "dea:orchestrates",
+        "dea:depends-on",
+        "dea:specializes",
+        "dea:composes",
+        "dea:maps-to",
+        "dea:implements",
+        "dea:influenced-by",
+        "dea:governs"
+      ],
+      "description": "The relationship type. The enum includes the metamodel relationships (dea:*) plus the OpenDEAM allocation declaration (dea:measured_by). The OpenDEAM allocation is NOT a metamodel relationship claim (per G-11)."
+    },
+    "target_id": {
+      "type": "string",
+      "pattern": "^dea:[a-z0-9-]+$"
+    },
+    "relationship_description": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "validity_status": {
+      "type": "string",
+      "enum": ["proposed", "planned", "active", "deprecated", "retired"]
+    },
+    "effective_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+    },
+    "evidence": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

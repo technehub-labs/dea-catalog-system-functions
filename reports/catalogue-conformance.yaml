@@ -1,0 +1,84 @@
+version: '1.0'
+date: '2026-10-18'
+cr: CR-IS-CAT-01D
+total_functions: 20
+total_domains: 15
+total_relationships: 16
+domains:
+- id: isf:domain:identity-and-access
+  code: ISF-01
+  name: Identity and Access
+  status: active
+  function_count: 5
+- id: isf:domain:information-and-data-management
+  code: ISF-02
+  name: Information and Data Management
+  status: active
+  function_count: 4
+- id: isf:domain:transaction-processing
+  code: ISF-03
+  name: Transaction Processing
+  status: active
+  function_count: 4
+- id: isf:domain:workflow-and-orchestration
+  code: ISF-04
+  name: Workflow and Orchestration
+  status: active
+  function_count: 3
+- id: isf:domain:integration-and-interoperability
+  code: ISF-05
+  name: Integration and Interoperability
+  status: active
+  function_count: 4
+- id: isf:domain:communication-and-collaboration
+  code: ISF-06
+  name: Communication and Collaboration
+  status: active
+  function_count: 0
+- id: isf:domain:content-and-knowledge-management
+  code: ISF-07
+  name: Content and Knowledge Management
+  status: active
+  function_count: 0
+- id: isf:domain:analytics-and-decision-support
+  code: ISF-08
+  name: Analytics and Decision Support
+  status: active
+  function_count: 0
+- id: isf:domain:security-privacy-and-trust
+  code: ISF-09
+  name: Security, Privacy and Trust
+  status: active
+  function_count: 0
+- id: isf:domain:monitoring-and-observability
+  code: ISF-10
+  name: Monitoring and Observability
+  status: active
+  function_count: 0
+- id: isf:domain:configuration-and-administration
+  code: ISF-11
+  name: Configuration and Administration
+  status: active
+  function_count: 0
+- id: isf:domain:resource-and-capacity-management
+  code: ISF-12
+  name: Resource and Capacity Management
+  status: active
+  function_count: 0
+- id: isf:domain:ai-and-intelligent-processing
+  code: ISF-13
+  name: AI and Intelligent Processing
+  status: active
+  function_count: 0
+- id: isf:domain:experience-and-interaction
+  code: ISF-14
+  name: Experience and Interaction
+  status: active
+  function_count: 0
+- id: isf:domain:search-and-discovery
+  code: ISF-15
+  name: Search and Discovery
+  status: active
+  function_count: 0
+conformance_level: P1-populated (5/15 domains populated)
+governance: G-01..G-12 acknowledged; see change-requests/CR-IS-CAT-01D-integration.md

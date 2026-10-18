@@ -1,0 +1,82 @@
+version: '1.0'
+date: '2026-10-18'
+cr: CR-IS-CAT-01D
+total_domains: 15
+populated_domains: 5
+unpopulated_domains:
+- isf:domain:communication-and-collaboration
+- isf:domain:content-and-knowledge-management
+- isf:domain:analytics-and-decision-support
+- isf:domain:security-privacy-and-trust
+- isf:domain:monitoring-and-observability
+- isf:domain:configuration-and-administration
+- isf:domain:resource-and-capacity-management
+- isf:domain:ai-and-intelligent-processing
+- isf:domain:experience-and-interaction
+- isf:domain:search-and-discovery
+by_domain:
+  isf:domain:identity-and-access:
+    function_count: 5
+    functions:
+    - dea:information-system-function-access-policy-evaluation
+    - dea:information-system-function-authentication
+    - dea:information-system-function-identity-and-access-management
+    - dea:information-system-function-identity-registration
+    - dea:information-system-function-identity-verification
+  isf:domain:information-and-data-management:
+    function_count: 4
+    functions:
+    - dea:information-system-function-data-acquisition
+    - dea:information-system-function-data-management
+    - dea:information-system-function-data-retrieval
+    - dea:information-system-function-data-transformation
+  isf:domain:transaction-processing:
+    function_count: 4
+    functions:
+    - dea:information-system-function-transaction-execution
+    - dea:information-system-function-transaction-initiation
+    - dea:information-system-function-transaction-processing
+    - dea:information-system-function-transaction-reconciliation
+  isf:domain:workflow-and-orchestration:
+    function_count: 3
+    functions:
+    - dea:information-system-function-task-routing
+    - dea:information-system-function-workflow-execution
+    - dea:information-system-function-workflow-orchestration
+  isf:domain:integration-and-interoperability:
+    function_count: 4
+    functions:
+    - dea:information-system-function-api-request-handling
+    - dea:information-system-function-event-publication
+    - dea:information-system-function-integration-and-interoperability
+    - dea:information-system-function-interface-validation
+  isf:domain:communication-and-collaboration:
+    function_count: 0
+    functions: []
+  isf:domain:content-and-knowledge-management:
+    function_count: 0
+    functions: []
+  isf:domain:analytics-and-decision-support:
+    function_count: 0
+    functions: []
+  isf:domain:security-privacy-and-trust:
+    function_count: 0
+    functions: []
+  isf:domain:monitoring-and-observability:
+    function_count: 0
+    functions: []
+  isf:domain:configuration-and-administration:
+    function_count: 0
+    functions: []
+  isf:domain:resource-and-capacity-management:
+    function_count: 0
+    functions: []
+  isf:domain:ai-and-intelligent-processing:
+    function_count: 0
+    functions: []
+  isf:domain:experience-and-interaction:
+    function_count: 0
+    functions: []
+  isf:domain:search-and-discovery:
+    function_count: 0
+    functions: []
