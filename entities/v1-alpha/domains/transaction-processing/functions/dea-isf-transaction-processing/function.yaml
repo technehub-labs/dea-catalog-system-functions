@@ -1,0 +1,66 @@
+id: dea:information-system-function-transaction-processing
+type: InformationSystemFunction
+name: "Transaction Processing"
+description: |
+  The parent function that composes the transaction-processing sub-tree. It coordinates the initiation, validation, execution, settlement, posting, reconciliation, reversal and cancellation of transactions.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:transaction-processing
+category: isf:domain:transaction-processing
+decomposition_level: F2
+child_functions:
+  - dea:information-system-function-transaction-initiation
+  - dea:information-system-function-transaction-execution
+  - dea:information-system-function-transaction-reconciliation
+responsibility_allocation:
+  - child: dea:information-system-function-transaction-initiation
+    responsibility: "See child function record."
+  - child: dea:information-system-function-transaction-execution
+    responsibility: "See child function record."
+  - child: dea:information-system-function-transaction-reconciliation
+    responsibility: "See child function record."
+inputs:
+- input_id: transaction-request
+  name: "Transaction request"
+  definition: "A request to initiate a transaction (a financial transaction, a state change, a business event)."
+  source: "Caller (via API)."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: transaction-state
+  name: "Transaction state"
+  definition: "The state of the transaction: initiated, validated, executed, settled, posted, reconciled, reversed, cancelled."
+  destination: "Transaction store, audit log, downstream systems."
+  output_conditions: "Updated on every child function execution."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-transaction-processing
+  enabled_processes:
+    - dea:business-process-financial-transaction
+executing_components:
+  - dea:information-system-component-transaction-engine
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F2 record in the Transaction Processing domain. CR-IS-CAT-01C P1 population.

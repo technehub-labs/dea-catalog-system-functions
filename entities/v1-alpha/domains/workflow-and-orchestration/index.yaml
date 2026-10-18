@@ -1,0 +1,27 @@
+domain: isf:domain:workflow-and-orchestration
+code: ISF-04
+cr: CR-IS-CAT-01C
+version: '1.0'
+functions:
+- id: dea:information-system-function-workflow-orchestration
+  decomposition_level: F2
+  lifecycle_status: planned
+  parent: null
+  children:
+  - dea:information-system-function-workflow-execution
+  - dea:information-system-function-task-routing
+- id: dea:information-system-function-workflow-execution
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-workflow-orchestration
+  children: []
+- id: dea:information-system-function-task-routing
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-workflow-orchestration
+  children: []
+change_history:
+- version: '1.0'
+  date: '2026-10-18'
+  cr: CR-IS-CAT-01C
+  note: Initial P1 population. 3 functions in the Workflow and Orchestration domain.

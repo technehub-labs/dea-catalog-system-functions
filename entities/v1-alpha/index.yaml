@@ -1,21 +1,40 @@
-# Information System Function catalog :  v1-alpha index
-# CR-IS-CAT-01B (2026-10-18). Catalog-level function index.
-# This file is generated/curated and validated by the validate-entities.yml
-# workflow. The 01C population exercise will populate this file with the
-# full inventory of ISF functions across all 15 domains.
 catalog: dea-catalog-information-system-functions
-version: "1.0"
-cr: CR-IS-CAT-01B
-date: "2026-10-18"
+version: '1.0'
+cr: CR-IS-CAT-01C
+date: '2026-10-18'
 domains:
-  - code: ISF-01
-    id: isf:domain:identity-and-access
-    name: Identity and Access
-    index: domains/identity-and-access/index.yaml
-    function_count: 2
-    cr_responsible: CR-IS-CAT-01C
+- code: ISF-01
+  id: isf:domain:identity-and-access
+  name: Identity and Access
+  index: domains/identity-and-access/index.yaml
+  function_count: 5
+  cr_responsible: CR-IS-CAT-01C
+- code: ISF-02
+  id: isf:domain:information-and-data-management
+  name: Information and Data Management
+  index: domains/information-and-data-management/index.yaml
+  function_count: 4
+  cr_responsible: CR-IS-CAT-01C
+- code: ISF-03
+  id: isf:domain:transaction-processing
+  name: Transaction Processing
+  index: domains/transaction-processing/index.yaml
+  function_count: 4
+  cr_responsible: CR-IS-CAT-01C
+- code: ISF-04
+  id: isf:domain:workflow-and-orchestration
+  name: Workflow and Orchestration
+  index: domains/workflow-and-orchestration/index.yaml
+  function_count: 3
+  cr_responsible: CR-IS-CAT-01C
+- code: ISF-05
+  id: isf:domain:integration-and-interoperability
+  name: Integration and Interoperability
+  index: domains/integration-and-interoperability/index.yaml
+  function_count: 4
+  cr_responsible: CR-IS-CAT-01C
 change_history:
-  - version: "1.0"
-    date: "2026-10-18"
-    cr: CR-IS-CAT-01B
-    note: "Initial catalog index. Only the identity-and-access domain is populated (F2 + F4 examples). The remaining 14 domains are populated by CR-IS-CAT-01C."
+- version: '1.0'
+  date: '2026-10-18'
+  cr: CR-IS-CAT-01C
+  note: Initial P1 population. 20 functions across 5 P1 domains. P2 (6 domains) and P3 (4 domains) populations are follow-on CRs.

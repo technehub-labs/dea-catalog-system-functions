@@ -1,0 +1,59 @@
+id: dea:information-system-function-workflow-execution
+type: InformationSystemFunction
+name: "Workflow Execution"
+description: |
+  The atomic function that executes a workflow step. It applies the step logic, transitions the workflow state, and emits the step result.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:workflow-and-orchestration
+category: isf:domain:workflow-and-orchestration
+decomposition_level: F4
+parent_function: dea:information-system-function-workflow-orchestration
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-workflow-orchestration).
+inputs:
+- input_id: workflow-step
+  name: "Workflow step"
+  definition: "A step in a workflow instance: the activity, the input, the current state."
+  source: "Workflow store."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: step-result
+  name: "Step result"
+  definition: "The result of the step: success, failure, suspended, with the post-state and the next step."
+  destination: "Workflow store, audit log."
+  output_conditions: "Always produced."
+execution_characteristics:
+  execution_pattern: event-driven
+  trigger_mechanism: event
+  processing_mode: real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-workflow-coordination
+  enabled_processes:
+    - dea:business-process-workflow-execution
+executing_components:
+  - dea:information-system-component-workflow-engine
+non_functional_characteristics:
+  criticality: business-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: business-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Workflow and Orchestration domain. CR-IS-CAT-01C P1 population.

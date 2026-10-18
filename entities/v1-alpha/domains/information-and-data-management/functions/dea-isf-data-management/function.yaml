@@ -1,0 +1,66 @@
+id: dea:information-system-function-data-management
+type: InformationSystemFunction
+name: "Data Management"
+description: |
+  The parent function that composes the data-management sub-tree. It coordinates the acquisition, validation, transformation, persistence, retrieval, retention and disposal of structured data.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:information-and-data-management
+category: isf:domain:information-and-data-management
+decomposition_level: F2
+child_functions:
+  - dea:information-system-function-data-acquisition
+  - dea:information-system-function-data-transformation
+  - dea:information-system-function-data-retrieval
+responsibility_allocation:
+  - child: dea:information-system-function-data-acquisition
+    responsibility: "See child function record."
+  - child: dea:information-system-function-data-transformation
+    responsibility: "See child function record."
+  - child: dea:information-system-function-data-retrieval
+    responsibility: "See child function record."
+inputs:
+- input_id: data-lifecycle-event
+  name: "Data lifecycle event"
+  definition: "A business event that triggers a data management flow (e.g., new record creation, schema change, retention trigger)."
+  source: "Source systems (via ISC integration)."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: data-state
+  name: "Data state"
+  definition: "The state of the data store: the records, the schema, the indices, the retention markers."
+  destination: "Data store, audit log, downstream systems."
+  output_conditions: "Updated on every child function execution."
+execution_characteristics:
+  execution_pattern: event-driven
+  trigger_mechanism: event
+  processing_mode: real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-data-management
+  enabled_processes:
+    - dea:business-process-data-lifecycle
+executing_components:
+  - dea:information-system-component-data-platform
+non_functional_characteristics:
+  criticality: business-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: business-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F2 record in the Information and Data Management domain. CR-IS-CAT-01C P1 population.

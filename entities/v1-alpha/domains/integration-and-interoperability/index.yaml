@@ -1,0 +1,33 @@
+domain: isf:domain:integration-and-interoperability
+code: ISF-05
+cr: CR-IS-CAT-01C
+version: '1.0'
+functions:
+- id: dea:information-system-function-integration-and-interoperability
+  decomposition_level: F2
+  lifecycle_status: planned
+  parent: null
+  children:
+  - dea:information-system-function-api-request-handling
+  - dea:information-system-function-event-publication
+  - dea:information-system-function-interface-validation
+- id: dea:information-system-function-api-request-handling
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-integration-and-interoperability
+  children: []
+- id: dea:information-system-function-event-publication
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-integration-and-interoperability
+  children: []
+- id: dea:information-system-function-interface-validation
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-integration-and-interoperability
+  children: []
+change_history:
+- version: '1.0'
+  date: '2026-10-18'
+  cr: CR-IS-CAT-01C
+  note: Initial P1 population. 4 functions in the Integration and Interoperability domain.

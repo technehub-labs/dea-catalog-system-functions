@@ -1,0 +1,59 @@
+id: dea:information-system-function-event-publication
+type: InformationSystemFunction
+name: "Event Publication"
+description: |
+  The atomic function that publishes a domain event to the event bus. The publication is at-least-once with ordering guarantees per partition key.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:integration-and-interoperability
+category: isf:domain:integration-and-interoperability
+decomposition_level: F4
+parent_function: dea:information-system-function-integration-and-interoperability
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-integration-and-interoperability).
+inputs:
+- input_id: domain-event
+  name: "Domain event"
+  definition: "A domain event: the event type, the event payload, the partition key, the metadata."
+  source: "Source system."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: publication-result
+  name: "Publication result"
+  definition: "The publication result: the event ID, the offset, the partition, the publication timestamp."
+  destination: "Event store, audit log."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: streaming
+  trigger_mechanism: event
+  processing_mode: real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-integration
+  enabled_processes:
+    - dea:business-process-integration-execution
+executing_components:
+  - dea:information-system-component-message-broker
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Integration and Interoperability domain. CR-IS-CAT-01C P1 population.

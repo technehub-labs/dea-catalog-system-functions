@@ -1,0 +1,67 @@
+id: dea:information-system-function-integration-and-interoperability
+type: InformationSystemFunction
+name: "Integration and Interoperability"
+description: |
+  The parent function that composes the integration sub-tree. It coordinates the API interaction, protocol mediation, message transformation, event distribution and external-system synchronization.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:integration-and-interoperability
+category: isf:domain:integration-and-interoperability
+decomposition_level: F2
+child_functions:
+  - dea:information-system-function-api-request-handling
+  - dea:information-system-function-event-publication
+  - dea:information-system-function-interface-validation
+responsibility_allocation:
+  - child: dea:information-system-function-api-request-handling
+    responsibility: "See child function record."
+  - child: dea:information-system-function-event-publication
+    responsibility: "See child function record."
+  - child: dea:information-system-function-interface-validation
+    responsibility: "See child function record."
+inputs:
+- input_id: integration-event
+  name: "Integration event"
+  definition: "A business event that triggers integration (an API call, a message, an event)."
+  source: "Caller systems (via API gateway or message broker)."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: integration-state
+  name: "Integration state"
+  definition: "The state of the integration: received, validated, transformed, dispatched, acknowledged."
+  destination: "Integration store, audit log, downstream systems."
+  output_conditions: "Updated on every child function execution."
+execution_characteristics:
+  execution_pattern: event-driven
+  trigger_mechanism: event
+  processing_mode: real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-integration
+  enabled_processes:
+    - dea:business-process-integration-execution
+executing_components:
+  - dea:information-system-component-api-gateway
+  - dea:information-system-component-message-broker
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F2 record in the Integration and Interoperability domain. CR-IS-CAT-01C P1 population.

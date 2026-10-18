@@ -1,0 +1,65 @@
+id: dea:information-system-function-data-acquisition
+type: InformationSystemFunction
+name: "Data Acquisition"
+description: |
+  The atomic function that acquires data from a source system and prepares it for downstream processing. Acquisition is the entry point of the data lifecycle.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:information-and-data-management
+category: isf:domain:information-and-data-management
+decomposition_level: F4
+parent_function: dea:information-system-function-data-management
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-data-management).
+inputs:
+- input_id: source-record
+  name: "Source record"
+  definition: "A record ingested from a source system (database change capture, file drop, API webhook, event)."
+  source: "Source system via the integration layer."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: acquisition-policy
+  name: "Acquisition policy"
+  definition: "The schema, validation rules and routing rules for the acquired record."
+  source: "Policy store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: acquired-record
+  name: "Acquired record"
+  definition: "A record that has been acquired, validated against the schema and routed for downstream processing."
+  destination: "Downstream data processing pipeline."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: streaming
+  trigger_mechanism: event
+  processing_mode: real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-data-management
+  enabled_processes:
+    - dea:business-process-data-lifecycle
+executing_components:
+  - dea:information-system-component-data-platform
+non_functional_characteristics:
+  criticality: business-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: business-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Information and Data Management domain. CR-IS-CAT-01C P1 population.

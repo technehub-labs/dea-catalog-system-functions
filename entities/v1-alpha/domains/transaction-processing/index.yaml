@@ -1,0 +1,33 @@
+domain: isf:domain:transaction-processing
+code: ISF-03
+cr: CR-IS-CAT-01C
+version: '1.0'
+functions:
+- id: dea:information-system-function-transaction-processing
+  decomposition_level: F2
+  lifecycle_status: planned
+  parent: null
+  children:
+  - dea:information-system-function-transaction-initiation
+  - dea:information-system-function-transaction-execution
+  - dea:information-system-function-transaction-reconciliation
+- id: dea:information-system-function-transaction-initiation
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-transaction-processing
+  children: []
+- id: dea:information-system-function-transaction-execution
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-transaction-processing
+  children: []
+- id: dea:information-system-function-transaction-reconciliation
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-transaction-processing
+  children: []
+change_history:
+- version: '1.0'
+  date: '2026-10-18'
+  cr: CR-IS-CAT-01C
+  note: Initial P1 population. 4 functions in the Transaction Processing domain.

@@ -1,0 +1,65 @@
+id: dea:information-system-function-data-transformation
+type: InformationSystemFunction
+name: "Data Transformation"
+description: |
+  The atomic function that transforms data from one schema or shape to another. Transformation includes normalization, enrichment, aggregation and projection.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:information-and-data-management
+category: isf:domain:information-and-data-management
+decomposition_level: F4
+parent_function: dea:information-system-function-data-management
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-data-management).
+inputs:
+- input_id: input-record
+  name: "Input record"
+  definition: "A record in the source schema."
+  source: "Data acquisition pipeline."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: transformation-spec
+  name: "Transformation specification"
+  definition: "The mapping rules, expressions and filters for the transformation."
+  source: "Transformation spec registry."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: output-record
+  name: "Output record"
+  definition: "A record in the target schema."
+  destination: "Downstream pipeline or data store."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: batch
+  trigger_mechanism: schedule
+  processing_mode: near-real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-data-management
+  enabled_processes:
+    - dea:business-process-data-lifecycle
+executing_components:
+  - dea:information-system-component-data-platform
+non_functional_characteristics:
+  criticality: business-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: business-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Information and Data Management domain. CR-IS-CAT-01C P1 population.
