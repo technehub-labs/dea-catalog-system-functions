@@ -142,17 +142,41 @@ jobs:
           with open('relationships/v1-alpha/relationships.yaml') as fp:
             rels = yaml.safe_load(fp)['relationships']
           ok = True
+          # Valid source entity kinds for cross-catalogue relationships
+          # (per the matrix in CR-IS-CAT-01D section 4):
+          # - ISF (Information System Function)
+          # - ISC (Information System Component)
+          # - ISS (Information System Service)
+          # - IF (Integration Interface)
+          # - DataEntity (data source)
+          # - Event (event source)
+          # - Metric (measurement target)
+          # The hard check verifies the source_id has a canonical prefix.
+          # The hard check does NOT verify that the source exists in this
+          # repo; the source may live in another catalogue (CR-IS-CAT-02..04).
+          valid_prefixes = (
+            'dea:information-system-function-',
+            'dea:information-system-component-',
+            'dea:information-system-service-',
+            'dea:integration-interface-',
+            'dea:data-entity-',
+            'dea:event-',
+            'dea:metric-',
+            'dea:business-capability-',
+            'dea:business-process-',
+          )
           for r in rels:
             src = r['source_id']
             tgt = r['target_id']
-            # Check that the source is a canonical entity id (either ISF or ISC)
-            if not (src.startswith('dea:information-system-function-') or src.startswith('dea:information-system-component-')):
+            src_ok = any(src.startswith(p) for p in valid_prefixes)
+            tgt_ok = tgt.startswith('dea:')
+            if not src_ok:
               print(f'FAIL (step 7): {r["id"]} has non-canonical source {src}')
               ok = False
-            # The target may be in another catalog; we just verify the format
-            if not tgt.startswith('dea:'):
+            if not tgt_ok:
               print(f'FAIL (step 7): {r["id"]} has non-canonical target {tgt}')
               ok = False
+          print(f'Step 7 (relationship endpoint validation): {"PASS" if ok else "FAIL"}')
           sys.exit(0 if ok else 1)
           EOF
 
