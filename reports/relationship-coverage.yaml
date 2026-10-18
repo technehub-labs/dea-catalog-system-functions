@@ -1,0 +1,19 @@
+version: '1.0'
+date: '2026-10-18'
+cr: CR-IS-CAT-01D
+total_relationships: 16
+by_type:
+  dea:realizes: 3
+  dea:enables: 1
+  dea:executes: 6
+  dea:provides: 1
+  dea:exposes: 1
+  dea:consumes: 1
+  dea:produces: 2
+  dea:measured_by: 1
+by_source_domain: !!python/object/apply:collections.Counter
+- isf:domain:identity-and-access: 8
+  external: 8
+by_target_kind: !!python/object/apply:collections.Counter
+- external: 10
+  internal: 6
