@@ -1,0 +1,65 @@
+id: dea:information-system-function-task-routing
+type: InformationSystemFunction
+name: "Task Routing"
+description: |
+  The atomic function that routes a task to a queue, a role, an agent, or a human. The routing decision is based on the task type, the routing rules, and the current state of the work pool.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:workflow-and-orchestration
+category: isf:domain:workflow-and-orchestration
+decomposition_level: F4
+parent_function: dea:information-system-function-workflow-orchestration
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-workflow-orchestration).
+inputs:
+- input_id: task
+  name: "Task"
+  definition: "A task to be routed: the task type, the input, the priority."
+  source: "Workflow engine or external system."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: routing-rules
+  name: "Routing rules"
+  definition: "The rules that determine the routing target."
+  source: "Routing rule registry."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: routed-task
+  name: "Routed task"
+  definition: "A task with a routing target assigned."
+  destination: "Work pool, queue, agent inbox."
+  output_conditions: "Always produced."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-workflow-coordination
+  enabled_processes:
+    - dea:business-process-workflow-execution
+executing_components:
+  - dea:information-system-component-workflow-engine
+non_functional_characteristics:
+  criticality: business-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: business-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Workflow and Orchestration domain. CR-IS-CAT-01C P1 population.

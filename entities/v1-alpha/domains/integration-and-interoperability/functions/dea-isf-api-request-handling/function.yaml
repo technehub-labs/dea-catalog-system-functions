@@ -1,0 +1,59 @@
+id: dea:information-system-function-api-request-handling
+type: InformationSystemFunction
+name: "API Request Handling"
+description: |
+  The atomic function that handles an API request: authentication, authorization, rate limiting, routing, response shaping, and audit.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:integration-and-interoperability
+category: isf:domain:integration-and-interoperability
+decomposition_level: F4
+parent_function: dea:information-system-function-integration-and-interoperability
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-integration-and-interoperability).
+inputs:
+- input_id: api-request
+  name: "API request"
+  definition: "An HTTP/gRPC/GraphQL request with headers, body, and authentication context."
+  source: "Caller (via the API gateway)."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: api-response
+  name: "API response"
+  definition: "A response to the API request: status code, headers, body."
+  destination: "Caller."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-integration
+  enabled_processes:
+    - dea:business-process-integration-execution
+executing_components:
+  - dea:information-system-component-api-gateway
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Integration and Interoperability domain. CR-IS-CAT-01C P1 population.

@@ -1,0 +1,65 @@
+id: dea:information-system-function-transaction-reconciliation
+type: InformationSystemFunction
+name: "Transaction Reconciliation"
+description: |
+  The atomic function that reconciles two transaction records (e.g., a local record and an external record) and produces a reconciliation result (matched, mismatched, pending).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:transaction-processing
+category: isf:domain:transaction-processing
+decomposition_level: F4
+parent_function: dea:information-system-function-transaction-processing
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-transaction-processing).
+inputs:
+- input_id: local-record
+  name: "Local record"
+  definition: "The local transaction record."
+  source: "Transaction store."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: external-record
+  name: "External record"
+  definition: "The external transaction record (e.g., from a counterparty, a clearing house, a payment processor)."
+  source: "External system via integration."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: reconciliation-result
+  name: "Reconciliation result"
+  definition: "The reconciliation decision (matched, mismatched, pending) with the evidence."
+  destination: "Reconciliation store, audit log."
+  output_conditions: "Always produced."
+execution_characteristics:
+  execution_pattern: batch
+  trigger_mechanism: schedule
+  processing_mode: eventual
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-transaction-processing
+  enabled_processes:
+    - dea:business-process-financial-transaction
+executing_components:
+  - dea:information-system-component-transaction-engine
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Transaction Processing domain. CR-IS-CAT-01C P1 population.

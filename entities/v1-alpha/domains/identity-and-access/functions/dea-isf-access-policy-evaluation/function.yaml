@@ -1,0 +1,59 @@
+id: dea:information-system-function-access-policy-evaluation
+type: InformationSystemFunction
+name: "Access Policy Evaluation"
+description: |
+  The atomic function that evaluates an access policy against a request: collects the attributes (subject, resource, action, environment), resolves the policy, and produces the allow/deny decision.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:identity-and-access
+category: isf:domain:identity-and-access
+decomposition_level: F4
+parent_function: dea:information-system-function-identity-and-access-management
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-identity-and-access-management).
+inputs:
+- input_id: access-request
+  name: "Access request"
+  definition: "An access request: subject (who), resource (what), action (read/write/delete), environment (time, location, device)."
+  source: "Caller (the application service)."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: access-decision
+  name: "Access decision"
+  definition: "The access decision: allow, deny, or not-applicable, with the policy version and the evidence (which rules fired)."
+  destination: "Caller, audit log."
+  output_conditions: "Always produced."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-access-control
+  enabled_processes:
+    - dea:business-process-onboarding-authenticated-individual
+executing_components:
+  - dea:information-system-component-policy-decision-point
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Identity and Access domain. CR-IS-CAT-01C P1 population.
