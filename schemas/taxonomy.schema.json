@@ -100,7 +100,7 @@
   },
   "allOf": [
     {
-      "description": "Rule 9: no self-ancestor.",
+      "description": "Rule 9: no self-ancestor for taxonomy records.",
       "if": { "required": ["parent"] },
       "properties": {
         "parent": { "not": { "const": { "$data": "1/id" } } }

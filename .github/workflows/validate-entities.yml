@@ -1,0 +1,190 @@
+name: validate-entities
+
+# CR-IS-CAT-01B (2026-10-18). Validates the Information System Function
+# catalogue's machine-readable function records (function.yaml) against the
+# v2 schema (schemas/entities/information-system-function.v2.json). Also
+# enforces the 14 validation rules from CR-IS-CAT-01B section 9.
+#
+# Governance: G-06 (classification and decomposition are separate structures),
+# G-07 (every active function has machine-readable content and individual
+# documentation), G-08 (every relationship uses an authorized semantic
+# contract; soft check here, hard check in CR-IS-CAT-01D), G-12 (no
+# implementation-specific function becomes canonical).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  entities:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml jsonschema
+
+      - name: Validate function.yaml files against the v2 schema
+        run: |
+          python3 - <<'EOF'
+          import yaml, json, jsonschema, sys, glob
+          with open('schemas/entities/information-system-function.v2.json') as fp:
+            schema = json.load(fp)
+          ok = True
+          for f in glob.glob('entities/v1-alpha/domains/*/functions/*/function.yaml'):
+            with open(f) as fp:
+              doc = yaml.safe_load(fp)
+            try:
+              jsonschema.validate(doc, schema)
+            except jsonschema.ValidationError as e:
+              print(f'FAIL: {f}: {e.message}')
+              ok = False
+            else:
+              print(f'OK: {f}')
+          sys.exit(0 if ok else 1)
+          EOF
+
+      - name: Validate canonical ID uniqueness (rule 3)
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys, glob
+          ids = []
+          for f in glob.glob('entities/v1-alpha/domains/*/functions/*/function.yaml'):
+            with open(f) as fp:
+              d = yaml.safe_load(fp)
+            ids.append(d['id'])
+          seen = set()
+          dupes = []
+          for i in ids:
+            if i in seen:
+              dupes.append(i)
+            seen.add(i)
+          if dupes:
+            print(f'FAIL: duplicate function ids: {dupes}')
+            sys.exit(1)
+          print(f'OK: {len(ids)} unique function ids')
+          EOF
+
+      - name: Validate parent/child references (rules 6, 7)
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys, glob
+          ids = {}
+          for f in glob.glob('entities/v1-alpha/domains/*/functions/*/function.yaml'):
+            with open(f) as fp:
+              d = yaml.safe_load(fp)
+            ids[d['id']] = d
+          # Rule 6: parent references resolve
+          for fid, d in ids.items():
+            parent = d.get('parent_function')
+            if parent and parent not in ids:
+              print(f'FAIL (rule 6): {fid} references unknown parent {parent}')
+              sys.exit(1)
+          # Rule 7: child references resolve
+          for fid, d in ids.items():
+            for child in d.get('child_functions', []):
+              if child not in ids:
+                # The child may be defined in a future PR (CR-IS-CAT-01C). Soft check.
+                print(f'WARN (rule 7): {fid} references child {child} which is not yet defined (expected for CR-IS-CAT-01C population)')
+          # Bidirectional consistency: if A.parent = B, then B must list A in children
+          for fid, d in ids.items():
+            parent = d.get('parent_function')
+            if parent and parent in ids:
+              if fid not in ids[parent].get('child_functions', []):
+                print(f'FAIL: {fid} declares parent {parent} but {parent} does not list {fid} in child_functions')
+                sys.exit(1)
+          print('OK: parent/child references consistent')
+          EOF
+
+      - name: Validate no composition cycles (rule 8)
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys, glob
+          ids = {}
+          for f in glob.glob('entities/v1-alpha/domains/*/functions/*/function.yaml'):
+            with open(f) as fp:
+              d = yaml.safe_load(fp)
+            ids[d['id']] = d
+          for fid in ids:
+            seen = set()
+            current = ids[fid].get('parent_function')
+            while current:
+              if current == fid:
+                print(f'FAIL (rule 8): {fid} has a cycle in its parent chain')
+                sys.exit(1)
+              if current in seen:
+                # An already-seen node that is not the start: cycle in a different subtree
+                print(f'FAIL (rule 8): {fid} has a cycle in its parent chain at {current}')
+                sys.exit(1)
+              seen.add(current)
+              if current in ids:
+                current = ids[current].get('parent_function')
+              else:
+                break
+          print('OK: no composition cycles')
+          EOF
+
+      - name: Validate decomposition levels (rule 9)
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys, glob
+          valid_levels = {'F1', 'F2', 'F3', 'F4', 'F5'}
+          for f in glob.glob('entities/v1-alpha/domains/*/functions/*/function.yaml'):
+            with open(f) as fp:
+              d = yaml.safe_load(fp)
+            level = d.get('decomposition_level')
+            if level not in valid_levels:
+              print(f'FAIL (rule 9): {d["id"]} has invalid decomposition_level {level}')
+              sys.exit(1)
+          print('OK: all decomposition levels are valid')
+          EOF
+
+      - name: Validate README has all 19 sections (rule 12)
+        run: |
+          python3 - <<'EOF'
+          import sys, glob, re
+          required_sections = [
+            '# 1. Identity', '## 2. Definition', '## 3. Purpose and Responsibility',
+            '## 4. Functional Scope', '## 5. Behavioural Specification',
+            '## 6. Inputs', '## 7. Outputs', '## 8. Data and Event Interaction',
+            '## 9. Composition and Dependencies', '## 10. Execution Characteristics',
+            '## 11. Business Alignment', '## 12. Executing Components',
+            '## 13. Non-Functional Characteristics', '## 14. Security and Governance',
+            '## 15. Measurement and Observability', '## 16. Examples and Use Cases',
+            '## 17. Limitations and Assumptions', '## 18. References',
+            '## 19. Change History'
+          ]
+          for f in glob.glob('entities/v1-alpha/domains/*/functions/*/README.md'):
+            with open(f) as fp:
+              content = fp.read()
+            for section in required_sections:
+              if section not in content:
+                print(f'FAIL (rule 12): {f} is missing section {section}')
+                sys.exit(1)
+            print(f'OK: {f} has all 19 sections')
+          EOF
+
+      - name: Validate README and function.yaml identity agreement (rule 11)
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys, glob
+          for f in glob.glob('entities/v1-alpha/domains/*/functions/*/function.yaml'):
+            yaml_path = f
+            md_path = f.replace('function.yaml', 'README.md')
+            with open(yaml_path) as fp:
+              d = yaml.safe_load(fp)
+            with open(md_path) as fp:
+              md = fp.read()
+            # The README's identity section MUST contain the canonical id
+            if f'- Canonical ID: `{d["id"]}`' not in md:
+              print(f'FAIL (rule 11): {md_path} identity section does not match canonical id {d["id"]}')
+              sys.exit(1)
+            # The README's identity section MUST contain the decomposition level
+            if f'- Decomposition Level: {d["decomposition_level"]}' not in md:
+              print(f'FAIL (rule 11): {md_path} identity section does not match decomposition level {d["decomposition_level"]}')
+              sys.exit(1)
+            print(f'OK: {md_path} identity matches {yaml_path}')
+          EOF

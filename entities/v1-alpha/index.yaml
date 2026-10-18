@@ -1,0 +1,21 @@
+# Information System Function catalog :  v1-alpha index
+# CR-IS-CAT-01B (2026-10-18). Catalog-level function index.
+# This file is generated/curated and validated by the validate-entities.yml
+# workflow. The 01C population exercise will populate this file with the
+# full inventory of ISF functions across all 15 domains.
+catalog: dea-catalog-information-system-functions
+version: "1.0"
+cr: CR-IS-CAT-01B
+date: "2026-10-18"
+domains:
+  - code: ISF-01
+    id: isf:domain:identity-and-access
+    name: Identity and Access
+    index: domains/identity-and-access/index.yaml
+    function_count: 2
+    cr_responsible: CR-IS-CAT-01C
+change_history:
+  - version: "1.0"
+    date: "2026-10-18"
+    cr: CR-IS-CAT-01B
+    note: "Initial catalog index. Only the identity-and-access domain is populated (F2 + F4 examples). The remaining 14 domains are populated by CR-IS-CAT-01C."

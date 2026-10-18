@@ -1,0 +1,117 @@
+id: dea:information-system-function-identity-verification
+type: InformationSystemFunction
+name: "Identity Verification"
+description: |
+  The atomic function that verifies a claimed identity against authoritative
+  evidence. Identity verification is a leaf of the identity-and-access
+  domain; it is decomposed from the parent function
+  dea:information-system-function-identity-and-access-management.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:identity-and-access
+category: isf:domain:identity-and-access
+decomposition_level: F4
+
+parent_function: dea:information-system-function-identity-and-access-management
+
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-identity-and-access-management).
+
+inputs:
+  - input_id: claimed-identity
+    name: "Claimed identity"
+    definition: "The set of identity attributes the principal asserts (e.g., username, email, national ID number, biometric hash)."
+    data_or_event_reference: dea:data-entity-identity-claim
+    source: "Caller (the function depends on ISC-API-001; the contract is per CR-021 specifies relationship)."
+    required: true
+    validation_rules:
+      - "All required identity attributes MUST be present."
+      - "All attributes MUST conform to their respective format constraints (e.g., RFC 5322 for email)."
+    format_or_schema_reference: "https://dea.example.org/schemas/identity-claim.v1.json"
+    sensitivity_classification: sensitive
+
+  - input_id: verification-policy
+    name: "Verification policy"
+    definition: "The set of rules that determine which evidence types are acceptable for which claimed identity attributes."
+    source: "Policy store (read-only)."
+    required: true
+    validation_rules:
+      - "The policy MUST be signed by an authorized policy authority."
+      - "The policy MUST be within its validity period."
+    sensitivity_classification: non-sensitive
+
+outputs:
+  - output_id: verification-result
+    name: "Verification result"
+    definition: "The verification decision: verified, not-verified, or inconclusive; with the evidence types consulted and the policy version applied."
+    data_or_event_reference: dea:data-entity-verification-result
+    destination: "Caller."
+    output_conditions: "Always produced (one of the three decision values)."
+    format_or_schema_reference: "https://dea.example.org/schemas/verification-result.v1.json"
+    quality_expectations: "The result MUST be reproducible given the same inputs and the same policy version."
+
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  retry_recovery: "The function is idempotent; the caller MAY retry on transient errors with exponential backoff."
+  error_handling: "Failures of evidence retrieval produce inconclusive; failures of policy retrieval produce an error response (HTTP 503)."
+  transactional: false
+  concurrency: multi-threaded
+
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-identity-assurance
+  enabled_processes:
+    - dea:business-process-onboarding-authenticated-individual
+
+executing_components:
+  - dea:information-system-component-identity-broker
+
+non_functional_characteristics:
+  availability: 99.95%
+  performance_latency: p99 < 200ms
+  throughput: 5000 req/s
+  scalability: horizontal
+  resilience: active-active
+  security: oauth2 + mtls
+  privacy: gdpr-compliant
+  auditability: full
+  recoverability: rto-15m-rpo-5m
+  observability: prometheus-metrics
+  compliance_constraints:
+    - sox
+    - pci-dss
+    - eidas
+
+governance:
+  functional_owner: "Identity and Access Management team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  lifecycle_history: []
+  source_and_evidence: |
+    Reference architecture: NIST SP 800-63A (identity assurance); the
+    function is the atomic level of the IAL1/AAL1/AAL2 assurance levels.
+    Evidence: NIST SP 800-63A section 4 (identity proofing and
+    verification).
+  review_date: "2027-10-18"
+  change_history: []
+
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+  - technehub-labs/dea-metamodel/change-requests/CR-021-integration-interface.md
+  - NIST SP 800-63A
+
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01B
+  notes: |
+    F4 atomic function example. The parent F2 record is
+    dea:information-system-function-identity-and-access-management
+    in the same domain.
