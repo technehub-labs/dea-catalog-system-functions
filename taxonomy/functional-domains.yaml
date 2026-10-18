@@ -1,0 +1,416 @@
+# Functional domains :  Information System Function classification
+# CR-IS-CAT-01A (2026-10-18). The 15 initial top-level functional domains.
+# Each domain has a stable identifier, a name, a definition, scope, inclusion
+# criteria and exclusion criteria. The boundaries between overlapping domains
+# are established by the DOCTRINE-MECE review (card #463 on board 23).
+#
+# Governance:
+# - G-05: taxonomy nodes are catalogue classifications, not metamodel entities.
+# - G-09: catalogue completeness must be evidenced, not assumed; the 01C
+#   population exercise is the validation step.
+# - G-12: no implementation-specific function becomes canonical merely because
+#   it exists in an application.
+
+version: 1
+effective: 2026-10-18
+cr: CR-IS-CAT-01A
+author: Emmanuel A. Otchere
+parent_cr: CR-IS-CAT-01
+
+domains:
+  - id: isf:domain:identity-and-access
+    code: ISF-01
+    name: Identity and Access
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to the lifecycle of
+      digital identities, the verification of credentials, the enforcement of
+      access policies, and the management of identity-related state.
+    scope: |
+      Identification, authentication, authorization, identity lifecycle and
+      access enforcement.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is registering, verifying, authenticating or authorizing an identity."
+      - "Functions whose primary behaviour is managing the lifecycle of an identity record (provisioning, deprovisioning, federation)."
+      - "Functions whose primary behaviour is evaluating an access policy against a request and producing an allow/deny decision."
+    exclusion_criteria:
+      - "Cryptographic primitives (those live in ISF-09 Security, Privacy and Trust)."
+      - "Threat detection and response (those live in ISF-09)."
+      - "Privacy controls on data (those live in ISF-09)."
+    synonyms:
+      - IAM
+      - Identity Management
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-01 vs ISF-09 boundary)"
+
+  - id: isf:domain:information-and-data-management
+    code: ISF-02
+    name: Information and Data Management
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to the lifecycle of
+      structured data: acquisition, validation, transformation, storage,
+      retrieval, synchronization, replication, retention, archival and
+      deletion of typed, queryable, transactional information.
+    scope: |
+      Data acquisition, validation, transformation, storage, retrieval, retention
+      and disposal.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is acquiring, validating, transforming or persisting structured data."
+      - "Functions whose primary behaviour is retrieving structured data by query or by key."
+      - "Functions whose primary behaviour is managing the retention, archival, replication or deletion of structured data."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is ingesting, classifying or retrieving unstructured content (those live in ISF-07 Content and Knowledge Management)."
+      - "Functions whose primary behaviour is analytical computation (those live in ISF-08 Analytics and Decision Support)."
+    synonyms:
+      - Data Management
+      - Data Lifecycle
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-02 vs ISF-07 boundary)"
+
+  - id: isf:domain:transaction-processing
+    code: ISF-03
+    name: Transaction Processing
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to the execution of
+      a transaction as an atomic unit: initiation, validation, authorization,
+      execution, posting, settlement, reconciliation, reversal and cancellation.
+    scope: |
+      Transaction initiation, validation, execution, settlement, posting and
+      reconciliation.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is initiating, validating, authorizing or executing a transaction."
+      - "Functions whose primary behaviour is posting, settling or reconciling a transaction."
+      - "Functions whose primary behaviour is reversing or cancelling a transaction."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is workflow coordination (those live in ISF-04)."
+      - "Functions whose primary behaviour is data persistence (those live in ISF-02)."
+    synonyms:
+      - Transactional Processing
+    doctrine_reference: null
+
+  - id: isf:domain:workflow-and-orchestration
+    code: ISF-04
+    name: Workflow and Orchestration
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to the coordination
+      of work: sequencing, routing, scheduling, assignment, escalation and
+      completion of business tasks.
+    scope: |
+      Work coordination, sequencing, routing, scheduling and process execution.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is assigning, routing or scheduling a work item."
+      - "Functions whose primary behaviour is sequencing, escalating or completing a workflow."
+      - "Functions whose primary behaviour is coordinating dependencies between work items."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is allocating compute or storage resources (those live in ISF-12)."
+      - "Functions whose primary behaviour is technical integration between systems (those live in ISF-05)."
+      - "Functions whose primary behaviour is human messaging (those live in ISF-06)."
+    synonyms:
+      - Workflow
+      - Orchestration
+      - Process Coordination
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-04 vs ISF-12 and ISF-05 boundaries)"
+
+  - id: isf:domain:integration-and-interoperability
+    code: ISF-05
+    name: Integration and Interoperability
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to the technical
+      exchange of data and events between systems: API interaction, protocol
+      mediation, message transformation, event distribution and external
+      system synchronization.
+    scope: |
+      API interaction, protocol mediation, message exchange, event distribution
+      and transformation.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is handling an API request or response."
+      - "Functions whose primary behaviour is mediating protocols, transforming messages or routing events between systems."
+      - "Functions whose primary behaviour is publishing, subscribing or distributing events."
+      - "Functions whose primary behaviour is validating an interface contract."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is business coordination of work (those live in ISF-04)."
+      - "Functions whose primary behaviour is human messaging (those live in ISF-06)."
+      - "Functions whose primary behaviour is persisting data (those live in ISF-02)."
+    synonyms:
+      - Integration
+      - Interoperability
+      - API Mediation
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-05 vs ISF-04 vs ISF-06 boundaries)"
+
+  - id: isf:domain:communication-and-collaboration
+    code: ISF-06
+    name: Communication and Collaboration
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to human
+      messaging: notifications, communication sessions, collaboration state
+      and preferences.
+    scope: |
+      Messaging, notifications, communication sessions and collaborative
+      interaction.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is transmitting, delivering or processing a human message."
+      - "Functions whose primary behaviour is generating or delivering a notification to a human."
+      - "Functions whose primary behaviour is managing a communication session or collaboration state."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is technical event distribution between systems (those live in ISF-05)."
+      - "Functions whose primary behaviour is content indexing and retrieval (those live in ISF-15)."
+    synonyms:
+      - Messaging
+      - Collaboration
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-06 vs ISF-05 boundary)"
+
+  - id: isf:domain:content-and-knowledge-management
+    code: ISF-07
+    name: Content and Knowledge Management
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to the lifecycle
+      of unstructured or semi-structured content: documents, knowledge
+      artifacts, version management, content authorization and knowledge
+      extraction.
+    scope: |
+      Content lifecycle, document management, search, knowledge retrieval
+      and management.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is ingesting, classifying, indexing, retrieving, versioning or authorizing unstructured content."
+      - "Functions whose primary behaviour is extracting, publishing or managing knowledge artifacts."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is acquiring, transforming or persisting structured data (those live in ISF-02)."
+      - "Functions whose primary behaviour is search execution and ranking (those live in ISF-15)."
+    synonyms:
+      - Content Management
+      - Knowledge Management
+      - Document Management
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-07 vs ISF-02 and ISF-15 boundaries)"
+
+  - id: isf:domain:analytics-and-decision-support
+    code: ISF-08
+    name: Analytics and Decision Support
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to analytical
+      computation: aggregation, statistical analysis, trend detection,
+      forecasting, anomaly detection, recommendation generation, decision
+      support calculation and report generation.
+    scope: |
+      Reporting, analytical processing, forecasting, decision support and
+      insight generation.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is performing analytical computation (aggregation, statistics, forecasting, anomaly detection)."
+      - "Functions whose primary behaviour is generating a recommendation, decision support calculation or report."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is search execution and ranking (those live in ISF-15)."
+      - "Functions whose primary behaviour is data persistence (those live in ISF-02)."
+    synonyms:
+      - Analytics
+      - Decision Support
+      - Business Intelligence
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-08 vs ISF-15 boundary)"
+
+  - id: isf:domain:security-privacy-and-trust
+    code: ISF-09
+    name: Security, Privacy and Trust
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to the security
+      infrastructure: cryptographic operations, threat detection, privacy
+      controls, security-policy enforcement, security event correlation,
+      trust validation and security audit recording.
+    scope: |
+      Security enforcement, cryptographic operations, privacy controls, threat
+      detection and trust management.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is performing cryptographic operations (encryption, signing, verification)."
+      - "Functions whose primary behaviour is detecting, correlating or responding to threats."
+      - "Functions whose primary behaviour is enforcing a privacy control (data masking, consent enforcement)."
+      - "Functions whose primary behaviour is validating trust between parties."
+      - "Functions whose primary behaviour is recording a security audit event."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is the identity lifecycle (those live in ISF-01)."
+      - "Functions whose primary behaviour is access policy evaluation (those live in ISF-01)."
+    synonyms:
+      - Security
+      - Privacy
+      - Trust
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-09 vs ISF-01 boundary)"
+
+  - id: isf:domain:monitoring-and-observability
+    code: ISF-10
+    name: Monitoring and Observability
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies read-only observation behaviour:
+      telemetry collection, log aggregation, trace correlation, health-state
+      evaluation, performance monitoring, alert generation, diagnostic
+      analysis and failure detection.
+    scope: |
+      Monitoring, telemetry collection, logging, tracing, diagnostics and
+      alerting.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is collecting, aggregating or correlating telemetry, logs or traces."
+      - "Functions whose primary behaviour is evaluating a health state or generating an alert."
+      - "Functions whose primary behaviour is performing diagnostic analysis or failure detection."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is mutating configuration or system state (those live in ISF-11)."
+    synonyms:
+      - Observability
+      - Telemetry
+      - Monitoring
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-10 vs ISF-11 boundary)"
+
+  - id: isf:domain:configuration-and-administration
+    code: ISF-11
+    name: Configuration and Administration
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies mutating control behaviour:
+      configuration retrieval, validation, deployment, synchronization,
+      system provisioning, system registration, administrative policy
+      enforcement and operational state management.
+    scope: |
+      Configuration management, system administration, provisioning and
+      operational control.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is retrieving, validating, deploying or synchronizing configuration."
+      - "Functions whose primary behaviour is provisioning, registering or deprovisioning a system or component."
+      - "Functions whose primary behaviour is enforcing an administrative policy or managing operational state."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is read-only observation (those live in ISF-10)."
+    synonyms:
+      - Configuration Management
+      - System Administration
+      - Provisioning
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-11 vs ISF-10 boundary)"
+
+  - id: isf:domain:resource-and-capacity-management
+    code: ISF-12
+    name: Resource and Capacity Management
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to resource
+      allocation and capacity management: resource discovery, allocation,
+      scheduling, capacity assessment, capacity forecasting, utilization
+      monitoring and resource optimization.
+    scope: |
+      Resource allocation, capacity management, optimization and utilization.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is discovering, allocating, scheduling or optimizing compute, storage or network resources."
+      - "Functions whose primary behaviour is assessing, forecasting or monitoring resource capacity and utilization."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is workflow coordination (those live in ISF-04)."
+    synonyms:
+      - Resource Management
+      - Capacity Management
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-12 vs ISF-04 boundary)"
+
+  - id: isf:domain:ai-and-intelligent-processing
+    code: ISF-13
+    name: AI and Intelligent Processing
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies AI-native behaviour: model inference,
+      intelligent classification, entity extraction, semantic interpretation,
+      recommendation generation (when AI-native), retrieval-augmented
+      generation, reasoning execution, agent task planning, agent tool
+      invocation, agent coordination, agent execution monitoring, human
+      approval orchestration and model feedback processing.
+    scope: |
+      Model inference, intelligent classification, recommendation, reasoning
+      and agentic execution.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is invoking an AI model for inference."
+      - "Functions whose primary behaviour is reasoning, semantic interpretation or retrieval-augmented generation."
+      - "Functions whose primary behaviour is agent task planning, tool invocation, coordination or execution monitoring."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is something other than AI but which are AI-assisted; those live in the appropriate primary domain (e.g., ISF-01, ISF-02, ISF-04) with the orthogonal facet 'automation characteristics' set to 'AI-assisted' or 'agent-orchestrated'."
+    synonyms:
+      - AI
+      - Intelligent Processing
+      - Agentic
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-13 vs all-other-domains boundary; AI-assisted routing through orthogonal facet 5.7)"
+
+  - id: isf:domain:experience-and-interaction
+    code: ISF-14
+    name: Experience and Interaction
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to user interaction
+      and experience: user interaction handling, interface rendering,
+      personalization, preference management, interaction-state management,
+      contextual response generation and user feedback capture.
+    scope: |
+      User interaction, presentation, personalization and interaction
+      management.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is handling, rendering or managing a user interaction."
+      - "Functions whose primary behaviour is personalizing an experience based on user context."
+      - "Functions whose primary behaviour is capturing user feedback."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is human messaging to other humans (those live in ISF-06)."
+    synonyms:
+      - UX
+      - Experience
+      - Interaction
+    doctrine_reference: null
+
+  - id: isf:domain:search-and-discovery
+    code: ISF-15
+    name: Search and Discovery
+    status: active
+    version: "1.0"
+    effective_date: 2026-10-18
+    definition: |
+      A functional domain that classifies behaviour related to search and
+      discovery: search request interpretation, indexing, execution, result
+      ranking, semantic search, entity resolution, similarity matching,
+      discovery recommendation and retrieval execution.
+    scope: |
+      Search execution, indexing, discovery, matching and retrieval.
+    inclusion_criteria:
+      - "Functions whose primary behaviour is indexing, executing, ranking or matching a search request."
+      - "Functions whose primary behaviour is entity resolution, similarity matching or discovery recommendation."
+    exclusion_criteria:
+      - "Functions whose primary behaviour is analytical computation (those live in ISF-08)."
+      - "Functions whose primary behaviour is content indexing for content management (those live in ISF-07)."
+    synonyms:
+      - Search
+      - Discovery
+      - Retrieval
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-15 vs ISF-08 boundary)"
+
+change_history:
+  - version: "1.0"
+    date: 2026-10-18
+    cr: CR-IS-CAT-01A
+    note: "Initial taxonomy baseline. The 15 functional domains are a starting classification; the 01C population exercise is the validation step. Doctrine on overlapping domains per DOCTRINE-MECE card #463."

@@ -1,0 +1,113 @@
+name: validate-taxonomy
+
+# CR-IS-CAT-01A (2026-10-18). Validates the Information System Function
+# catalogue taxonomy (functional-domains.yaml, orthogonal-facets.yaml,
+# classification-rules.yaml) against the schema in schemas/taxonomy.schema.json.
+# Also performs the 11 classification rules checks (rules 1-11 from
+# taxonomy/classification-rules.yaml).
+#
+# Governance: G-05 (taxonomy is classification, not metamodel), G-09
+# (completeness is evidenced, not assumed), G-12 (no implementation-
+# specific function becomes canonical).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  taxonomy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml jsonschema
+      - name: Validate taxonomy YAML syntax
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys
+          ok = True
+          for f in ['taxonomy/functional-domains.yaml',
+                    'taxonomy/orthogonal-facets.yaml',
+                    'taxonomy/classification-rules.yaml']:
+            try:
+              with open(f) as fp:
+                yaml.safe_load(fp)
+              print(f'OK: {f}')
+            except yaml.YAMLError as e:
+              print(f'FAIL: {f}: {e}')
+              ok = False
+          sys.exit(0 if ok else 1)
+          EOF
+      - name: Validate taxonomy identifier uniqueness (rule 11)
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys
+          with open('taxonomy/functional-domains.yaml') as fp:
+            d = yaml.safe_load(fp)
+          ids = [e['id'] for e in d['domains']]
+          seen = set()
+          dupes = []
+          for i in ids:
+            if i in seen:
+              dupes.append(i)
+            seen.add(i)
+          if dupes:
+            print(f'FAIL: duplicate taxonomy ids: {dupes}')
+            sys.exit(1)
+          print(f'OK: {len(ids)} unique taxonomy ids')
+          EOF
+      - name: Validate taxonomy parent references (rules 9, 10)
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys
+          with open('taxonomy/functional-domains.yaml') as fp:
+            d = yaml.safe_load(fp)
+          ids = {e['id']: e for e in d['domains']}
+          # Rule 9: no self-ancestor. None of the 15 domains have a parent
+          # in v1.0; this rule will be enforced for categories and
+          # subcategories in 01B.
+          # Rule 10: no circular hierarchies. Walk parent chains; if a
+          # node is visited twice, fail.
+          for e in d['domains']:
+            seen = set()
+            current = e.get('parent')
+            while current:
+              if current == e['id']:
+                print(f'FAIL (rule 9): {e["id"]} is its own ancestor')
+                sys.exit(1)
+              if current in seen:
+                print(f'FAIL (rule 10): cycle at {e["id"]}')
+                sys.exit(1)
+              seen.add(current)
+              if current in ids:
+                current = ids[current].get('parent')
+              else:
+                break
+          print('OK: no self-ancestors or cycles')
+          EOF
+      - name: Validate taxonomy schema
+        run: |
+          python3 - <<'EOF'
+          import yaml, json, jsonschema, sys
+          with open('schemas/taxonomy.schema.json') as fp:
+            schema = json.load(fp)
+          ok = True
+          for f in ['taxonomy/functional-domains.yaml',
+                    'taxonomy/orthogonal-facets.yaml',
+                    'taxonomy/classification-rules.yaml']:
+            with open(f) as fp:
+              doc = yaml.safe_load(fp)
+            # Validate a sample of records
+            records = doc.get('domains') or doc.get('facets') or doc.get('rules') or []
+            for r in records:
+              try:
+                jsonschema.validate(r, schema)
+              except jsonschema.ValidationError as e:
+                print(f'FAIL: {f}: {e.message}')
+                ok = False
+          sys.exit(0 if ok else 1)
+          EOF

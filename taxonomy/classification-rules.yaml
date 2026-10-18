@@ -1,0 +1,99 @@
+# Classification rules :  Information System Function
+# CR-IS-CAT-01A (2026-10-18). The 11 classification rules that govern how
+# functions are classified under the functional-domain taxonomy and the
+# orthogonal classification facets.
+#
+# Governance:
+# - G-05: taxonomy nodes are catalogue classifications, not metamodel entities.
+# - G-06: classification (this file) and functional decomposition (01B) are
+#   separate structures.
+# - G-09: catalogue completeness must be evidenced, not assumed.
+
+version: 1
+effective: 2026-10-18
+cr: CR-IS-CAT-01A
+parent_cr: CR-IS-CAT-01
+
+rules:
+  - id: rule-01
+    title: "Primary domain assignment"
+    statement: "Every active function MUST have exactly one primary functional-domain assignment."
+    rationale: "A primary assignment supports catalogue navigation; multiple primary assignments break MECE presentation."
+    enforceable: true
+    validation: "Each active function record MUST reference exactly one functional-domain identifier from taxonomy/functional-domains.yaml."
+
+  - id: rule-02
+    title: "Additional domain associations"
+    statement: "Additional domain associations MUST be explicitly justified."
+    rationale: "Multi-domain membership is permitted (principle 2.4) but requires justification so that the rationale is discoverable."
+    enforceable: true
+    validation: "Each function record with more than one functional-domain identifier MUST include a non-empty 'additional_domain_rationale' field per additional domain."
+
+  - id: rule-03
+    title: "Behaviour-based classification"
+    statement: "Classification MUST be based on the behaviour performed."
+    rationale: "Functions are classified by what they do, not by where they are deployed or who owns them."
+    enforceable: true
+    validation: "The function's 'primary_behaviour' field MUST match the assigned domain's scope and inclusion criteria."
+
+  - id: rule-04
+    title: "Implementation technology is not classification"
+    statement: "Implementation technology MUST NOT determine functional identity."
+    rationale: "Identity verification remains an identity function whether implemented through a conventional application, an API, an AI model or a distributed architecture. Implementation technology is captured through the orthogonal facet 'execution characteristics' (5.3)."
+    enforceable: true
+    validation: "The 'execution_characteristics' orthogonal facet MUST NOT duplicate the primary domain assignment."
+
+  - id: rule-05
+    title: "Application ownership is not classification"
+    statement: "Application ownership MUST NOT determine functional classification."
+    rationale: "An application may execute multiple functions across multiple domains; application ownership is captured in the function-to-component relationship, not in the taxonomy."
+    enforceable: true
+    validation: "The function record MUST NOT have an 'application_owner' field; the function-to-component relationship (in 01D) carries that information."
+
+  - id: rule-06
+    title: "No business-capability misclassification"
+    statement: "A function MUST NOT be classified as a business capability."
+    rationale: "Functions and capabilities are distinct (principle 2.1). A function realizes a capability through the metamodel relationship, not through the taxonomy."
+    enforceable: true
+    validation: "The 'type' field of any record in entities/v1-alpha/domains/<domain>/functions/ MUST be 'InformationSystemFunction'; it MUST NOT be 'BusinessCapability' or any other metamodel entity type."
+
+  - id: rule-07
+    title: "Taxonomy nodes are not metamodel entities"
+    statement: "Classification nodes MUST NOT be registered as metamodel entities."
+    rationale: "Per G-05, taxonomy nodes are catalogue classifications. They live in this taxonomy/, not in the metamodel."
+    enforceable: true
+    validation: "The taxonomy identifier namespace ('isf:domain:*', 'isf:category:*', 'isf:facet:*') MUST be disjoint from the metamodel entity namespace ('dea:*')."
+
+  - id: rule-08
+    title: "Deprecated taxonomy values remain traceable"
+    statement: "Deprecated taxonomy values MUST remain traceable."
+    rationale: "A function classified under a now-deprecated domain MUST continue to be discoverable; deprecation does not delete."
+    enforceable: true
+    validation: "A taxonomy record with 'status: deprecated' MUST retain its 'id' field; the deprecation is a status change, not a deletion."
+
+  - id: rule-09
+    title: "No self-ancestor"
+    statement: "No taxonomy node may have itself as an ancestor."
+    rationale: "Self-ancestor is a degenerate cycle."
+    enforceable: true
+    validation: "The 'parent' field of a taxonomy record MUST NOT equal the record's own 'id'."
+
+  - id: rule-10
+    title: "No circular hierarchies"
+    statement: "Circular taxonomy hierarchies MUST be rejected."
+    rationale: "The classification hierarchy is a tree; cycles break the tree structure."
+    enforceable: true
+    validation: "The validator walks the parent chain from each node; if a node is encountered twice during the walk, the hierarchy is rejected."
+
+  - id: rule-11
+    title: "Registered taxonomy references"
+    statement: "Classification assignments MUST reference registered taxonomy identifiers."
+    rationale: "A function may only be classified under a taxonomy identifier that exists in taxonomy/functional-domains.yaml."
+    enforceable: true
+    validation: "Each functional-domain identifier in a function record MUST exist in the taxonomy/functional-domains.yaml registry."
+
+change_history:
+  - version: "1.0"
+    date: 2026-10-18
+    cr: CR-IS-CAT-01A
+    note: "Initial set of 11 classification rules. Source: 5-CR programme section 7 (rules 1-11). All rules are enforceable via the validate-taxonomy.yml workflow."
