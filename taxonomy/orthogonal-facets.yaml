@@ -1,0 +1,167 @@
+# Orthogonal classification facets :  Information System Function
+# CR-IS-CAT-01A (2026-10-18). The 7 orthogonal classification facets that
+# apply to every ISF record independently of the primary functional domain.
+# A function MUST have exactly one primary functional-domain assignment;
+# it MAY have multiple orthogonal facet values.
+#
+# Governance:
+# - G-05: taxonomy nodes are catalogue classifications, not metamodel entities.
+# - G-06: classification (this directory) and functional decomposition (01B)
+#   are separate structures.
+
+version: 1
+effective: 2026-10-18
+cr: CR-IS-CAT-01A
+parent_cr: CR-IS-CAT-01
+
+facets:
+  - id: isf:facet:functional-nature
+    type: facet
+    code: "5.1"
+    name: Functional nature
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
+    cardinality: many
+    definition: |
+      The primary functional character of the behaviour performed.
+    values:
+      - processing
+      - transformation
+      - validation
+      - coordination
+      - orchestration
+      - retrieval
+      - communication
+      - analysis
+      - monitoring
+      - enforcement
+      - generation
+
+  - id: isf:facet:interaction-pattern
+    type: facet
+    code: "5.2"
+    name: Interaction pattern
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
+    cardinality: many
+    definition: |
+      The pattern by which the function is invoked and responds.
+    values:
+      - synchronous-request-response
+      - asynchronous-messaging
+      - event-driven
+      - batch
+      - streaming
+      - scheduled
+      - human-initiated
+      - agent-initiated
+
+  - id: isf:facet:execution-characteristics
+    type: facet
+    code: "5.3"
+    name: Execution characteristics
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
+    cardinality: many
+    definition: |
+      The technical execution character of the function. This facet captures
+      implementation technology independently of functional identity (per
+      principle 2.3 of the CR-IS-CAT-01A doc).
+    values:
+      - deterministic
+      - rule-based
+      - statistical
+      - model-based
+      - AI-assisted
+      - agentic
+      - human-in-the-loop
+
+  - id: isf:facet:functional-criticality
+    type: facet
+    code: "5.4"
+    name: Functional criticality
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
+    cardinality: one
+    definition: |
+      The contextual criticality of the function. Criticality is contextual
+      and MUST NOT be treated as an intrinsic universal characteristic of
+      the function; the per-record value is captured in the function record,
+      not in the taxonomy.
+    values:
+      - mission-critical
+      - business-critical
+      - operationally-significant
+      - supporting
+      - convenience
+
+  - id: isf:facet:processing-characteristics
+    type: facet
+    code: "5.5"
+    name: Processing characteristics
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
+    cardinality: many
+    definition: |
+      The temporal character of the function's processing.
+    values:
+      - real-time
+      - near-real-time
+      - eventual
+      - periodic
+      - on-demand
+      - continuous
+
+  - id: isf:facet:information-characteristics
+    type: facet
+    code: "5.6"
+    name: Information characteristics
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
+    cardinality: many
+    definition: |
+      The shape of the information that the function consumes, produces
+      or operates on.
+    values:
+      - structured
+      - semi-structured
+      - unstructured
+      - transactional
+      - analytical
+      - sensitive
+
+  - id: isf:facet:automation-characteristics
+    type: facet
+    code: "5.7"
+    name: Automation characteristics
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
+    cardinality: one
+    definition: |
+      The level and mode of automation of the function. This facet is the
+      primary answer to the ISF-13 vs all-other-domains overlap: an
+      AI-assisted function is classified under its primary domain (e.g.,
+      ISF-01, ISF-02, ISF-04) with this facet set to 'AI-assisted' or
+      'agent-orchestrated'; it is NOT classified under ISF-13 unless the
+      primary behaviour is AI-native.
+    values:
+      - manual-initiation
+      - human-assisted
+      - rule-automated
+      - fully-automated
+      - AI-assisted
+      - agent-orchestrated
+    doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-13 boundary)"
+
+change_history:
+  - version: "1.0"
+    date: 2026-10-18
+    cr: CR-IS-CAT-01A
+    note: "Initial set of 7 orthogonal facets. Per the doctrine on ISF-13 overlap, the 'automation characteristics' facet is the primary answer to the AI-vs-domain boundary question."
