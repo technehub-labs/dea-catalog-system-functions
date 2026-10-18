@@ -19,11 +19,12 @@ parent_cr: CR-IS-CAT-01
 
 domains:
   - id: isf:domain:identity-and-access
+    type: domain
     code: ISF-01
     name: Identity and Access
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to the lifecycle of
       digital identities, the verification of credentials, the enforcement of
@@ -45,11 +46,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-01 vs ISF-09 boundary)"
 
   - id: isf:domain:information-and-data-management
+    type: domain
     code: ISF-02
     name: Information and Data Management
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to the lifecycle of
       structured data: acquisition, validation, transformation, storage,
@@ -71,11 +73,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-02 vs ISF-07 boundary)"
 
   - id: isf:domain:transaction-processing
+    type: domain
     code: ISF-03
     name: Transaction Processing
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to the execution of
       a transaction as an atomic unit: initiation, validation, authorization,
@@ -92,14 +95,14 @@ domains:
       - "Functions whose primary behaviour is data persistence (those live in ISF-02)."
     synonyms:
       - Transactional Processing
-    doctrine_reference: null
 
   - id: isf:domain:workflow-and-orchestration
+    type: domain
     code: ISF-04
     name: Workflow and Orchestration
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to the coordination
       of work: sequencing, routing, scheduling, assignment, escalation and
@@ -121,11 +124,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-04 vs ISF-12 and ISF-05 boundaries)"
 
   - id: isf:domain:integration-and-interoperability
+    type: domain
     code: ISF-05
     name: Integration and Interoperability
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to the technical
       exchange of data and events between systems: API interaction, protocol
@@ -150,11 +154,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-05 vs ISF-04 vs ISF-06 boundaries)"
 
   - id: isf:domain:communication-and-collaboration
+    type: domain
     code: ISF-06
     name: Communication and Collaboration
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to human
       messaging: notifications, communication sessions, collaboration state
@@ -175,11 +180,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-06 vs ISF-05 boundary)"
 
   - id: isf:domain:content-and-knowledge-management
+    type: domain
     code: ISF-07
     name: Content and Knowledge Management
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to the lifecycle
       of unstructured or semi-structured content: documents, knowledge
@@ -201,11 +207,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-07 vs ISF-02 and ISF-15 boundaries)"
 
   - id: isf:domain:analytics-and-decision-support
+    type: domain
     code: ISF-08
     name: Analytics and Decision Support
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to analytical
       computation: aggregation, statistical analysis, trend detection,
@@ -227,11 +234,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-08 vs ISF-15 boundary)"
 
   - id: isf:domain:security-privacy-and-trust
+    type: domain
     code: ISF-09
     name: Security, Privacy and Trust
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to the security
       infrastructure: cryptographic operations, threat detection, privacy
@@ -256,11 +264,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-09 vs ISF-01 boundary)"
 
   - id: isf:domain:monitoring-and-observability
+    type: domain
     code: ISF-10
     name: Monitoring and Observability
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies read-only observation behaviour:
       telemetry collection, log aggregation, trace correlation, health-state
@@ -282,11 +291,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-10 vs ISF-11 boundary)"
 
   - id: isf:domain:configuration-and-administration
+    type: domain
     code: ISF-11
     name: Configuration and Administration
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies mutating control behaviour:
       configuration retrieval, validation, deployment, synchronization,
@@ -308,11 +318,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-11 vs ISF-10 boundary)"
 
   - id: isf:domain:resource-and-capacity-management
+    type: domain
     code: ISF-12
     name: Resource and Capacity Management
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to resource
       allocation and capacity management: resource discovery, allocation,
@@ -331,11 +342,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-12 vs ISF-04 boundary)"
 
   - id: isf:domain:ai-and-intelligent-processing
+    type: domain
     code: ISF-13
     name: AI and Intelligent Processing
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies AI-native behaviour: model inference,
       intelligent classification, entity extraction, semantic interpretation,
@@ -359,11 +371,12 @@ domains:
     doctrine_reference: "DOCTRINE-MECE card #463, section 3.1 (ISF-13 vs all-other-domains boundary; AI-assisted routing through orthogonal facet 5.7)"
 
   - id: isf:domain:experience-and-interaction
+    type: domain
     code: ISF-14
     name: Experience and Interaction
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to user interaction
       and experience: user interaction handling, interface rendering,
@@ -382,14 +395,14 @@ domains:
       - UX
       - Experience
       - Interaction
-    doctrine_reference: null
 
   - id: isf:domain:search-and-discovery
+    type: domain
     code: ISF-15
     name: Search and Discovery
     status: active
     version: "1.0"
-    effective_date: 2026-10-18
+    effective_date: "'2026-10-18'"
     definition: |
       A functional domain that classifies behaviour related to search and
       discovery: search request interpretation, indexing, execution, result

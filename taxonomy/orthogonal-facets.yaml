@@ -16,10 +16,14 @@ parent_cr: CR-IS-CAT-01
 
 facets:
   - id: isf:facet:functional-nature
-    code: 5.1
+    type: facet
+    code: "5.1"
     name: Functional nature
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
     cardinality: many
-    description: |
+    definition: |
       The primary functional character of the behaviour performed.
     values:
       - processing
@@ -33,13 +37,16 @@ facets:
       - monitoring
       - enforcement
       - generation
-    doctrine_reference: null
 
   - id: isf:facet:interaction-pattern
-    code: 5.2
+    type: facet
+    code: "5.2"
     name: Interaction pattern
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
     cardinality: many
-    description: |
+    definition: |
       The pattern by which the function is invoked and responds.
     values:
       - synchronous-request-response
@@ -50,13 +57,16 @@ facets:
       - scheduled
       - human-initiated
       - agent-initiated
-    doctrine_reference: null
 
   - id: isf:facet:execution-characteristics
-    code: 5.3
+    type: facet
+    code: "5.3"
     name: Execution characteristics
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
     cardinality: many
-    description: |
+    definition: |
       The technical execution character of the function. This facet captures
       implementation technology independently of functional identity (per
       principle 2.3 of the CR-IS-CAT-01A doc).
@@ -68,13 +78,16 @@ facets:
       - AI-assisted
       - agentic
       - human-in-the-loop
-    doctrine_reference: null
 
   - id: isf:facet:functional-criticality
-    code: 5.4
+    type: facet
+    code: "5.4"
     name: Functional criticality
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
     cardinality: one
-    description: |
+    definition: |
       The contextual criticality of the function. Criticality is contextual
       and MUST NOT be treated as an intrinsic universal characteristic of
       the function; the per-record value is captured in the function record,
@@ -85,13 +98,16 @@ facets:
       - operationally-significant
       - supporting
       - convenience
-    doctrine_reference: null
 
   - id: isf:facet:processing-characteristics
-    code: 5.5
+    type: facet
+    code: "5.5"
     name: Processing characteristics
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
     cardinality: many
-    description: |
+    definition: |
       The temporal character of the function's processing.
     values:
       - real-time
@@ -100,13 +116,16 @@ facets:
       - periodic
       - on-demand
       - continuous
-    doctrine_reference: null
 
   - id: isf:facet:information-characteristics
-    code: 5.6
+    type: facet
+    code: "5.6"
     name: Information characteristics
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
     cardinality: many
-    description: |
+    definition: |
       The shape of the information that the function consumes, produces
       or operates on.
     values:
@@ -116,13 +135,16 @@ facets:
       - transactional
       - analytical
       - sensitive
-    doctrine_reference: null
 
   - id: isf:facet:automation-characteristics
-    code: 5.7
+    type: facet
+    code: "5.7"
     name: Automation characteristics
+    status: active
+    version: "1.0"
+    effective_date: "2026-10-18"
     cardinality: one
-    description: |
+    definition: |
       The level and mode of automation of the function. This facet is the
       primary answer to the ISF-13 vs all-other-domains overlap: an
       AI-assisted function is classified under its primary domain (e.g.,
