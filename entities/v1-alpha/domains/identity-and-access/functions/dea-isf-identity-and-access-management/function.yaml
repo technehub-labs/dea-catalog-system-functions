@@ -1,0 +1,148 @@
+id: dea:information-system-function-identity-and-access-management
+type: InformationSystemFunction
+name: "Identity and Access Management"
+description: |
+  The parent function that composes the identity-and-access sub-tree. This
+  function coordinates the registration, verification, authentication,
+  authorization, and lifecycle management of digital identities. It is the
+  F2 parent of the identity verification, authentication, and authorization
+  F4 atomic functions.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:identity-and-access
+category: isf:domain:identity-and-access
+decomposition_level: F2
+
+child_functions:
+  - dea:information-system-function-identity-verification
+  - dea:information-system-function-authentication
+  - dea:information-system-function-authorization
+  - dea:information-system-function-identity-registration
+  - dea:information-system-function-identity-provisioning
+  - dea:information-system-function-identity-deprovisioning
+  - dea:information-system-function-access-policy-evaluation
+  - dea:information-system-function-session-management
+
+decomposition_rationale: |
+  The F2 parent decomposes the identity-and-access sub-tree into 8 F4 atomic
+  functions, each with a distinct functional responsibility. The
+  decomposition is necessary because each F4 function has its own inputs,
+  outputs, execution characteristics and SLAs. Composing them under a
+  single F2 function allows the catalog to record the parent responsibility
+  (manage identity and access for the enterprise) while exposing the atomic
+  functions for execution and relationship mapping.
+
+responsibility_allocation:
+  - child: dea:information-system-function-identity-registration
+    responsibility: "Register a new identity (create the identity record)."
+  - child: dea:information-system-function-identity-verification
+    responsibility: "Verify a claimed identity against authoritative evidence."
+  - child: dea:information-system-function-authentication
+    responsibility: "Authenticate a principal (verify the credential)."
+  - child: dea:information-system-function-authorization
+    responsibility: "Authorize a principal for a resource."
+  - child: dea:information-system-function-access-policy-evaluation
+    responsibility: "Evaluate an access policy against a request."
+  - child: dea:information-system-function-session-management
+    responsibility: "Manage a session lifecycle (create, refresh, terminate)."
+  - child: dea:information-system-function-identity-provisioning
+    responsibility: "Provision an identity into a downstream system."
+  - child: dea:information-system-function-identity-deprovisioning
+    responsibility: "Deprovision an identity from a downstream system."
+
+orchestration_responsibility: |
+  The F2 parent does NOT orchestrate the child functions directly. The
+  orchestration of identity and access flows (e.g., registration then
+  verification then provisioning) is the responsibility of the
+  identity-and-access orchestration pattern, which is a separate
+  ISC-level (Information System Component) orchestration entity.
+
+inputs:
+  - input_id: identity-lifecycle-event
+    name: "Identity lifecycle event"
+    definition: "A business event that triggers an identity and access flow (e.g., new hire, role change, termination)."
+    data_or_event_reference: dea:event-identity-lifecycle
+    source: "HR system (via ISC-HR-001)."
+    required: true
+    sensitivity_classification: sensitive
+
+outputs:
+  - output_id: identity-and-access-state
+    name: "Identity and access state"
+    definition: "The state of the identity record, the credentials, the active sessions, and the access policy decisions."
+    data_or_event_reference: dea:data-entity-identity-and-access-state
+    destination: "Identity store, audit log, downstream systems."
+    output_conditions: "Updated on every child function execution."
+    quality_expectations: "Consistent across the identity store, the session store, and the policy store."
+
+execution_characteristics:
+  execution_pattern: event-driven
+  trigger_mechanism: event
+  processing_mode: real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  retry_recovery: "Each child function is idempotent; the parent flow is retry-safe."
+  error_handling: "Each child function emits a structured error; the parent flow records the error and continues with the next step where possible."
+  transactional: false
+  concurrency: multi-threaded
+
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-identity-assurance
+    - dea:business-capability-access-control
+  enabled_processes:
+    - dea:business-process-onboarding-authenticated-individual
+    - dea:business-process-employee-lifecycle
+    - dea:business-process-third-party-onboarding
+
+executing_components:
+  - dea:information-system-component-identity-broker
+  - dea:information-system-component-policy-decision-point
+  - dea:information-system-component-session-store
+
+non_functional_characteristics:
+  availability: 99.95%
+  performance_latency: p99 < 500ms (parent flow)
+  throughput: 10000 events/s
+  scalability: horizontal
+  resilience: active-active
+  security: oauth2 + mtls + saml
+  privacy: gdpr-compliant
+  auditability: full
+  recoverability: rto-15m-rpo-5m
+  observability: prometheus-metrics
+  compliance_constraints:
+    - sox
+    - pci-dss
+    - eidas
+    - hipaa
+
+governance:
+  functional_owner: "Identity and Access Management team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  lifecycle_history: []
+  source_and_evidence: |
+    The decomposition is a worked example for the CR-IS-CAT-01B
+    documentation standard. It demonstrates the F2 -> F4 decomposition
+    pattern, the responsibility allocation field, and the
+    orchestration/composition distinction.
+  review_date: "2027-10-18"
+  change_history: []
+
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+  - technehub-labs/dea-metamodel/change-requests/CR-019-information-system-component.md
+  - NIST SP 800-63
+
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01B
+  notes: |
+    F2 parent function example. The 8 F4 children listed above are
+    illustrative; the full population of each child is owned by
+    CR-IS-CAT-01C. The F4 example in the same domain is
+    dea-isf-identity-verification.

@@ -1,0 +1,117 @@
+# Template :  Information System Function (machine-readable record)
+# CR-IS-CAT-01B (2026-10-18). Copy this file to entities/v1-alpha/domains/<domain>/functions/<function-id>/function.yaml
+# and populate the required fields. The function.yaml is validated against
+# schemas/entities/information-system-function.v2.json by the
+# .github/workflows/validate-entities.yml CI workflow.
+
+# Required fields
+id: dea:information-system-function-<semantic-name>
+type: InformationSystemFunction
+name: "<Human-readable function name>"
+description: |
+  <One-paragraph definition. Distinguishes this function from neighbouring
+  functions in the same domain.>
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:<domain-slug>  # cross-reference to taxonomy/functional-domains.yaml
+category: isf:category:<category-slug>  # cross-reference to taxonomy (categories populated in 01B; v1.0 has no categories yet, so leave as the domain identifier)
+decomposition_level: F4  # F1, F2, F3, F4, or F5
+
+# Additional fields (populate where applicable)
+parent_function: dea:information-system-function-<parent-id>  # omit if F2/F1 root
+child_functions:
+  - dea:information-system-function-<child-id>
+  # ... list of children (omit if F4/F5 leaf)
+
+decomposition_rationale: |
+  <Why decomposition is necessary. Required for F2/F3 parent records.
+  For F4 leaf records, this can be omitted.>
+
+responsibility_allocation:
+  - child: dea:information-system-function-<child-id>
+    responsibility: "<What this child does>"
+
+orchestration_responsibility: |
+  <If the function orchestrates its children, describe the orchestration
+  pattern. Leave empty if the function composes without orchestrating.>
+
+inputs:
+  - input_id: <input-slug>
+    name: "<Input name>"
+    definition: "<What this input is>"
+    data_or_event_reference: dea:data-entity-<id>  # or dea:event-<id>
+    source: "<Where it comes from>"
+    required: true
+    validation_rules: []
+    format_or_schema_reference: "<Schema URI>"
+    sensitivity_classification: sensitive  # sensitive | non-sensitive | public
+
+outputs:
+  - output_id: <output-slug>
+    name: "<Output name>"
+    definition: "<What this output is>"
+    data_or_event_reference: dea:data-entity-<id>  # or dea:event-<id>
+    destination: "<Where it goes>"
+    output_conditions: "<When this output is produced>"
+    format_or_schema_reference: "<Schema URI>"
+    quality_expectations: "<Acceptable quality>"
+
+execution_characteristics:
+  execution_pattern: synchronous  # synchronous | asynchronous | batch | streaming | event-driven
+  trigger_mechanism: api-call  # api-call | event | schedule | manual | agent
+  processing_mode: real-time  # real-time | near-real-time | eventual | periodic
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent  # idempotent | non-idempotent
+  retry_recovery: exponential-backoff
+  error_handling: dead-letter-queue
+  transactional: false
+  concurrency: multi-threaded
+
+business_alignment:
+  realized_capabilities:
+    - dea:business-capability-<id>
+  enabled_processes:
+    - dea:business-process-<id>
+
+executing_components:
+  - dea:information-system-component-<id>
+
+non_functional_characteristics:
+  availability: 99.9%
+  performance_latency: p99 < 100ms
+  throughput: 1000 req/s
+  scalability: horizontal
+  resilience: active-active
+  security: oauth2
+  privacy: gdpr-compliant
+  auditability: full
+  recoverability: rto-15m-rpo-5m
+  observability: prometheus-metrics
+  compliance_constraints:
+    - sox
+    - pci-dss
+
+governance:
+  functional_owner: "<Owner team or person>"
+  steward: "<Steward team or person>"
+  approval_status: proposed  # proposed | approved | rejected
+  criticality: business-critical  # mission-critical | business-critical | operationally-significant | supporting | convenience
+  lifecycle_history: []
+  source_and_evidence: |
+    <Source of the function definition. May cite a standard, a reference
+    implementation, an architecture document, etc.>
+  review_date: 2027-10-18
+  change_history: []
+
+references:
+  - dea:adr-isa-000
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: 2026-10-18
+  last_modified: 2026-10-18
+  cr: CR-IS-CAT-01B
+  notes: |
+    Example record; see entities/v1-alpha/domains/identity-and-access/functions/dea-isf-identity-verification/
+    for a real example.

@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://technehub-labs.github.io/dea-catalog-information-system-functions/schemas/entities/information-system-function.v2.json",
+  "metamodel_version": "1.0.0",
+  "title": "InformationSystemFunctionV2",
+  "description": "Extended Information System Function schema for catalog use. CR-IS-CAT-01B (2026-10-18). The v2 schema extends the v1 schema (schemas/entities/information-system-function.json) with the decomposition, documentation and governance fields required by the CR-IS-CAT-01B documentation standard. The v2 schema does NOT redefine the metamodel entity; it specializes the v1 schema for catalog use.",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "name",
+    "description",
+    "version",
+    "lifecycle_status",
+    "functional_domain",
+    "category",
+    "decomposition_level"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^dea:information-system-function-[a-z0-9-]+$",
+      "description": "Canonical ISF identifier in the metamodel namespace. Identifiers MUST NOT encode application names, vendor names, technology products, deployment locations or temporary organisational structures (G-12)."
+    },
+    "type": {
+      "type": "string",
+      "const": "InformationSystemFunction"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-z0-9.-]+)?$"
+    },
+    "lifecycle_status": {
+      "type": "string",
+      "enum": ["proposed", "planned", "active", "deprecated", "retired"]
+    },
+    "functional_domain": {
+      "type": "string",
+      "pattern": "^isf:domain:[a-z0-9-]+$",
+      "description": "Cross-reference to taxonomy/functional-domains.yaml."
+    },
+    "category": {
+      "type": "string",
+      "pattern": "^isf:(domain|category):[a-z0-9-]+$",
+      "description": "Cross-reference to taxonomy (categories populated in CR-IS-CAT-01B; v1.0 has no categories yet, so the value is the domain identifier)."
+    },
+    "decomposition_level": {
+      "type": "string",
+      "enum": ["F1", "F2", "F3", "F4", "F5"],
+      "description": "F0 is a taxonomy level owned by CR-IS-CAT-01A and is not a function instance."
+    },
+    "parent_function": {
+      "type": "string",
+      "pattern": "^dea:information-system-function-[a-z0-9-]+$"
+    },
+    "child_functions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^dea:information-system-function-[a-z0-9-]+$"
+      }
+    },
+    "decomposition_rationale": {
+      "type": "string"
+    },
+    "responsibility_allocation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["child", "responsibility"],
+        "properties": {
+          "child": { "type": "string" },
+          "responsibility": { "type": "string" }
+        }
+      }
+    },
+    "orchestration_responsibility": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["input_id", "name", "definition", "source", "required"],
+        "properties": {
+          "input_id": { "type": "string" },
+          "name": { "type": "string" },
+          "definition": { "type": "string" },
+          "data_or_event_reference": { "type": "string" },
+          "source": { "type": "string" },
+          "required": { "type": "boolean" },
+          "validation_rules": { "type": "array", "items": { "type": "string" } },
+          "format_or_schema_reference": { "type": "string" },
+          "sensitivity_classification": { "type": "string", "enum": ["sensitive", "non-sensitive", "public"] }
+        }
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["output_id", "name", "definition", "destination", "output_conditions"],
+        "properties": {
+          "output_id": { "type": "string" },
+          "name": { "type": "string" },
+          "definition": { "type": "string" },
+          "data_or_event_reference": { "type": "string" },
+          "destination": { "type": "string" },
+          "output_conditions": { "type": "string" },
+          "format_or_schema_reference": { "type": "string" },
+          "quality_expectations": { "type": "string" }
+        }
+      }
+    },
+    "execution_characteristics": {
+      "type": "object",
+      "properties": {
+        "execution_pattern": { "type": "string", "enum": ["synchronous", "asynchronous", "batch", "streaming", "event-driven"] },
+        "trigger_mechanism": { "type": "string", "enum": ["api-call", "event", "schedule", "manual", "agent"] },
+        "processing_mode": { "type": "string", "enum": ["real-time", "near-real-time", "eventual", "periodic"] },
+        "synchronous_asynchronous": { "type": "string", "enum": ["synchronous", "asynchronous"] },
+        "idempotency": { "type": "string", "enum": ["idempotent", "non-idempotent"] },
+        "retry_recovery": { "type": "string" },
+        "error_handling": { "type": "string" },
+        "transactional": { "type": "boolean" },
+        "concurrency": { "type": "string" }
+      }
+    },
+    "business_alignment": {
+      "type": "object",
+      "properties": {
+        "realized_capabilities": { "type": "array", "items": { "type": "string" } },
+        "enabled_processes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "executing_components": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "non_functional_characteristics": {
+      "type": "object",
+      "properties": {
+        "availability": { "type": "string" },
+        "performance_latency": { "type": "string" },
+        "throughput": { "type": "string" },
+        "scalability": { "type": "string" },
+        "resilience": { "type": "string" },
+        "security": { "type": "string" },
+        "privacy": { "type": "string" },
+        "auditability": { "type": "string" },
+        "recoverability": { "type": "string" },
+        "observability": { "type": "string" },
+        "compliance_constraints": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "functional_owner": { "type": "string" },
+        "steward": { "type": "string" },
+        "approval_status": { "type": "string", "enum": ["proposed", "approved", "rejected"] },
+        "criticality": { "type": "string", "enum": ["mission-critical", "business-critical", "operationally-significant", "supporting", "convenience"] },
+        "lifecycle_history": { "type": "array" },
+        "source_and_evidence": { "type": "string" },
+        "review_date": { "type": "string", "format": "date" },
+        "change_history": { "type": "array" }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created_by": { "type": "string" },
+        "created_date": { "type": "string", "format": "date" },
+        "last_modified": { "type": "string", "format": "date" },
+        "cr": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
