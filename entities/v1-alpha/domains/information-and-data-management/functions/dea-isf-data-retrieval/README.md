@@ -103,14 +103,14 @@ Not applicable to this function. The function is F4 (leaf); orchestration is at 
 
 ## 11. Business Alignment
 ### Realized Capabilities
-- `dea:business-capability-data-management`
+- `capabilities:capability-information-management-6vjgdh`
 
 ### Enabled Processes
-- `dea:business-process-data-lifecycle`
+- `dea:process-operate-general-ledger`
 
 ## 12. Executing Components
 
-- `dea:information-system-component-data-platform`
+- `dea:information-system-component-data-warehouse-platform`
 
 ## 13. Non-Functional Characteristics
 

@@ -179,46 +179,31 @@ jobs:
           print(f'Step 7 (relationship endpoint validation): {"PASS" if ok else "FAIL"}')
           sys.exit(0 if ok else 1)
           EOF
-
-      - name: "Step 8: Cross-catalogue reference validation"
+      - name: "Step 8: Cross-catalogue reference integrity (CR-IS-CAT-01R hardened validator)"
         run: |
-          python3 - <<'EOF'
-          import yaml, sys, glob
-          # Cross-catalogue references are soft-checked against the OpenDEAM
-          # v0.7.0 identifier map. The map lives in
-          # docs/is-semantic-architecture/opendeam-identifier-map.yaml.
-          # The hard check (against the actual target catalogues) requires
-          # those catalogues to be available; in CI we distinguish
-          # "unavailable" from "invalid".
-          with open('docs/is-semantic-architecture/opendeam-identifier-map.yaml') as fp:
-            idmap = yaml.safe_load(fp)
-          canonical = {m['metamodel'] for m in idmap['covered_entities'] if m.get('metamodel')}
-          canonical |= {m['open_deam'] for m in idmap['covered_entities'] if m.get('open_deam')}
-          canonical.add('dea:entity-system-function')  # legacy; retained
-          canonical.add('dea:entity-information-system-function')
-          canonical.add('dea:entity-information-system-component')
-          canonical.add('dea:entity-information-system-service')
-          canonical.add('dea:entity-integration-interface')
-          canonical.add('dea:entity-business-capability')
-          canonical.add('dea:entity-business-process')
-          canonical.add('dea:entity-data-entity')
-          canonical.add('dea:entity-event')
-          canonical.add('dea:entity-metric')
-          with open('relationships/v1-alpha/relationships.yaml') as fp:
-            rels = yaml.safe_load(fp)['relationships']
-          ok = True
-          for r in rels:
-            src = r['source_id']
-            tgt = r['target_id']
-            # Source must be a canonical id
-            if src not in canonical:
-              print(f'WARN (step 8): {r["id"]} source {src} not in canonical identifier map (may be a new catalog record)')
-            # Target may be in another catalog; report but don't fail
-            if tgt not in canonical:
-              print(f'WARN (step 8): {r["id"]} target {tgt} not in canonical identifier map (may be in another catalog)')
-          print('Cross-catalogue references: WARN-level (targets may be in other catalogs)')
-          sys.exit(0)  # Soft check; the hard check is the metamodel's validator
-          EOF
+          set -euo pipefail
+          # 1. Regenerate the reference-integrity report locally.
+          python3 scripts/generate_conformance_reports.py
+          # 2. Hard check: unresolved_count MUST be 0. Forward refs (target catalogue unpopulated) are allowed.
+          ri=$(yq '.unresolved_count' reports/reference-integrity.yaml)
+          fwd=$(yq '.forward_count' reports/reference-integrity.yaml)
+          res=$(yq '.resolved_count'   reports/reference-integrity.yaml)
+          total=$(yq '.total_references_classified' reports/reference-integrity.yaml)
+          echo "Reference-integrity classification:"
+          echo "  total     = $total"
+          echo "  resolved  = $res"
+          echo "  forward   = $fwd  (target catalogue unpopulated; requires an owning CR)"
+          echo "  unresolved= $ri"
+          if [ "$ri" != "0" ]; then
+            echo "ERROR: unresolved cross-catalogue references (hard check)."
+            echo "  The CI rule is: unresolved_count MUST be 0."
+            echo "  Resolved -> target id exists in a target-id snapshot."
+            echo "  Forward  -> declared in cross-catalogue reference map with named owning CR."
+            echo "  Unresolved -> missing from both. Add to the reference map (rebased_references) or declare as forward (forward_references)."
+            yq '.unresolved' reports/reference-integrity.yaml
+            exit 1
+          fi
+          echo "OK: cross-catalogue reference integrity holds."
 
       - name: "Step 9: Measurement reference validation (G-11)"
         run: |

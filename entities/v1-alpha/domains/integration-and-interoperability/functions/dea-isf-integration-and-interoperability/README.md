@@ -105,15 +105,15 @@ Not applicable to this function. The function composes child functions without o
 
 ## 11. Business Alignment
 ### Realized Capabilities
-- `dea:business-capability-integration`
+- `capabilities:capability-technology-enablement-y6nkws`
 
 ### Enabled Processes
-- `dea:business-process-integration-execution`
+- `dea:process-operate-technology-platforms`
 
 ## 12. Executing Components
 
 - `dea:information-system-component-api-gateway`
-- `dea:information-system-component-message-broker`
+- `dea:information-system-component-api-gateway-router`
 
 ## 13. Non-Functional Characteristics
 

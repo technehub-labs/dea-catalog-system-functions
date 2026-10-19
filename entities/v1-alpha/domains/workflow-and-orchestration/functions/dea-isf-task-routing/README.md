@@ -104,14 +104,14 @@ Not applicable to this function. The function is F4 (leaf); orchestration is at 
 
 ## 11. Business Alignment
 ### Realized Capabilities
-- `dea:business-capability-workflow-coordination`
+- `capabilities:capability-operations-management-pm3w8k`
 
 ### Enabled Processes
-- `dea:business-process-workflow-execution`
+- `dea:process-operate-service-delivery`
 
 ## 12. Executing Components
 
-- `dea:information-system-component-workflow-engine`
+- `dea:information-system-component-order-management-orchestrator`
 
 ## 13. Non-Functional Characteristics
 

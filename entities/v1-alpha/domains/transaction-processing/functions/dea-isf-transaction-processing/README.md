@@ -105,14 +105,14 @@ Not applicable to this function. The function composes child functions without o
 
 ## 11. Business Alignment
 ### Realized Capabilities
-- `dea:business-capability-transaction-processing`
+- `capabilities:capability-financial-resource-management-cd3c7c`
 
 ### Enabled Processes
-- `dea:business-process-financial-transaction`
+- `dea:process-run-accounts-receivable`
 
 ## 12. Executing Components
 
-- `dea:information-system-component-transaction-engine`
+- `dea:information-system-component-order-management-system`
 
 ## 13. Non-Functional Characteristics
 

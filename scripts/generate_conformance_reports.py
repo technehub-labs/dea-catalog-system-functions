@@ -12,6 +12,7 @@ Usage:
 import os
 import glob
 import yaml
+from pathlib import Path
 from collections import Counter
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,19 +84,83 @@ def report_relationship_coverage(relationships, functions):
 
 
 def report_reference_integrity(relationships, functions):
-    """Per-entity reference integrity."""
+    """Cross-catalogue reference integrity: real resolution against target-id snapshots.
+       Three buckets: resolved (target id exists in target repo), forward (declared forward,
+       target repo named, target repo may be empty), unresolved (everything else -- hard fail).
+       CR-IS-CAT-01R hardened this from prefix-match-only to snapshot-based resolution.
+    """
+    import yaml
+    # Load the cross-catalogue reference map and target-id snapshots
+    map_path = Path(__file__).resolve().parent.parent / 'docs' / 'is-semantic-architecture' / 'cross-catalogue-reference-map.yaml'
+    snap_path = Path(__file__).resolve().parent.parent / 'docs' / 'is-semantic-architecture' / 'target-id-snapshots.yaml'
+    ref_map = yaml.safe_load(open(map_path)) if map_path.exists() else {}
+    snapshots = yaml.safe_load(open(snap_path)) if snap_path.exists() else {}
+    snap_pinned = (snapshots or {}).get('pinned_commits', {}) or {}
+    snap_data = (snapshots or {}).get('snapshots', {}) or {}
+
+    # Build the set of valid ids per target catalogue
+    valid_ids = {}
+    for repo_name, ids in snap_data.items():
+        if isinstance(ids, dict):
+            valid_ids[repo_name] = set(ids.keys())
+
+    # Build forward-ref declarations indexed by legacy id and by canonical target_repo
+    forward_refs = {}
+    for fr in (ref_map.get('forward_references') or []):
+        forward_refs[fr['legacy']] = fr
+
+    # Walk every external reference on every relationship AND every function record
     function_ids = {f['id'] for f in functions}
-    unresolved = [r for r in relationships if r['target_id'] not in function_ids and not r['target_id'].startswith(('dea:business-capability-', 'dea:business-process-', 'dea:information-system-component-', 'dea:information-system-service-', 'dea:integration-interface-', 'dea:data-entity-', 'dea:event-', 'dea:metric-'))]
+    buckets = {'resolved': [], 'forward': [], 'unresolved': []}
+    seen_target_ids = {}
+
+    def classify(target_id, source_record_id=None):
+        if target_id in function_ids:
+            buckets['resolved'].append({'target_id': target_id,'record_id': source_record_id,'kind': 'internal'})
+            return
+        # Forward ref declared?
+        if target_id in forward_refs:
+            rec = forward_refs[target_id]
+            buckets['forward'].append({'target_id': target_id, 'record_id': source_record_id, 'target_repo': rec.get('target_repo'), 'owning_cr': rec.get('rationale')})
+            return
+        # Try to resolve against each target-repo snapshot
+        for repo_name, ids in valid_ids.items():
+            if target_id in ids:
+                buckets['resolved'].append({'target_id': target_id, 'record_id': source_record_id, 'kind': 'external', 'target_repo': repo_name})
+                return
+        buckets['unresolved'].append({'target_id': target_id, 'record_id': source_record_id})
+        return
+
+    for r in relationships:
+        classify(r['target_id'], r.get('id'))
+
+    # Also check refs in function records
+    for f in functions:
+        for c in (f.get('business_alignment') or {}).get('realized_capabilities') or []:
+            classify(c, f.get('id') + '.realized_capabilities')
+        for p in (f.get('business_alignment') or {}).get('enabled_processes') or []:
+            classify(p, f.get('id') + '.enabled_processes')
+        for c in f.get('executing_components') or []:
+            classify(c, f.get('id') + '.executing_components')
+        for c in f.get('child_functions') or []:
+            classify(c, f.get('id') + '.child_functions')
+
     return {
-        'version': '1.0',
-        'date': '2026-10-18',
-        'cr': 'CR-IS-CAT-01D',
-        'total_relationships': len(relationships),
-        'internal_references': sum(1 for r in relationships if r['target_id'] in function_ids),
-        'external_references': sum(1 for r in relationships if r['target_id'] not in function_ids),
-        'unresolved_references': len(unresolved),
-        'unresolved': [r['id'] for r in unresolved],
+        'version': '2.0',
+        'date': '2026-10-19',
+        'cr': 'CR-IS-CAT-01R',
+        'check': 'real resolution against vendored target-id snapshots; rebased via cross-catalogue reference map',
+        'target_repo_pinning': snap_pinned,
+        'total_references_classified': sum(len(v) for v in buckets.values()),
+        'resolved_count':   len(buckets['resolved']),
+        'forward_count':    len(buckets['forward']),
+        'unresolved_count': len(buckets['unresolved']),
+        'unresolved':       buckets['unresolved'],
+        'forward':          buckets['forward'],
+        'resolved':         buckets['resolved'],
+        'passes_resolved_check_when': 'unresolved_count == 0',
     }
+
 
 
 def report_taxonomy_coverage(taxonomy, functions):

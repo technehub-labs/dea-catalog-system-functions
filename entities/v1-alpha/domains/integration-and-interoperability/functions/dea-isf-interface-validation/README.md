@@ -104,10 +104,10 @@ Not applicable to this function. The function is F4 (leaf); orchestration is at 
 
 ## 11. Business Alignment
 ### Realized Capabilities
-- `dea:business-capability-integration`
+- `capabilities:capability-technology-enablement-y6nkws`
 
 ### Enabled Processes
-- `dea:business-process-integration-execution`
+- `dea:process-operate-technology-platforms`
 
 ## 12. Executing Components
 

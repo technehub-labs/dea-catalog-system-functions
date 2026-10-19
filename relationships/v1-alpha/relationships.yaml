@@ -1,18 +1,3 @@
-# Cross-catalogue relationships :  Information System Function
-# CR-IS-CAT-01D (2026-10-18). The cross-catalogue relationship registry.
-# Each relationship record references a source function and a target entity in
-# another catalogue (business capabilities, business processes, components,
-# services, integration interfaces, data entities, events, metrics).
-# The relationship type is cross-referenced to the metamodel's relationship
-# vocabulary (dea:realizes, dea:enables, dea:executes, dea:provides, dea:exposes,
-# dea:specifies, dea:consumes, dea:produces, dea:measuredBy [OpenDEAM allocation]).
-#
-# Governance:
-# - G-08: every relationship uses an authorized semantic contract.
-# - G-11: metric definitions remain owned by the Metric catalogue; the
-#   measured_by row is an OpenDEAM allocation declaration, not a metamodel
-#   relationship claim.
-
 version: 1
 cr: CR-IS-CAT-01D
 date: 2026-10-18
@@ -20,206 +5,194 @@ authority:
   metamodel: technehub-labs/dea-metamodel (CR-017..CR-022)
   opendeam: technehub-labs/dea-architecture-framework (CR-AR-FMWK-04, v0.7.0)
   identifier_map: technehub-labs/dea-architecture-framework/docs/is-semantic-architecture/opendeam-identifier-map.yaml
-
 relationships:
-  # 3.1 Business Capability Integration (CR-018)
-  # ISF realizes BusinessCapability
-  - id: rel:identity-verification-realizes-identity-assurance
-    source_id: dea:information-system-function-identity-verification
-    relationship_type: dea:realizes
-    target_id: dea:business-capability-identity-assurance
-    relationship_description: "The Identity Verification function realizes the Identity Assurance business capability."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18); identity-and-access domain"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "NIST SP 800-63A (identity assurance)"
-    metadata: {}
-
-  - id: rel:identity-and-access-management-realizes-identity-assurance
-    source_id: dea:information-system-function-identity-and-access-management
-    relationship_type: dea:realizes
-    target_id: dea:business-capability-identity-assurance
-    relationship_description: "The Identity and Access Management parent function realizes the Identity Assurance business capability."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "NIST SP 800-63A"
-    metadata: {}
-
-  - id: rel:identity-and-access-management-realizes-access-control
-    source_id: dea:information-system-function-identity-and-access-management
-    relationship_type: dea:realizes
-    target_id: dea:business-capability-access-control
-    relationship_description: "The Identity and Access Management parent function realizes the Access Control business capability."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "NIST SP 800-63A"
-    metadata: {}
-
-  # 3.2 Business Process Integration (CR-017/018)
-  # ISF enables BusinessProcess
-  - id: rel:identity-verification-enables-onboarding
-    source_id: dea:information-system-function-identity-verification
-    relationship_type: dea:enables
-    target_id: dea:business-process-onboarding-authenticated-individual
-    relationship_description: "The Identity Verification function enables the Onboarding of an Authenticated Individual business process."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01B identity-and-access example"
-    metadata: {}
-
-  # 3.3 Information System Component Integration (CR-018/019)
-  # ISC executes ISF
-  - id: rel:identity-broker-executes-identity-verification
-    source_id: dea:information-system-component-identity-broker
-    relationship_type: dea:executes
-    target_id: dea:information-system-function-identity-verification
-    relationship_description: "The Identity Broker component executes the Identity Verification function."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01B identity-and-access example"
-    metadata: {}
-
-  - id: rel:identity-broker-executes-identity-and-access-management
-    source_id: dea:information-system-component-identity-broker
-    relationship_type: dea:executes
-    target_id: dea:information-system-function-identity-and-access-management
-    relationship_description: "The Identity Broker component executes the Identity and Access Management parent function."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01B identity-and-access example"
-    metadata: {}
-
-  - id: rel:data-platform-executes-data-management
-    source_id: dea:information-system-component-data-platform
-    relationship_type: dea:executes
-    target_id: dea:information-system-function-data-management
-    relationship_description: "The Data Platform component executes the Data Management parent function."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01C information-and-data-management example"
-    metadata: {}
-
-  - id: rel:transaction-engine-executes-transaction-processing
-    source_id: dea:information-system-component-transaction-engine
-    relationship_type: dea:executes
-    target_id: dea:information-system-function-transaction-processing
-    relationship_description: "The Transaction Engine component executes the Transaction Processing parent function."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01C transaction-processing example"
-    metadata: {}
-
-  - id: rel:workflow-engine-executes-workflow-orchestration
-    source_id: dea:information-system-component-workflow-engine
-    relationship_type: dea:executes
-    target_id: dea:information-system-function-workflow-orchestration
-    relationship_description: "The Workflow Engine component executes the Workflow Orchestration parent function."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01C workflow-and-orchestration example"
-    metadata: {}
-
-  - id: rel:api-gateway-executes-integration-and-interoperability
-    source_id: dea:information-system-component-api-gateway
-    relationship_type: dea:executes
-    target_id: dea:information-system-function-integration-and-interoperability
-    relationship_description: "The API Gateway component executes the Integration and Interoperability parent function."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01C integration-and-interoperability example"
-    metadata: {}
-
-  # 3.4 Information System Service Integration (CR-020)
-  # ISC provides ISS
-  - id: rel:identity-broker-provides-identity-service
-    source_id: dea:information-system-component-identity-broker
-    relationship_type: dea:provides
-    target_id: dea:information-system-service-identity-service
-    relationship_description: "The Identity Broker component provides the Identity Service."
-    provenance: "CR-IS-CAT-01D integration (2026-10-18); the Identity Service record lives in dea-catalog-information-system-services (CR-IS-CAT-03)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01D cross-catalogue integration"
-    metadata: {}
-
-  # 3.5 Integration Interface Integration (CR-021)
-  # ISS exposes IF
-  - id: rel:identity-service-exposes-identity-api
-    source_id: dea:information-system-service-identity-service
-    relationship_type: dea:exposes
-    target_id: dea:integration-interface-identity-api
-    relationship_description: "The Identity Service exposes the Identity API integration interface."
-    provenance: "CR-IS-CAT-01D integration (2026-10-18); the Identity API record lives in dea-catalog-information-system-integration-interfaces (CR-IS-CAT-04)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01D cross-catalogue integration"
-    metadata: {}
-
-  # 3.6 Data Architecture Integration (CR-017/018)
-  # ISF consumes DataEntity
-  - id: rel:identity-verification-consumes-identity-claim
-    source_id: dea:information-system-function-identity-verification
-    relationship_type: dea:consumes
-    target_id: dea:data-entity-identity-claim
-    relationship_description: "The Identity Verification function consumes the Identity Claim data entity."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18); the Identity Claim record lives in the Data Entity catalogue"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "NIST SP 800-63A"
-    metadata: {}
-
-  # ISF produces DataEntity
-  - id: rel:identity-verification-produces-verification-result
-    source_id: dea:information-system-function-identity-verification
-    relationship_type: dea:produces
-    target_id: dea:data-entity-verification-result
-    relationship_description: "The Identity Verification function produces the Verification Result data entity."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01B identity-and-access example"
-    metadata: {}
-
-  # 3.7 Event Integration (CR-017/018)
-  # ISF produces Event
-  - id: rel:identity-verification-produces-identity-verified-event
-    source_id: dea:information-system-function-identity-verification
-    relationship_type: dea:produces
-    target_id: dea:event-identity-verified
-    relationship_description: "The Identity Verification function produces the Identity Verified event."
-    provenance: "CR-IS-CAT-01C P1 population (2026-10-18)"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "CR-IS-CAT-01B identity-and-access example"
-    metadata: {}
-
-  # 3.8 Measurement Integration (OpenDEAM v0.7.0)
-  # ISF measured_by Metric (OpenDEAM allocation declaration, NOT a metamodel relationship claim)
-  # Per G-11: metric definitions remain owned by the Metric catalogue.
-  # The function catalogue references metrics through the established
-  # OpenDEAM v0.7.0 measured_by:[MTR] allocation.
-  - id: rel:identity-verification-measured-by-verification-latency
-    source_id: dea:information-system-function-identity-verification
-    relationship_type: dea:measured_by  # OpenDEAM allocation declaration (v0.7.0); the metric identity is owned by the Metric catalogue
-    target_id: dea:metric-verification-latency
-    relationship_description: "The Identity Verification function is measured by the Verification Latency metric (per the OpenDEAM v0.7.0 measured_by:[MTR] allocation)."
-    provenance: "OpenDEAM v0.7.0 measured_by:[MTR] allocation"
-    validity_status: planned
-    effective_version: "1.0"
-    evidence: "OpenDEAM v0.7.0 measured_by:[MTR]"
-    metadata: {}
-
+- id: rel:identity-verification-realizes-identity-assurance
+  source_id: dea:information-system-function-identity-verification
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-security-management-wmzc7c
+  relationship_description: The Identity Verification function realizes the Identity Assurance business capability.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18); identity-and-access domain
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: NIST SP 800-63A (identity assurance)
+  metadata: {}
+- id: rel:identity-and-access-management-realizes-identity-assurance
+  source_id: dea:information-system-function-identity-and-access-management
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-security-management-wmzc7c
+  relationship_description: The Identity and Access Management parent function realizes the Identity Assurance business capability.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: NIST SP 800-63A
+  metadata: {}
+- id: rel:identity-and-access-management-realizes-access-control
+  source_id: dea:information-system-function-identity-and-access-management
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-security-management-wmzc7c
+  relationship_description: The Identity and Access Management parent function realizes the Access Control business capability.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: NIST SP 800-63A
+  metadata: {}
+- id: rel:identity-verification-enables-onboarding
+  source_id: dea:information-system-function-identity-verification
+  relationship_type: dea:enables
+  target_id: dea:process-acquire-and-onboard-agents
+  relationship_description: The Identity Verification function enables the Onboarding of an Authenticated Individual business process.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01B identity-and-access example
+  metadata: {}
+- id: rel:identity-broker-executes-identity-verification
+  source_id: dea:information-system-component-identity-broker
+  relationship_type: dea:executes
+  target_id: dea:information-system-function-identity-verification
+  relationship_description: The Identity Broker component executes the Identity Verification function.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01B identity-and-access example
+  metadata: {}
+- id: rel:identity-broker-executes-identity-and-access-management
+  source_id: dea:information-system-component-identity-broker
+  relationship_type: dea:executes
+  target_id: dea:information-system-function-identity-and-access-management
+  relationship_description: The Identity Broker component executes the Identity and Access Management parent function.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01B identity-and-access example
+  metadata: {}
+- id: rel:data-platform-executes-data-management
+  source_id: dea:information-system-component-data-warehouse-platform
+  relationship_type: dea:executes
+  target_id: dea:information-system-function-data-management
+  relationship_description: The Data Platform component executes the Data Management parent function.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01C information-and-data-management example
+  metadata: {}
+- id: rel:transaction-engine-executes-transaction-processing
+  source_id: dea:information-system-component-order-management-system
+  relationship_type: dea:executes
+  target_id: dea:information-system-function-transaction-processing
+  relationship_description: The Transaction Engine component executes the Transaction Processing parent function.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01C transaction-processing example
+  metadata: {}
+- id: rel:workflow-engine-executes-workflow-orchestration
+  source_id: dea:information-system-component-order-management-orchestrator
+  relationship_type: dea:executes
+  target_id: dea:information-system-function-workflow-orchestration
+  relationship_description: The Workflow Engine component executes the Workflow Orchestration parent function.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01C workflow-and-orchestration example
+  metadata: {}
+- id: rel:api-gateway-executes-integration-and-interoperability
+  source_id: dea:information-system-component-api-gateway
+  relationship_type: dea:executes
+  target_id: dea:information-system-function-integration-and-interoperability
+  relationship_description: The API Gateway component executes the Integration and Interoperability parent function.
+  provenance: CR-IS-CAT-01C P1 population (2026-10-18)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01C integration-and-interoperability example
+  metadata: {}
+- id: rel:identity-broker-provides-identity-service
+  source_id: dea:information-system-component-identity-broker
+  relationship_type: dea:provides
+  target_id: dea:information-system-service-identity-service
+  relationship_description: The Identity Broker component provides the Identity Service.
+  provenance:
+    statement: CR-IS-CAT-01D integration (2026-10-18); the Identity Service record lives in dea-catalog-information-system-services (CR-IS-CAT-03)
+    target_repo: dea-catalog-information-system-services
+    owning_cr: CR-IS-CAT-03 (ISS 5-CR programme)
+    reference_status: forward
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01D cross-catalogue integration
+  metadata: {}
+- id: rel:identity-service-exposes-identity-api
+  source_id: dea:information-system-service-identity-service
+  relationship_type: dea:exposes
+  target_id: dea:integration-interface-identity-api
+  relationship_description: The Identity Service exposes the Identity API integration interface.
+  provenance:
+    statement: CR-IS-CAT-01D integration (2026-10-18); the Identity API record lives in dea-catalog-information-system-integration-interfaces (CR-IS-CAT-04)
+    target_repo: dea-catalog-integration-interfaces
+    owning_cr: CR-IS-CAT-04 (II 5-CR programme)
+    reference_status: forward
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01D cross-catalogue integration
+  metadata: {}
+- id: rel:identity-verification-consumes-identity-claim
+  source_id: dea:information-system-function-identity-verification
+  relationship_type: dea:consumes
+  target_id: dea:data-entity-identity-claim
+  relationship_description: The Identity Verification function consumes the Identity Claim data entity.
+  provenance:
+    statement: CR-IS-CAT-01C P1 population (2026-10-18); the Identity Claim record lives in the Data Entity catalogue
+    target_repo: dea-catalog-business-objects
+    owning_cr: data-entity CR (deferred)
+    reference_status: forward
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: NIST SP 800-63A
+  metadata: {}
+- id: rel:identity-verification-produces-verification-result
+  source_id: dea:information-system-function-identity-verification
+  relationship_type: dea:produces
+  target_id: dea:data-entity-verification-result
+  relationship_description: The Identity Verification function produces the Verification Result data entity.
+  provenance:
+    statement: CR-IS-CAT-01C P1 population (2026-10-18)
+    target_repo: dea-catalog-business-objects
+    owning_cr: data-entity CR (deferred)
+    reference_status: forward
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01B identity-and-access example
+  metadata: {}
+- id: rel:identity-verification-produces-identity-verified-event
+  source_id: dea:information-system-function-identity-verification
+  relationship_type: dea:produces
+  target_id: dea:event-identity-verified
+  relationship_description: The Identity Verification function produces the Identity Verified event.
+  provenance:
+    statement: CR-IS-CAT-01C P1 population (2026-10-18)
+    target_repo: dea-catalog-business-objects
+    owning_cr: event catalogue CR (deferred)
+    reference_status: forward
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01B identity-and-access example
+  metadata: {}
+- id: rel:identity-verification-measured-by-verification-latency
+  source_id: dea:information-system-function-identity-verification
+  relationship_type: dea:measured_by
+  target_id: dea:metric-verification-latency
+  relationship_description: The Identity Verification function is measured by the Verification Latency metric (per the OpenDEAM v0.7.0 measured_by:[MTR] allocation).
+  provenance:
+    statement: OpenDEAM v0.7.0 measured_by:[MTR] allocation
+    target_repo: dea-catalog-metrics
+    owning_cr: metric catalogue CR (deferred)
+    reference_status: forward
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: OpenDEAM v0.7.0 measured_by:[MTR]
+  metadata: {}
 change_history:
-  - version: "1.0"
-    date: 2026-10-18
-    cr: CR-IS-CAT-01D
-    note: "Initial cross-catalogue relationship registry. 14 relationship records across the 8 integration domains (3.1-3.8). The measured_by row is an OpenDEAM allocation declaration, not a metamodel relationship claim."
+- version: '1.0'
+  date: 2026-10-18
+  cr: CR-IS-CAT-01D
+  note: Initial cross-catalogue relationship registry. 14 relationship records across the 8 integration domains (3.1-3.8). The measured_by row is an OpenDEAM allocation declaration, not a metamodel relationship
+    claim.

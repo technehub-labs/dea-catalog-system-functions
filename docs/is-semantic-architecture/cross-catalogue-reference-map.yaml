@@ -1,0 +1,143 @@
+schema: dea.is.cross-catalogue-reference-map.v1
+catalog: dea-catalog-information-system-functions
+generated_by: CR-IS-CAT-01R
+governance_basis:
+- EGV-006 (references resolve to valid entities within the declared identity scope).
+- CR-012 (cross-catalog references resolve to authoritative entities).
+- CR-IS-CAT-01B documentation rule 12 (cross-catalogue refs must resolve).
+- 'Programme control: evidence before assertion.'
+target_repo_pinning:
+  dea-catalog-business-capabilities: 848b16356e81
+  dea-catalog-processes: 390e73eb24d0
+  dea-catalog-application-components: 060cfe6bea95
+rebased_references:
+- legacy: dea:business-capability-access-control
+  canonical: capabilities:capability-security-management-wmzc7c
+  target_repo: dea-catalog-business-capabilities
+  rationale: Security Management protects the enterprise's people, assets, and information; access control is the policy-decision activity within that capability.
+- legacy: dea:business-capability-identity-assurance
+  canonical: capabilities:capability-security-management-wmzc7c
+  target_repo: dea-catalog-business-capabilities
+  rationale: Identity assurance is the verification path within Security Management; the same canonical capability covers access control and identity assurance as two faces of the same protection concern.
+- legacy: dea:business-capability-data-management
+  canonical: capabilities:capability-information-management-6vjgdh
+  target_repo: dea-catalog-business-capabilities
+  rationale: Information Management governs, structures, and stewards enterprise information; data management is the active custody of information.
+- legacy: dea:business-capability-integration
+  canonical: capabilities:capability-technology-enablement-y6nkws
+  target_repo: dea-catalog-business-capabilities
+  rationale: Technology Enablement runs and adapts the technology services, platforms, and automation; integration is one of the three named concerns.
+- legacy: dea:business-capability-transaction-processing
+  canonical: capabilities:capability-financial-resource-management-cd3c7c
+  target_repo: dea-catalog-business-capabilities
+  rationale: Financial Resource Management plans, records, controls, and reports financial resources; transaction processing is the recording of transactions.
+- legacy: dea:business-capability-workflow-coordination
+  canonical: capabilities:capability-operations-management-pm3w8k
+  target_repo: dea-catalog-business-capabilities
+  rationale: Operations Management runs the day-to-day production and delivery; workflow coordination sequences the work in production.
+- legacy: dea:business-process-onboarding-authenticated-individual
+  canonical: dea:process-acquire-and-onboard-agents
+  target_repo: dea-catalog-processes
+  rationale: Acquire Agents acquires, onboards, and integrates agents into the organization; the ISF-level identity verification activity (authentication, identity verification) realizes the onboarding
+    path of this process.
+- legacy: dea:business-process-employee-lifecycle
+  canonical: dea:process-mobilize-licensed-workforce
+  target_repo: dea-catalog-processes
+  rationale: Mobilize Licensed Workforce mobilizes licensed workers into productive roles; identity-and-access operates across the lifecycle entry. Lifecycle continuation (development, separation) is realized
+    by separate BP records.
+- legacy: dea:business-process-financial-transaction
+  canonical: dea:process-run-accounts-receivable
+  target_repo: dea-catalog-processes
+  rationale: Run Accounts Receivable handles invoices, collections, and cash application to the ledger; transaction processing in the ISF sense records the financial transactions.
+- legacy: dea:business-process-integration-execution
+  canonical: dea:process-operate-technology-platforms
+  target_repo: dea-catalog-processes
+  rationale: Operate Technology Platforms operates the integration platforms against availability targets; integration execution runs the integration platform.
+- legacy: dea:business-process-data-lifecycle
+  canonical: dea:process-operate-general-ledger
+  target_repo: dea-catalog-processes
+  rationale: 'Operate General Ledger executes AP/AR/treasury/tax/close/reporting to period plan; general-ledger is the canonical "records of record" against which data lifecycle (acquire-transform-retrieve)
+    is realised. Note: an enterprise data-lifecycle-specific process is not in the current BP catalogue; this mapping is the nearest available canonical.'
+- legacy: dea:business-process-third-party-onboarding
+  canonical: dea:process-onboard-regulated-party-relationship
+  target_repo: dea-catalog-processes
+  rationale: Onboard Regulated Party Relationship activates the party relationship with verified identity, resolved beneficial ownership; third-party identity onboarding routes through this process.
+- legacy: dea:business-process-workflow-execution
+  canonical: dea:process-operate-service-delivery
+  target_repo: dea-catalog-processes
+  rationale: Operate Service Delivery operates production lines, logistics, and inventory to plan; workflow execution routes tasks through service delivery.
+- legacy: dea:information-system-component-identity-broker
+  canonical: dea:information-system-component-identity-broker
+  target_repo: dea-catalog-application-components
+  rationale: Identity Broker exists in ISC catalogue (canonical form unchanged).
+- legacy: dea:information-system-component-api-gateway
+  canonical: dea:information-system-component-api-gateway
+  target_repo: dea-catalog-application-components
+  rationale: API Gateway exists in ISC catalogue (canonical form unchanged).
+- legacy: dea:information-system-component-policy-decision-point
+  canonical: dea:information-system-component-identity-broker
+  target_repo: dea-catalog-application-components
+  rationale: Policy Decision Point evaluates access policy and yields the allow/deny decision; ISC Security's Identity Broker realises this role (federated identity + authorization decisions). Identity
+    Broker is the canonical realisation.
+- legacy: dea:information-system-component-session-store
+  canonical: dea:information-system-component-identity-broker-session-store
+  target_repo: dea-catalog-application-components
+  rationale: Identity Broker Session Store exists in ISC catalogue (canonical record).
+- legacy: dea:information-system-component-data-platform
+  canonical: dea:information-system-component-data-warehouse-platform
+  target_repo: dea-catalog-application-components
+  rationale: Data Warehouse Platform is the canonical data platform record in ISC catalogue (ISCC-05 Data and Analytics).
+- legacy: dea:information-system-component-message-broker
+  canonical: dea:information-system-component-api-gateway-router
+  target_repo: dea-catalog-application-components
+  rationale: 'API Gateway Router is the routing component in ISC Integration domain. The event-publication and integration-and-interoperability functions route events through it. Note: a dedicated "message
+    broker" component is not in the current ISC catalogue; this mapping is the nearest canonical realisation.'
+- legacy: dea:information-system-component-transaction-engine
+  canonical: dea:information-system-component-order-management-system
+  target_repo: dea-catalog-application-components
+  rationale: Order Management System owns the order lifecycle incl. transactional state; canonical ISC record (ISCC-04 Core Operations).
+- legacy: dea:information-system-component-workflow-engine
+  canonical: dea:information-system-component-order-management-orchestrator
+  target_repo: dea-catalog-application-components
+  rationale: Order Management Orchestrator is the stateful workflow engine canonical ISC record (ISCC-04 Core Operations).
+forward_references:
+- legacy: dea:data-entity-identity-claim
+  target_repo: dea-catalog-business-objects
+  rationale: Data entity catalogue population (deferred to future data-entity CR); target catalogue exists at the repo level but has no records yet.
+- legacy: dea:data-entity-verification-result
+  target_repo: dea-catalog-business-objects
+  rationale: Data entity catalogue population (deferred to future data-entity CR).
+- legacy: dea:event-identity-verified
+  target_repo: dea-catalog-business-objects
+  rationale: Event catalogue population (deferred; no dedicated event catalogue yet).
+- legacy: dea:information-system-service-identity-service
+  target_repo: dea-catalog-information-system-services
+  rationale: CR-IS-CAT-03 (ISS 5-CR programme). Repo created empty; target record lands via 03C population.
+- legacy: dea:integration-interface-identity-api
+  target_repo: dea-catalog-integration-interfaces
+  rationale: CR-IS-CAT-04 (II 5-CR programme). Repo created empty; target record lands via 04C population.
+- legacy: dea:metric-verification-latency
+  target_repo: dea-catalog-metrics
+  rationale: Metric catalogue population (deferred; metrics catalogue exists with no records).
+intra_catalog_dangling_children:
+- dangling_child: dea:information-system-function-authorization
+  parent: dea:information-system-function-identity-and-access-management
+  disposition: deferred
+  rationale: 'Not in 01C coverage report deferred/excluded lists. Disposition: defer to ISF-09 Security Privacy and Trust (P3 candidate). Removed from child_functions; rationale recorded in cross-catalogue
+    reference map.'
+- dangling_child: dea:information-system-function-identity-provisioning
+  parent: dea:information-system-function-identity-and-access-management
+  disposition: deferred
+  rationale: '01C coverage report excluded: "will be separate F4 records in a follow-up CR". Disposition: defer; remains potential enrichment candidate.'
+- dangling_child: dea:information-system-function-identity-deprovisioning
+  parent: dea:information-system-function-identity-and-access-management
+  disposition: deferred
+  rationale: '01C coverage report excluded: "will be separate F4 records in a follow-up CR". Disposition: defer.'
+- dangling_child: dea:information-system-function-session-management
+  parent: dea:information-system-function-identity-and-access-management
+  disposition: deferred
+  rationale: '01C coverage report excluded: "will be a separate F4 in a follow-up CR". Disposition: defer.'
+counts:
+  rebased: 21
+  forward: 6
+  intra_dangling: 4

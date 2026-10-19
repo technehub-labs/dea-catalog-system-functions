@@ -35,11 +35,11 @@ execution_characteristics:
   concurrency: multi-threaded
 business_alignment:
   realized_capabilities:
-    - dea:business-capability-transaction-processing
+    - capabilities:capability-financial-resource-management-cd3c7c
   enabled_processes:
-    - dea:business-process-financial-transaction
+    - dea:process-run-accounts-receivable
 executing_components:
-  - dea:information-system-component-transaction-engine
+  - dea:information-system-component-order-management-system
 non_functional_characteristics:
   criticality: mission-critical
 governance:
