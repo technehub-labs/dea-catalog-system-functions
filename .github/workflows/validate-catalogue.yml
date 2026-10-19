@@ -164,12 +164,14 @@ jobs:
             'dea:metric-',
             'dea:business-capability-',
             'dea:business-process-',
+            'capabilities:capability-',
+            'dea:process-',
           )
           for r in rels:
             src = r['source_id']
             tgt = r['target_id']
             src_ok = any(src.startswith(p) for p in valid_prefixes)
-            tgt_ok = tgt.startswith('dea:')
+            tgt_ok = tgt.startswith('dea:') or tgt.startswith('capabilities:')
             if not src_ok:
               print(f'FAIL (step 7): {r["id"]} has non-canonical source {src}')
               ok = False
