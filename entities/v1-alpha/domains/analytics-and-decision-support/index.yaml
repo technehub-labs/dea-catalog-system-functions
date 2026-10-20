@@ -1,0 +1,27 @@
+domain: isf:domain:analytics-and-decision-support
+code: ISF-08
+cr: CR-IS-CAT-01C-P2
+version: '1.0'
+functions:
+- id: dea:information-system-function-analytics-and-decision-support
+  decomposition_level: F2
+  lifecycle_status: planned
+  parent: null
+  children:
+  - dea:information-system-function-data-analysis
+  - dea:information-system-function-insight-generation
+- id: dea:information-system-function-data-analysis
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-analytics-and-decision-support
+  children: []
+- id: dea:information-system-function-insight-generation
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-analytics-and-decision-support
+  children: []
+change_history:
+- version: '1.0'
+  date: '2026-10-19'
+  cr: CR-IS-CAT-01C-P2
+  note: P2 population. 3 functions in Analytics and Decision Support domain.

@@ -1,0 +1,41 @@
+id: dea:information-system-function-monitoring-and-observability
+type: InformationSystemFunction
+name: Monitoring and Observability
+description: The parent function that composes the monitoring-and-observability sub-tree. It collects signals from the runtime and makes them queryable, alertable, and inspectable.
+version: 1.0.0
+lifecycle_status: planned
+functional_domain: isf:domain:monitoring-and-observability
+category: isf:domain:monitoring-and-observability
+decomposition_level: F2
+child_functions:
+- dea:information-system-function-metric-collection
+- dea:information-system-function-log-aggregation
+decomposition_rationale: The F2 parent composes the named F4 children below. Each F4 captures an atomic responsibility; the F2 composes them without orchestrating them.
+responsibility_allocation: Atomic responsibilities live in the F4 records; the F2 composes them.
+orchestration_responsibility: Not applicable to this function. The function composes child functions without orchestrating them; orchestration is at the ISC layer.
+inputs: []
+outputs: []
+execution_characteristics:
+  pattern: synchronous
+  trigger: api-call
+  mode: real-time
+  sync_async: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities: []
+  enabled_processes: []
+executing_components: []
+non_functional_characteristics: {}
+governance:
+  functional_owner: Monitoring and Observability team
+  steward: Architecture team
+  approval_status: proposed
+  criticality: mission-critical
+  lifecycle_history: []
+  source_and_evidence: 'Source: ISF taxonomy CR-IS-CAT-01A section 5; P2 population per CR-IS-CAT-01C-P2.'
+references: []
+metadata:
+  domain_code: ISF-10
+  p2_population_cr: CR-IS-CAT-01C-P2

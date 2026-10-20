@@ -1,11 +1,11 @@
 version: '1.0'
 date: '2026-10-18'
 cr: CR-IS-CAT-01D
-total_relationships: 16
+total_relationships: 64
 by_type:
-  dea:realizes: 3
-  dea:enables: 1
-  dea:executes: 6
+  dea:realizes: 15
+  dea:enables: 13
+  dea:executes: 30
   dea:provides: 1
   dea:exposes: 1
   dea:consumes: 1
@@ -14,6 +14,12 @@ by_type:
 by_source_domain: !!python/object/apply:collections.Counter
 - isf:domain:identity-and-access: 8
   external: 8
+  isf:domain:communication-and-collaboration: 8
+  isf:domain:content-and-knowledge-management: 8
+  isf:domain:analytics-and-decision-support: 8
+  isf:domain:security-privacy-and-trust: 8
+  isf:domain:monitoring-and-observability: 8
+  isf:domain:configuration-and-administration: 8
 by_target_kind: !!python/object/apply:collections.Counter
-- external: 10
+- external: 58
   internal: 6

@@ -1,0 +1,66 @@
+id: dea:information-system-function-data-analysis
+type: InformationSystemFunction
+name: "Data Analysis"
+description: |
+  The atomic function that applies analytical transformations (aggregations, comparisons, slices) over a curated dataset and produces analytical outputs.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:analytics-and-decision-support
+category: isf:domain:analytics-and-decision-support
+decomposition_level: F4
+parent_function: dea:information-system-function-analytics-and-decision-support
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-analytics-and-decision-support).
+inputs:
+- input_id: analytical-subject
+  name: "Analytical subject"
+  definition: "The analytical subject: a curated dataset, table, or model reference."
+  source: "Curated data lake."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: analysis-specification
+  name: "Analysis specification"
+  definition: "The specification of transformations and aggregations to apply."
+  source: "Caller."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: analytical-output
+  name: "Analytical output"
+  definition: "An analytical output (aggregation, slice, comparison)."
+  destination: "Analytical store."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-insight-management-ms4n9d
+  enabled_processes:
+    - dea:process-operate-financial-reporting-and-disclosure
+executing_components:
+  - dea:information-system-component-data-warehouse-platform
+  - dea:information-system-component-data-warehouse-query
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Analytics and Decision Support domain. CR-IS-CAT-01C P1 population.

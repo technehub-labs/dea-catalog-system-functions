@@ -1,9 +1,9 @@
 version: '1.0'
 date: '2026-10-18'
 cr: CR-IS-CAT-01D
-total_functions: 20
+total_functions: 38
 total_domains: 15
-total_relationships: 16
+total_relationships: 64
 domains:
 - id: isf:domain:identity-and-access
   code: ISF-01
@@ -34,32 +34,32 @@ domains:
   code: ISF-06
   name: Communication and Collaboration
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:content-and-knowledge-management
   code: ISF-07
   name: Content and Knowledge Management
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:analytics-and-decision-support
   code: ISF-08
   name: Analytics and Decision Support
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:security-privacy-and-trust
   code: ISF-09
   name: Security, Privacy and Trust
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:monitoring-and-observability
   code: ISF-10
   name: Monitoring and Observability
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:configuration-and-administration
   code: ISF-11
   name: Configuration and Administration
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:resource-and-capacity-management
   code: ISF-12
   name: Resource and Capacity Management

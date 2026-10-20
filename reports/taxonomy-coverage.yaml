@@ -2,14 +2,8 @@ version: '1.0'
 date: '2026-10-18'
 cr: CR-IS-CAT-01D
 total_domains: 15
-populated_domains: 5
+populated_domains: 11
 unpopulated_domains:
-- isf:domain:communication-and-collaboration
-- isf:domain:content-and-knowledge-management
-- isf:domain:analytics-and-decision-support
-- isf:domain:security-privacy-and-trust
-- isf:domain:monitoring-and-observability
-- isf:domain:configuration-and-administration
 - isf:domain:resource-and-capacity-management
 - isf:domain:ai-and-intelligent-processing
 - isf:domain:experience-and-interaction
@@ -51,23 +45,41 @@ by_domain:
     - dea:information-system-function-integration-and-interoperability
     - dea:information-system-function-interface-validation
   isf:domain:communication-and-collaboration:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-collaboration-coordination
+    - dea:information-system-function-communication-and-collaboration
+    - dea:information-system-function-notification-dispatch
   isf:domain:content-and-knowledge-management:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-content-and-knowledge-management
+    - dea:information-system-function-content-management
+    - dea:information-system-function-knowledge-retrieval
   isf:domain:analytics-and-decision-support:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-analytics-and-decision-support
+    - dea:information-system-function-data-analysis
+    - dea:information-system-function-insight-generation
   isf:domain:security-privacy-and-trust:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-security-monitoring
+    - dea:information-system-function-security-privacy-and-trust
+    - dea:information-system-function-threat-detection
   isf:domain:monitoring-and-observability:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-log-aggregation
+    - dea:information-system-function-metric-collection
+    - dea:information-system-function-monitoring-and-observability
   isf:domain:configuration-and-administration:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-configuration-and-administration
+    - dea:information-system-function-configuration-deployment
+    - dea:information-system-function-configuration-validation
   isf:domain:resource-and-capacity-management:
     function_count: 0
     functions: []
