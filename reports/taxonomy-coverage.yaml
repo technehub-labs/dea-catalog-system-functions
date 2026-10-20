@@ -2,12 +2,8 @@ version: '1.0'
 date: '2026-10-18'
 cr: CR-IS-CAT-01D
 total_domains: 15
-populated_domains: 11
-unpopulated_domains:
-- isf:domain:resource-and-capacity-management
-- isf:domain:ai-and-intelligent-processing
-- isf:domain:experience-and-interaction
-- isf:domain:search-and-discovery
+populated_domains: 15
+unpopulated_domains: []
 by_domain:
   isf:domain:identity-and-access:
     function_count: 5
@@ -81,14 +77,26 @@ by_domain:
     - dea:information-system-function-configuration-deployment
     - dea:information-system-function-configuration-validation
   isf:domain:resource-and-capacity-management:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-capacity-planning
+    - dea:information-system-function-resource-and-capacity-management
+    - dea:information-system-function-resource-provisioning
   isf:domain:ai-and-intelligent-processing:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-ai-and-intelligent-processing
+    - dea:information-system-function-inference-execution
+    - dea:information-system-function-model-management
   isf:domain:experience-and-interaction:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-experience-and-interaction
+    - dea:information-system-function-experience-delivery
+    - dea:information-system-function-interaction-management
   isf:domain:search-and-discovery:
-    function_count: 0
-    functions: []
+    function_count: 3
+    functions:
+    - dea:information-system-function-index-management
+    - dea:information-system-function-query-dispatch
+    - dea:information-system-function-search-and-discovery

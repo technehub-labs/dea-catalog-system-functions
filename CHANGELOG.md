@@ -24,3 +24,12 @@
 - Added `scripts/validate_f2_record_shape.py` (parity validator).
 - Re-emitted 6 P2 F2 records with the canonical shape.
 - Reference-integrity: 237 total classified, 231 resolved, 6 forward, 0 unresolved.
+
+
+## CR-IS-CAT-01C-P3 (2026-10-19)
+
+- ISF P3 population: 4 new domains (ISF-12..15); 1 F2 + 2 F4 per domain = 12 records.
+- ISF catalog closed at 15/15 domains, 50 records, 96 cross-cat relationships.
+- Reference-integrity: 328 resolved + 6 forward + 0 unresolved.
+- ISF-14 `experience-and-interaction` resolves the last ISC-side forward ref `customer-experience-management`.
+- New `scripts/_f2_record_helper.py` (shared F2 record + README shape) and `scripts/generate_p3_population.py` (P3 generator; imports the helper).

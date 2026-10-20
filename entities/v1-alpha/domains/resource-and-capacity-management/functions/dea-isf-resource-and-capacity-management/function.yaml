@@ -1,0 +1,92 @@
+id: dea:information-system-function-resource-and-capacity-management
+type: InformationSystemFunction
+name: Resource and Capacity Management
+description: The parent function that composes the resource-and-capacity-management sub-tree. It plans capacity and provisions compute, storage, and integration resources to match workload demand.
+version: 1.0.0
+lifecycle_status: planned
+functional_domain: isf:domain:resource-and-capacity-management
+category: isf:domain:resource-and-capacity-management
+decomposition_level: F2
+child_functions:
+- dea:information-system-function-capacity-planning
+- dea:information-system-function-resource-provisioning
+decomposition_rationale: 'The F2 parent composes the named F4 children below. Each F4 captures an atomic responsibility; the F2 composes them without orchestrating them. The composition follows the CR-IS-CAT-01B
+  section 3.3 distinction: the ISC orchestration pattern owns the inter-F4 ordering, retries, and compensation; the F2 exposes the composite.'
+responsibility_allocation:
+- child: dea:information-system-function-capacity-planning
+  responsibility: Realize the information system function capacity planning atomic responsibility.
+- child: dea:information-system-function-resource-provisioning
+  responsibility: Realize the information system function resource provisioning atomic responsibility.
+orchestration_responsibility: Not applicable to this function. The function composes child functions without orchestrating them; orchestration is at the ISC layer, per the composition-vs-orchestration distinction
+  in CR-IS-CAT-01B section 3.3.
+inputs:
+- input_id: capacity-demand-event
+  name: Capacity demand event
+  definition: A business event that triggers the capacity-planning and resource-provisioning flow.
+  data_or_event_reference: dea:event-resource-and-capacity-management-invocation
+  source: Caller.
+  required: true
+  validation_rules:
+  - The capacity demand event MUST be the single composite input that fires the F2; the F2 delegates per-F4 routing to the F4 children based on the event subtype.
+  - All F4 children MUST be registered and reachable.
+  - The audit log MUST be available.
+  format_or_schema_reference: https://dea.example.org/schemas/resource-and-capacity-management-invocation.v1.json
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: capacity-state
+  name: Capacity state
+  definition: A capacity state composed from the F4 children (plan, provisioned resource inventory).
+  data_or_event_reference: dea:data-entity-resource-and-capacity-management-state
+  destination: Capacity store, audit log.
+  output_conditions: Always produced (or an error response).
+  quality_expectations: Consistent across the F4 children stores.
+execution_characteristics:
+  execution_pattern: event-driven
+  trigger_mechanism: event
+  processing_mode: real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  retry_recovery: Each child function is idempotent; the parent flow is retry-safe.
+  error_handling: Each child function emits a structured error; the parent flow records the error and continues with the next step where possible.
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+  - capabilities:capability-technology-management-maus5n
+  - capabilities:capability-technology-enablement-y6nkws
+  enabled_processes:
+  - dea:process-improve-technology-platforms
+  - dea:process-operate-technology-platforms
+executing_components:
+- dea:information-system-component-observability-platform
+- dea:information-system-component-development-platform
+- dea:information-system-component-ci-cd-pipeline
+non_functional_characteristics:
+  availability: 99.95%
+  performance_latency: p99 < 200ms (composed from F4 children)
+  throughput: composed from F4 children
+  scalability: horizontal
+  resilience: active-active
+  security: composed from F4 children
+  privacy: composed from F4 children
+  auditability: full
+  recoverability: rto-15m-rpo-5m
+  observability: prometheus-metrics
+  compliance_constraints: []
+governance:
+  functional_owner: Resource and Capacity Management team
+  steward: Architecture team
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: '2027-10-19'
+  lifecycle_history: []
+  source_and_evidence: 'Source: ISF taxonomy CR-IS-CAT-01A section 5; P3 population per CR-IS-CAT-01C-P3 (2026-10-19). The decomposition follows the F2 -> F4 pattern with explicit responsibility_allocation
+    to the two atomic F4 children. Composition-vs-orchestration distinction: CR-IS-CAT-01B section 3.3.'
+  change_history: []
+references: []
+metadata:
+  cr: CR-IS-CAT-01C-P3
+  created_by: scripts/generate_p3_population.py
+  created_date: '2026-10-19'
+  last_modified: '2026-10-19'
+  notes: Generator-emitted (P1 F2 record shape parity). Re-run is idempotent.

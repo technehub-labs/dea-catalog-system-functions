@@ -1,0 +1,66 @@
+id: dea:information-system-function-experience-delivery
+type: InformationSystemFunction
+name: "Experience Delivery"
+description: |
+  The atomic function that resolves the experience signal for the current session and renders the experience (channel, content, copy) consistently across surfaces.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:experience-and-interaction
+category: isf:domain:experience-and-interaction
+decomposition_level: F4
+parent_function: dea:information-system-function-experience-and-interaction
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-experience-and-interaction).
+inputs:
+- input_id: experience-signal
+  name: "Experience signal"
+  definition: "The experience signal for the current session (segment, journey state, recommendation)."
+  source: "Signal store."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: rendering-policy
+  name: "Rendering policy"
+  definition: "The rendering policy (channels, layout, copy variant)."
+  source: "Policy store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: experience-rendered
+  name: "Experience rendered"
+  definition: "A rendered-experience record (channel, layout, copy variant, signal)."
+  destination: "Caller, audit log."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-customer-management-f3n8wb
+  enabled_processes:
+    - dea:process-customer-insight-and-retention
+executing_components:
+  - dea:information-system-component-customer-facing-web-application-platform
+  - dea:information-system-component-employee-portal-platform
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Experience and Interaction domain. CR-IS-CAT-01C P1 population.
