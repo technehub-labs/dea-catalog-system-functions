@@ -15,3 +15,12 @@
 - 4 dangling intra-catalog children of F2 identity-and-access-management removed; dispositions documented.
 - Reference-integrity report upgraded to real resolution against vendored target-id snapshots; 92 resolved + 6 forward + 0 unresolved.
 - CI step 8 hardened: hard-fail on unresolved_count > 0.
+
+
+## CR-IS-CAT-01C-P2H (2026-10-19)
+
+- P2 authoring hygiene. F2 record shape parity with the P1 hand-edited canonical F2.
+- Refactored `scripts/generate_p2_population.py` (single `build_f2_record()` helper composes F2 from F4).
+- Added `scripts/validate_f2_record_shape.py` (parity validator).
+- Re-emitted 6 P2 F2 records with the canonical shape.
+- Reference-integrity: 237 total classified, 231 resolved, 6 forward, 0 unresolved.

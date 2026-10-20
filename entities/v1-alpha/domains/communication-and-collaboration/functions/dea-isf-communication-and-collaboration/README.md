@@ -12,50 +12,41 @@
 
 ## 2. Definition
 
-The parent function that composes the communication-and-collaboration sub-tree. It covers notifications, messaging, presence, and shared workspace.
+The parent function that composes the communication-and-collaboration sub-tree. It exposes a composite view of the F4 children below.
 
 ## 3. Purpose and Responsibility
 
-Responsibility: provide a coherent Human and AI collaboration capability for the enterprise. The function composes the F4 children into a single responsibility that is exposed to upstream business processes. The function does NOT orchestrate the F4 children directly; the orchestration pattern is owned by the Information System Component layer.
+Responsibility: provide a coherent communication and collaboration capability for the enterprise. The function composes the F4 children into a single responsibility that is exposed to upstream business processes.
 
 ## 4. Functional Scope
 
 ### In Scope
-
-- Compose the 2 F4 atomic functions (collaboration-coordination, notification-dispatch) under a single responsibility.
+- Compose the 2 F4 atomic functions under a single responsibility.
 - Expose the composite to upstream business processes.
 
 ### Out of Scope
-
-- Orchestration of the F4 children (owned by the ISC orchestration pattern).
-- Cross-domain concerns (each lives in its own ISF domain).
+- Orchestration of the F4 children (owned by the ISC orchestration pattern; per CR-IS-CAT-01B section 3.3).
 
 ## 5. Behavioural Specification
 
 ### Trigger
-
-A business event that triggers the communication and collaboration flow.
+A business event that triggers the communication-and-collaboration flow.
 
 ### Preconditions
-
-- All child functions are registered and reachable.
+- All F4 children are registered and reachable.
 - The audit log is available.
 
 ### Main Behaviour
-
-The F2 function is a composition; it does not have its own main behaviour. The main behaviour is the composition of the child functions, orchestrated at the ISC layer. The F2 function emits the union of the children's events and state changes.
+The F2 function is a composition; it does not have its own main behaviour. The main behaviour is the composition of the child functions, orchestrated at the ISC layer.
 
 ### Alternative Behaviour
-
 Not applicable.
 
 ### Exception Behaviour
-
-The F2 function inherits the exception behaviour of the child functions. A child failure is recorded against the child; the F2 parent is not directly responsible for the failure recovery.
+The F2 function inherits the exception behaviour of the child functions. A child failure is recorded against the child.
 
 ### Postconditions
-
-- The communication and collaboration state is consistent.
+- The communication-and-collaboration state is consistent.
 - An audit event is recorded for every state change.
 
 ## 6. Inputs
@@ -64,40 +55,24 @@ The F2 parent composes inputs from its F4 children. Per-domain input specificati
 
 ## 7. Outputs
 
-The F2 parent composes outputs from its F4 children. Per-domain output specifications are in the F4 records.
+The F2 parent composes outputs from its F4 children.
 
 ## 8. Data and Event Interaction
 
-### Consumed Data
-
-- Composed from F4 children.
-
-### Produced Data
-
-- Composed from F4 children.
-
-### Consumed Events
-
-- Composed from F4 children.
-
-### Produced Events
-
-- Composed from F4 children.
+- Consumed Data: composed from F4 children.
+- Produced Data: composed from F4 children.
+- Consumed Events: composed from F4 children.
+- Produced Events: composed from F4 children.
 
 ## 9. Composition and Dependencies
 
 ### Parent
-
 None (F2 is the parent of the communication-and-collaboration sub-tree).
 
 ### Child Functions
 
 - `dea:information-system-function-collaboration-coordination`
 - `dea:information-system-function-notification-dispatch`
-
-### Composition Kind
-
-Composition (per CR-IS-CAT-01B section 3.3).
 
 ## 10. Execution Characteristics
 
@@ -107,30 +82,31 @@ Composition (per CR-IS-CAT-01B section 3.3).
 - Synchronous/Asynchronous: asynchronous
 - Idempotency: idempotent (each child function is idempotent)
 - Retry/Recovery: Each child function is idempotent; the parent flow is retry-safe.
-- Error Handling: Each child function emits a structured error; the parent flow records the error and continues with the next step where possible.
+- Error Handling: Each child function emits a structured error; the parent flow records the error.
 - Transactional: false
 - Concurrency: multi-threaded
 
 ## 11. Business Alignment
 
-Realizes the relevant business capability (recorded in the per-F4 records' `business_alignment.realized_capabilities`) and enables the relevant business process (recorded in `business_alignment.enabled_processes`). The F2 composes the alignment of its children.
+The realised capabilities and enabled processes of the F2 are the union of the children's. See the F4 records for the per-capability and per-process references.
 
 ## 12. Executing Components
 
-The F2 function is realized by the components listed in each F4 child's `executing_components`. The F2 itself does not bind to specific components; it composes the components of its children.
+- `dea:information-system-component-employee-portal-platform`
+- `dea:information-system-component-api-gateway`
 
 ## 13. Non-Functional Characteristics
 
-- Availability: 99.95% (composed from F4 children)
-- Performance: composed from F4 children
+- Availability: 99.95%
+- Performance Latency: p99 < 200ms (composed from F4 children)
 - Throughput: composed from F4 children
-- Scalability: horizontal (composed from F4 children)
-- Resilience: active-active (composed from F4 children)
-- Security: per F4 child
-- Privacy: per F4 child
-- Auditability: full (all child function emissions are audited)
-- Recoverability: RTO 15m, RPO 5m (composed from F4 children)
-- Observability: prometheus-metrics (composed from F4 children)
+- Scalability: horizontal
+- Resilience: active-active
+- Security: composed from F4 children
+- Privacy: composed from F4 children
+- Auditability: full
+- Recoverability: RTO 15m, RPO 5m
+- Observability: prometheus-metrics
 - Compliance Constraints: per F4 child
 
 ## 14. Security and Governance
@@ -144,15 +120,15 @@ The F2 function is realized by the components listed in each F4 child's `executi
 
 ## 15. Measurement and Observability
 
-Composed from F4 children. Per-domain metrics are emitted by the F4 functions.
+Composed from F4 children.
 
 ## 16. Examples and Use Cases
 
-Not applicable at the F2 level; see F4 records for atomic use cases.
+See the F4 records for atomic use cases.
 
 ## 17. Limitations and Assumptions
 
-The F2 function does not orchestrate the F4 children. The composition is exposed to the ISC layer for orchestration. Inter-F4 ordering, retries, and compensation are the ISC layer's concern.
+The F2 function does not orchestrate the F4 children. The composition is exposed to the ISC layer.
 
 ## 18. References
 
@@ -163,3 +139,4 @@ The F2 function does not orchestrate the F4 children. The composition is exposed
 ## 19. Change History
 
 - 2026-10-19: CR-IS-CAT-01C-P2 initial P2 population.
+- 2026-10-19: CR-IS-CAT-01C-P2H F2 record shape parity (canonical P1 F2 shape).

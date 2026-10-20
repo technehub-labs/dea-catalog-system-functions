@@ -72,14 +72,14 @@ def report_relationship_coverage(relationships, functions):
         'cr': 'CR-IS-CAT-01D',
         'total_relationships': len(relationships),
         'by_type': dict(rel_type_counts),
-        'by_source_domain': Counter(
+        'by_source_domain': dict(Counter(
             next((f.get('functional_domain') for f in functions if f['id'] == r['source_id']), 'external')
             for r in relationships
-        ),
-        'by_target_kind': Counter(
+        )),
+        'by_target_kind': dict(Counter(
             'internal' if r['target_id'] in {f['id'] for f in functions} else 'external'
             for r in relationships
-        ),
+        )),
     }
 
 

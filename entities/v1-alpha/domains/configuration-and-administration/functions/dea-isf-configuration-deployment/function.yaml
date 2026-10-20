@@ -1,39 +1,36 @@
 id: dea:information-system-function-configuration-deployment
 type: InformationSystemFunction
-name: Configuration Deployment
-description: 'The atomic function that applies a configuration change to a target (system, service, environment) under a verified approval and emits the configuration-applied event.
-
-  '
-version: 1.0.0
+name: "Configuration Deployment"
+description: |
+  The atomic function that applies a configuration change to a target (system, service, environment) under a verified approval and emits the configuration-applied event.
+version: "1.0.0"
 lifecycle_status: planned
 functional_domain: isf:domain:configuration-and-administration
 category: isf:domain:configuration-and-administration
 decomposition_level: F4
 parent_function: dea:information-system-function-configuration-and-administration
-decomposition_rationale: 'Not applicable to this function. F4 is a leaf; the rationale lives on the
-
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
   F2 parent (dea:information-system-function-configuration-and-administration).
-
-  '
 inputs:
 - input_id: configuration-change
-  name: Configuration change
-  definition: A configuration change record (diff, target, approval).
-  source: Change management.
+  name: "Configuration change"
+  definition: "A configuration change record (diff, target, approval)."
+  source: "Change management."
   required: true
   sensitivity_classification: non-sensitive
 - input_id: approval-evidence
-  name: Approval evidence
-  definition: The approval evidence (approver, timestamp, evidence link).
-  source: Approval store.
+  name: "Approval evidence"
+  definition: "The approval evidence (approver, timestamp, evidence link)."
+  source: "Approval store."
   required: true
   sensitivity_classification: non-sensitive
 outputs:
 - output_id: deployment-record
-  name: Deployment record
-  definition: A deployment record (target, version, evidence).
-  destination: Deployment store, audit log.
-  output_conditions: Always produced (or an error response).
+  name: "Deployment record"
+  definition: "A deployment record (target, version, evidence)."
+  destination: "Deployment store, audit log."
+  output_conditions: "Always produced (or an error response)."
 execution_characteristics:
   execution_pattern: synchronous
   trigger_mechanism: api-call
@@ -44,27 +41,26 @@ execution_characteristics:
   concurrency: multi-threaded
 business_alignment:
   realized_capabilities:
-  - capabilities:capability-change-management-hukdeq
+    - capabilities:capability-change-management-hukdeq
   enabled_processes:
-  - dea:process-improve-technology-platforms
+    - dea:process-improve-technology-platforms
 executing_components:
-- dea:information-system-component-development-platform
-- dea:information-system-component-ci-cd-pipeline
+  - dea:information-system-component-development-platform
+  - dea:information-system-component-ci-cd-pipeline
 non_functional_characteristics:
   criticality: mission-critical
 governance:
-  functional_owner: Architecture team
-  steward: Architecture team
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
   approval_status: proposed
   criticality: mission-critical
-  review_date: '2027-10-18'
+  review_date: "2027-10-18"
 references:
-- technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
 metadata:
   created_by: Emmanuel A. Otchere
-  created_date: '2026-10-18'
-  last_modified: '2026-10-18'
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
   cr: CR-IS-CAT-01C
-  notes: 'F4 record in the Configuration and Administration domain. CR-IS-CAT-01C P1 population.
-
-    '
+  notes: |
+    F4 record in the Configuration and Administration domain. CR-IS-CAT-01C P1 population.

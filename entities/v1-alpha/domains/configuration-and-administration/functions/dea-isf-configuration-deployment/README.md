@@ -112,7 +112,7 @@ Not applicable to this function. The function is F4 (leaf); orchestration is at 
 ## 12. Executing Components
 
 - `dea:information-system-component-development-platform`
-- `dea:information-system-component-cicd-pipeline`
+- `dea:information-system-component-ci-cd-pipeline`
 
 ## 13. Non-Functional Characteristics
 

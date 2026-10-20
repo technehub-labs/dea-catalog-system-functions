@@ -22,3 +22,8 @@ Snapshot: `~/.hermes/profiles/coder/kanban/dea-metamodel-is-snapshot-2026-10-18.
 ## CR-IS-CAT-01R
 
 - **CR-IS-CAT-01R -- cross-catalogue reference integrity remediation** (`docs/is-semantic-architecture/cross-catalogue-reference-map.yaml`, hardened validator). See [CR-IS-CAT-01R](./CR-IS-CAT-01R-cross-catalogue-reference-integrity-remediation.md).
+
+
+## CR-IS-CAT-01C-P2H
+
+- **CR-IS-CAT-01C-P2H -- P2 authoring hygiene** (P1 F2 record shape parity). See [CR-IS-CAT-01C-P2H](./CR-IS-CAT-01C-P2H-p2-authoring-hygiene.md).
