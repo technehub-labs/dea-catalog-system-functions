@@ -39,11 +39,11 @@ execution_characteristics:
   concurrency: multi-threaded
 business_alignment:
   realized_capabilities:
-    - dea:business-capability-workflow-coordination
+    - capabilities:capability-operations-management-pm3w8k
   enabled_processes:
-    - dea:business-process-workflow-execution
+    - dea:process-operate-service-delivery
 executing_components:
-  - dea:information-system-component-workflow-engine
+  - dea:information-system-component-order-management-orchestrator
 non_functional_characteristics:
   criticality: business-critical
 governance:

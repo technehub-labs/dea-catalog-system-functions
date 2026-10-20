@@ -105,11 +105,11 @@ Not applicable to this function. The function is F4 (leaf); orchestration is at 
 
 ## 11. Business Alignment
 ### Realized Capabilities
-- `dea:business-capability-identity-assurance`
-- `dea:business-capability-access-control`
+- `capabilities:capability-security-management-wmzc7c`
+- `capabilities:capability-security-management-wmzc7c`
 
 ### Enabled Processes
-- `dea:business-process-onboarding-authenticated-individual`
+- `dea:process-acquire-and-onboard-agents`
 
 ## 12. Executing Components
 

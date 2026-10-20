@@ -35,11 +35,11 @@ execution_characteristics:
   concurrency: multi-threaded
 business_alignment:
   realized_capabilities:
-    - dea:business-capability-integration
+    - capabilities:capability-technology-enablement-y6nkws
   enabled_processes:
-    - dea:business-process-integration-execution
+    - dea:process-operate-technology-platforms
 executing_components:
-  - dea:information-system-component-message-broker
+  - dea:information-system-component-api-gateway-router
 non_functional_characteristics:
   criticality: mission-critical
 governance:

@@ -3,22 +3,6 @@ code: ISF-01
 cr: CR-IS-CAT-01C
 version: '1.0'
 functions:
-- id: dea:information-system-function-identity-and-access-management
-  decomposition_level: F2
-  lifecycle_status: planned
-  children:
-  - dea:information-system-function-identity-registration
-  - dea:information-system-function-identity-verification
-  - dea:information-system-function-authentication
-  - dea:information-system-function-authorization
-  - dea:information-system-function-access-policy-evaluation
-  - dea:information-system-function-session-management
-  - dea:information-system-function-identity-provisioning
-  - dea:information-system-function-identity-deprovisioning
-- id: dea:information-system-function-identity-verification
-  decomposition_level: F4
-  lifecycle_status: planned
-  parent: dea:information-system-function-identity-and-access-management
 - id: dea:information-system-function-identity-registration
   decomposition_level: F4
   lifecycle_status: planned
@@ -34,12 +18,22 @@ functions:
   lifecycle_status: planned
   parent: dea:information-system-function-identity-and-access-management
   children: []
+- id: dea:information-system-function-identity-and-access-management
+  decomposition_level: F2
+  lifecycle_status: planned
+  parent: null
+  children:
+  - dea:information-system-function-identity-registration
+  - dea:information-system-function-identity-verification
+  - dea:information-system-function-authentication
+  - dea:information-system-function-access-policy-evaluation
+- id: dea:information-system-function-identity-verification
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-identity-and-access-management
+  children: []
 change_history:
 - version: '1.0'
   date: '2026-10-18'
-  cr: CR-IS-CAT-01B
-  note: Initial per-domain index with the F2 example (identity-and-access-management) and the F4 example (identity-verification). The remaining functions are populated by CR-IS-CAT-01C.
-- version: '1.0'
-  date: '2026-10-18'
   cr: CR-IS-CAT-01C
-  note: 'P1 population enrichment: 3 F4 records added (registration, authentication, access-policy-evaluation). Total: 5 functions.'
+  note: Initial P1 population. 5 functions in the Identity and Access domain.

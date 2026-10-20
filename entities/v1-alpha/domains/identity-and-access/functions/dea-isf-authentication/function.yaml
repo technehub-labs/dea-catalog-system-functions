@@ -47,10 +47,10 @@ execution_characteristics:
   concurrency: multi-threaded
 business_alignment:
   realized_capabilities:
-    - dea:business-capability-identity-assurance
-    - dea:business-capability-access-control
+    - capabilities:capability-security-management-wmzc7c
+    - capabilities:capability-security-management-wmzc7c
   enabled_processes:
-    - dea:business-process-onboarding-authenticated-individual
+    - dea:process-acquire-and-onboard-agents
 executing_components:
   - dea:information-system-component-identity-broker
 non_functional_characteristics:

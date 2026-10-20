@@ -48,17 +48,81 @@
     },
     "target_id": {
       "type": "string",
-      "pattern": "^dea:[a-z0-9-]+$"
+      "anyOf": [
+        {
+          "pattern": "^dea:[a-z0-9-]+$"
+        },
+        {
+          "pattern": "^capabilities:capability-[a-z0-9-]+$"
+        },
+        {
+          "pattern": "^dea:process-[a-z0-9-]+$"
+        },
+        {
+          "pattern": "^dea:information-system-(function|component|service)-[a-z0-9-]+$"
+        },
+        {
+          "pattern": "^dea:integration-interface-[a-z0-9-]+$"
+        },
+        {
+          "pattern": "^dea:data-entity-[a-z0-9-]+$"
+        },
+        {
+          "pattern": "^dea:event-[a-z0-9-]+$"
+        },
+        {
+          "pattern": "^dea:metric-[a-z0-9-]+$"
+        }
+      ],
+      "description": "The target_id follows the cross-catalogue identifier convention; anyOf the known prefix forms. CR-IS-CAT-01R."
     },
     "relationship_description": {
       "type": "string"
     },
     "provenance": {
-      "type": "string"
+      "description": "Free-text audit trail OR, for cross-catalogue forward refs declared in the cross-catalogue reference map, an object with reference_status=\"forward\".",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "required": [
+            "reference_status"
+          ],
+          "properties": {
+            "target_repo": {
+              "type": "string"
+            },
+            "owning_cr": {
+              "type": "string"
+            },
+            "reference_status": {
+              "type": "string",
+              "enum": [
+                "forward",
+                "rebased"
+              ]
+            },
+            "statement": {
+              "type": "string"
+            },
+            "rebased_from": {
+              "type": "string"
+            }
+          }
+        }
+      ]
     },
     "validity_status": {
       "type": "string",
-      "enum": ["proposed", "planned", "active", "deprecated", "retired"]
+      "enum": [
+        "proposed",
+        "planned",
+        "active",
+        "deprecated",
+        "retired"
+      ]
     },
     "effective_version": {
       "type": "string",

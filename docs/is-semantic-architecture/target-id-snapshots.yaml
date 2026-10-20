@@ -1,0 +1,892 @@
+schema: dea.is.target-id-snapshots.v1
+generated_by: scripts/build_target_snapshots.py
+generated_for: CR-IS-CAT-01R reference integrity resolution (hardened validator)
+pinned_commits:
+  dea-catalog-business-capabilities: 848b16356e81dcfdc34782b7ad5f083c0600045e
+  dea-catalog-processes: 390e73eb24d0070a40a3ae804ee61b42611f7664
+  dea-catalog-application-components: 060cfe6bea95c73d77298dbc284b630203f6a3b0
+snapshots:
+  dea-catalog-business-capabilities:
+    capabilities:capability-asset-management-judtwr:
+      name: Asset Management
+      definition_or_outcome: The ability to steward the enterprise's non-financial, non-workforce assets across their lifecycle.
+      source_file: entities/v1-alpha/asset-management-judtwr/capabilities-capability-asset-management-judtwr.yaml
+    capabilities:capability-change-management-hukdeq:
+      name: Change Management
+      definition_or_outcome: The ability to move the enterprise deliberately from one state to another.
+      source_file: entities/v1-alpha/change-management-hukdeq/capabilities-capability-change-management-hukdeq.yaml
+    capabilities:capability-continuity-management-v3rn6u:
+      name: Continuity Management
+      definition_or_outcome: The ability to maintain continuity of product and service delivery at an acceptable predefined capacity during disruption, and to recover.
+      source_file: entities/v1-alpha/continuity-management-v3rn6u/capabilities-capability-continuity-management-v3rn6u.yaml
+    capabilities:capability-customer-management-f3n8wb:
+      name: Customer Management
+      definition_or_outcome: The ability to establish, develop, and end relationships with those the enterprise serves.
+      source_file: entities/v1-alpha/customer-management-f3n8wb/capabilities-capability-customer-management-f3n8wb.yaml
+    capabilities:capability-enterprise-governance-uas48u:
+      name: Enterprise Governance
+      definition_or_outcome: 'The ability to direct and control the enterprise: decision rights, accountability, oversight, and policy across the whole.'
+      source_file: entities/v1-alpha/enterprise-governance-uas48u/capabilities-capability-enterprise-governance-uas48u.yaml
+    capabilities:capability-enterprise-performance-management-5fxren:
+      name: Enterprise Performance Management
+      definition_or_outcome: The ability to define, measure, monitor, evaluate, govern, and improve enterprise-wide performance against intended objectives and targets, completing the direction loop that
+        links
+      source_file: entities/v1-alpha/enterprise-performance-management-5fxren/capabilities-capability-enterprise-performance-management-5fxren.yaml
+    capabilities:capability-facility-management-tx73hb:
+      name: Facility Management
+      definition_or_outcome: The ability to provide and operate the enterprise's physical places.
+      source_file: entities/v1-alpha/facility-management-tx73hb/capabilities-capability-facility-management-tx73hb.yaml
+    capabilities:capability-financial-resource-management-cd3c7c:
+      name: Financial Resource Management
+      definition_or_outcome: The ability to plan, record, control, and report the enterprise's financial resources in the operating cycle.
+      source_file: entities/v1-alpha/financial-resource-management-cd3c7c/capabilities-capability-financial-resource-management-cd3c7c.yaml
+    capabilities:capability-financial-stewardship-c7xtfk:
+      name: Financial Stewardship
+      definition_or_outcome: 'The ability to hold the enterprise''s financial resources in trust: policy, structure, and long-horizon financial position.'
+      source_file: entities/v1-alpha/financial-stewardship-c7xtfk/capabilities-capability-financial-stewardship-c7xtfk.yaml
+    capabilities:capability-idea-management-86dckf:
+      name: Idea Management
+      definition_or_outcome: The ability to originate, develop, and realize ideas into new or improved products, services, processes, and models.
+      source_file: entities/v1-alpha/idea-management-86dckf/capabilities-capability-idea-management-86dckf.yaml
+    capabilities:capability-information-management-6vjgdh:
+      name: Information Management
+      definition_or_outcome: The ability to govern, structure, and steward the enterprise's information across its lifecycle.
+      source_file: entities/v1-alpha/information-management-6vjgdh/capabilities-capability-information-management-6vjgdh.yaml
+    capabilities:capability-insight-management-ms4n9d:
+      name: Insight Management
+      definition_or_outcome: The ability to derive decision-grade insight from information the enterprise stewards or acquires.
+      source_file: entities/v1-alpha/insight-management-ms4n9d/capabilities-capability-insight-management-ms4n9d.yaml
+    capabilities:capability-legal-matter-management-zzbd2u:
+      name: Legal Matter Management
+      definition_or_outcome: 'The ability to conduct the enterprise''s legal work: counsel, contracts, disputes, and legal position.'
+      source_file: entities/v1-alpha/legal-matter-management-zzbd2u/capabilities-capability-legal-matter-management-zzbd2u.yaml
+    capabilities:capability-marketing-xmc539:
+      name: Marketing
+      definition_or_outcome: The ability to understand markets and create demand for the enterprise's offerings.
+      source_file: entities/v1-alpha/marketing-xmc539/capabilities-capability-marketing-xmc539.yaml
+    capabilities:capability-offering-management-6egkc8:
+      name: Offering Management
+      definition_or_outcome: The ability to conceive, design, build, evolve, and retire what the enterprise offers.
+      source_file: entities/v1-alpha/offering-management-6egkc8/capabilities-capability-offering-management-6egkc8.yaml
+    capabilities:capability-operations-management-pm3w8k:
+      name: Operations Management
+      definition_or_outcome: The ability to run the enterprise's day-to-day production and delivery of value.
+      source_file: entities/v1-alpha/operations-management-pm3w8k/capabilities-capability-operations-management-pm3w8k.yaml
+    capabilities:capability-organizational-design-vanefq:
+      name: Organizational Design
+      definition_or_outcome: The ability to structure the enterprise into roles, units, reporting lines, authorities, and coordination patterns that fit the work the enterprise must do, and to revise that
+        stru
+      source_file: entities/v1-alpha/organizational-design-vanefq/capabilities-capability-organizational-design-vanefq.yaml
+    capabilities:capability-partner-management-cp3vdb:
+      name: Partner Management
+      definition_or_outcome: The ability to establish and maintain relationships with entities the enterprise cooperates with as peers.
+      source_file: entities/v1-alpha/partner-management-cp3vdb/capabilities-capability-partner-management-cp3vdb.yaml
+    capabilities:capability-regulation-management-gya4d8:
+      name: Regulation Management
+      definition_or_outcome: The ability to know the enterprise's obligations and to conform to them demonstrably.
+      source_file: entities/v1-alpha/regulation-management-gya4d8/capabilities-capability-regulation-management-gya4d8.yaml
+    capabilities:capability-risk-management-h9uxdw:
+      name: Risk Management
+      definition_or_outcome: The ability to identify, assess, treat, and monitor what could prevent the enterprise from achieving its outcomes.
+      source_file: entities/v1-alpha/risk-management-h9uxdw/capabilities-capability-risk-management-h9uxdw.yaml
+    capabilities:capability-security-management-wmzc7c:
+      name: Security Management
+      definition_or_outcome: The ability to protect the enterprise's people, assets, and information from harm.
+      source_file: entities/v1-alpha/security-management-wmzc7c/capabilities-capability-security-management-wmzc7c.yaml
+    capabilities:capability-sourcing-and-procurement-esucp4:
+      name: Sourcing and Procurement
+      definition_or_outcome: 'The ability to acquire goods and services: sourcing choices, purchasing, and receipt.'
+      source_file: entities/v1-alpha/sourcing-and-procurement-esucp4/capabilities-capability-sourcing-and-procurement-esucp4.yaml
+    capabilities:capability-strategic-planning-k3rz7a:
+      name: Strategic Planning
+      definition_or_outcome: The ability to translate enterprise direction into an ordered set of intents, horizons, and resource postures.
+      source_file: entities/v1-alpha/strategic-planning-k3rz7a/capabilities-capability-strategic-planning-k3rz7a.yaml
+    capabilities:capability-strategy-formulation-sf7q2x:
+      name: Strategy Formulation
+      definition_or_outcome: 'The ability to set the enterprise''s direction: where it will compete, what it will become, and what it will not do.'
+      source_file: entities/v1-alpha/strategy-formulation-sf7q2x/capabilities-capability-strategy-formulation-sf7q2x.yaml
+    capabilities:capability-supplier-management-d6fuj4:
+      name: Supplier Management
+      definition_or_outcome: The ability to establish, maintain, and end relationships with those who supply the enterprise.
+      source_file: entities/v1-alpha/supplier-management-d6fuj4/capabilities-capability-supplier-management-d6fuj4.yaml
+    capabilities:capability-technology-enablement-y6nkws:
+      name: Technology Enablement
+      definition_or_outcome: The ability to run and continuously adapt the technology services, platforms, and automation that other capabilities depend on, sustaining operational technology delivery across
+        th
+      source_file: entities/v1-alpha/technology-enablement-y6nkws/capabilities-capability-technology-enablement-y6nkws.yaml
+    capabilities:capability-technology-management-maus5n:
+      name: Technology Management
+      definition_or_outcome: The ability to direct, invest in, and steward the enterprise's technology estate.
+      source_file: entities/v1-alpha/technology-management-maus5n/capabilities-capability-technology-management-maus5n.yaml
+    capabilities:capability-workforce-management-9e8d8s:
+      name: Workforce Management
+      definition_or_outcome: The ability to acquire, develop, deploy, and release the enterprise's workforce of human and artificial agents.
+      source_file: entities/v1-alpha/workforce-management-9e8d8s/capabilities-capability-workforce-management-9e8d8s.yaml
+    capabilities:capability-workforce-planning-b43rhm:
+      name: Workforce Planning
+      definition_or_outcome: The ability to determine what workforce, human and artificial, the enterprise will need and when.
+      source_file: entities/v1-alpha/workforce-planning-b43rhm/capabilities-capability-workforce-planning-b43rhm.yaml
+  dea-catalog-processes:
+    dea:process-acquire-and-onboard-agents:
+      name: Acquire Agents
+      definition_or_outcome: 'Agents are acquired, onboarded, and integrated into the organization substrate-neutrally. '
+      source_file: entities/v1-alpha/dea:process-acquire-and-onboard-agents/dea:process-acquire-and-onboard-agents.yaml
+    dea:process-acquire-technology-assets:
+      name: Acquire Technology Assets
+      definition_or_outcome: 'Technology assets are acquired, installed, and commissioned. '
+      source_file: entities/v1-alpha/dea:process-acquire-technology-assets/dea:process-acquire-technology-assets.yaml
+    dea:process-activate-billing-capability:
+      name: Activate Billing Capability
+      definition_or_outcome: The billing or revenue-recognition capability is formally activated with the regulator's acknowledgement on record, the tariff or pricing approval preserved, operational controls
+        (
+      source_file: entities/v1-alpha/dea:process-activate-billing-capability/dea:process-activate-billing-capability.yaml
+    dea:process-activate-operations-capability:
+      name: Activate Operations Capability
+      definition_or_outcome: The operations capability is formally activated with the regulator's authorization on record, operations manuals and runbooks live, operational controls (incident management,
+        capac
+      source_file: entities/v1-alpha/dea:process-activate-operations-capability/dea:process-activate-operations-capability.yaml
+    dea:process-adapt-strategic-direction:
+      name: Adapt Strategic Direction
+      definition_or_outcome: 'Strategic direction is adapted, objectives and targets are refreshed, and strategy effectiveness is reviewed. '
+      source_file: entities/v1-alpha/dea:process-adapt-strategic-direction/dea:process-adapt-strategic-direction.yaml
+    dea:process-audit-policy-compliance:
+      name: Audit Policy Compliance
+      definition_or_outcome: 'Audit reports with findings, recommendations, and follow-up actions are delivered to the appropriate governance body.
+
+        '
+      source_file: entities/v1-alpha/dea:process-audit-policy-compliance/dea:process-audit-policy-compliance.yaml
+    dea:process-bring-into-force:
+      name: Bring Policy Instrument into Force
+      definition_or_outcome: 'The instrument is in force and binding: obligations, rights and duties attach to it and are executed across the enterprise. '
+      source_file: entities/v1-alpha/dea:process-bring-into-force/dea:process-bring-into-force.yaml
+    dea:process-build-budgeting-and-forecasting-systems:
+      name: Build Budgeting and Forecasting Systems
+      definition_or_outcome: Budgeting and forecasting systems are built with models, integrations, and controls delivered for operate budgeting.
+      source_file: entities/v1-alpha/dea:process-build-budgeting-and-forecasting-systems/dea:process-build-budgeting-and-forecasting-systems.yaml
+    dea:process-build-contractor-and-partner-agent-pool:
+      name: Build Contractor and Partner-Agent Pool
+      definition_or_outcome: 'The contractor and partner-agent pool is built with vetted sources and activation paths. '
+      source_file: entities/v1-alpha/dea:process-build-contractor-and-partner-agent-pool/dea:process-build-contractor-and-partner-agent-pool.yaml
+    dea:process-build-delivery-capability:
+      name: Build Delivery Capability
+      definition_or_outcome: 'Delivery capability is built with production lines stood up, logistics network connected, and technology assets and facilities provisioned. '
+      source_file: entities/v1-alpha/dea:process-build-delivery-capability/dea:process-build-delivery-capability.yaml
+    dea:process-build-innovation-prototype:
+      name: Build Innovation Prototype
+      definition_or_outcome: 'The innovation prototype is built and ready for testing. '
+      source_file: entities/v1-alpha/dea:process-build-innovation-prototype/dea:process-build-innovation-prototype.yaml
+    dea:process-build-logistics-network:
+      name: Build Logistics Network
+      definition_or_outcome: 'The logistics network is built with nodes and carriers contracted. '
+      source_file: entities/v1-alpha/dea:process-build-logistics-network/dea:process-build-logistics-network.yaml
+    dea:process-build-service-capability:
+      name: Build Service Capability
+      definition_or_outcome: 'The service capability is built and ready for market readiness. '
+      source_file: entities/v1-alpha/dea:process-build-service-capability/dea:process-build-service-capability.yaml
+    dea:process-build-strategic-plan:
+      name: Build Strategic Plan
+      definition_or_outcome: 'A versioned strategic plan with roadmap and initiative portfolio is built and committed. '
+      source_file: entities/v1-alpha/dea:process-build-strategic-plan/dea:process-build-strategic-plan.yaml
+    dea:process-build-strategic-roadmap:
+      name: Build Strategic Roadmap
+      definition_or_outcome: 'The strategic roadmap is built with sequenced initiatives and milestone anchors. '
+      source_file: entities/v1-alpha/dea:process-build-strategic-roadmap/dea:process-build-strategic-roadmap.yaml
+    dea:process-close-enterprise-relationship:
+      name: Close Enterprise Relationship
+      definition_or_outcome: 'The relationship is closed out: obligations are fulfilled or settled, records and rights are resolved, and the close is executed with evidence. '
+      source_file: entities/v1-alpha/dea:process-close-enterprise-relationship/dea:process-close-enterprise-relationship.yaml
+    dea:process-codify-charters-and-policies:
+      name: Codify Charters and Policies
+      definition_or_outcome: 'Charters, policies, and standard artefacts are codified and accessible to the governance bodies.
+
+        '
+      source_file: entities/v1-alpha/dea:process-codify-charters-and-policies/dea:process-codify-charters-and-policies.yaml
+    dea:process-commission-production-line:
+      name: Commission Production Line
+      definition_or_outcome: 'The production line is stood up and producing at trial rate. '
+      source_file: entities/v1-alpha/dea:process-commission-production-line/dea:process-commission-production-line.yaml
+    dea:process-conceive-strategic-intent:
+      name: Conceive Strategic Intent
+      definition_or_outcome: 'Strategic intent is conceived and framed. '
+      source_file: entities/v1-alpha/dea:process-conceive-strategic-intent/dea:process-conceive-strategic-intent.yaml
+    dea:process-conceive-workforce-and-agent-mix:
+      name: Conceive Workforce and Agent Mix
+      definition_or_outcome: 'The workforce and agent mix is conceived with substrate proportions and capacity envelopes. '
+      source_file: entities/v1-alpha/dea:process-conceive-workforce-and-agent-mix/dea:process-conceive-workforce-and-agent-mix.yaml
+    dea:process-conclude-regulated-run-off:
+      name: Conclude Regulated Run-Off
+      definition_or_outcome: The regulated run-off of the financial entity (or run-off portfolio) is executed under the controlling regulator supervision with statutory accounting basis established and
+        all pol
+      source_file: entities/v1-alpha/dea:process-conclude-regulated-run-off/dea:process-conclude-regulated-run-off.yaml
+    dea:process-conduct-assurance-review:
+      name: Conduct Assurance Review
+      definition_or_outcome: Assurance reviews are conducted with evidence measured against standards, findings reported, and audit quality maintained.
+      source_file: entities/v1-alpha/dea:process-conduct-assurance-review/dea:process-conduct-assurance-review.yaml
+    dea:process-conduct-capability-gap-analysis:
+      name: Conduct Capability Gap Analysis
+      definition_or_outcome: 'Capability gaps are analyzed with priorities committed. '
+      source_file: entities/v1-alpha/dea:process-conduct-capability-gap-analysis/dea:process-conduct-capability-gap-analysis.yaml
+    dea:process-conduct-cost-optimization-review:
+      name: Conduct Cost Optimization Review
+      definition_or_outcome: 'Cost optimization review is conducted with findings committed for reporting, disclosure, and financial control strengthening. '
+      source_file: entities/v1-alpha/dea:process-conduct-cost-optimization-review/dea:process-conduct-cost-optimization-review.yaml
+    dea:process-conduct-engagement-and-alignment-review:
+      name: Conduct Engagement and Alignment Review
+      definition_or_outcome: 'Engagement and alignment are reviewed with findings committed. '
+      source_file: entities/v1-alpha/dea:process-conduct-engagement-and-alignment-review/dea:process-conduct-engagement-and-alignment-review.yaml
+    dea:process-conduct-lean-six-sigma-programme:
+      name: Conduct Lean Six Sigma Programme
+      definition_or_outcome: 'The lean six sigma programme is conducted with improvement projects delivered. '
+      source_file: entities/v1-alpha/dea:process-conduct-lean-six-sigma-programme/dea:process-conduct-lean-six-sigma-programme.yaml
+    dea:process-conduct-logistics-optimization:
+      name: Conduct Logistics Optimization
+      definition_or_outcome: 'Logistics optimization is conducted with route and network changes committed. '
+      source_file: entities/v1-alpha/dea:process-conduct-logistics-optimization/dea:process-conduct-logistics-optimization.yaml
+    dea:process-conduct-operations-performance-review:
+      name: Conduct Operations Performance Review
+      definition_or_outcome: 'Operations performance review is conducted with findings committed for logistics optimization, asset utilization, and technology platform evolution. '
+      source_file: entities/v1-alpha/dea:process-conduct-operations-performance-review/dea:process-conduct-operations-performance-review.yaml
+    dea:process-conduct-proposition-performance-review:
+      name: Conduct Proposition Performance Review
+      definition_or_outcome: 'Proposition performance review is conducted with findings committed for product evolution and portfolio rationalization. '
+      source_file: entities/v1-alpha/dea:process-conduct-proposition-performance-review/dea:process-conduct-proposition-performance-review.yaml
+    dea:process-conduct-regulated-workforce-wind-down:
+      name: Conduct Regulated Workforce Wind-Down
+      definition_or_outcome: The wind-down is executed under statutory notice, consultation obligations are satisfied with documentation, statutory liabilities (notice pay, severance, benefits continuation)
+        ar
+      source_file: entities/v1-alpha/dea:process-conduct-regulated-workforce-wind-down/dea:process-conduct-regulated-workforce-wind-down.yaml
+    dea:process-coordinate-collaboration:
+      name: Coordinate Collaboration
+      definition_or_outcome: 'Collaboration is coordinated across agents and teams. '
+      source_file: entities/v1-alpha/dea:process-coordinate-collaboration/dea:process-coordinate-collaboration.yaml
+    dea:process-customer-channel-and-acquisition-build:
+      name: Build Customer Acquisition Channels
+      definition_or_outcome: 'Channel infrastructure and acquisition engines are operational, integrated with the designed experience, and ready to acquire first customers.
+
+        '
+      source_file: entities/v1-alpha/dea:process-customer-channel-and-acquisition-build/dea:process-customer-channel-and-acquisition-build.yaml
+    dea:process-customer-experience-design:
+      name: Design Customer Experience
+      definition_or_outcome: 'A customer experience design with articulated touchpoints, interaction patterns, and quality criteria is committed and ready to be built.
+
+        '
+      source_file: entities/v1-alpha/dea:process-customer-experience-design/dea:process-customer-experience-design.yaml
+    dea:process-customer-insight-and-retention:
+      name: Operate Customer Retention Programs
+      definition_or_outcome: 'Customer insight (NPS, churn risk, win-back lists) is produced continuously and feeds Conceive/Design/Build/Operate cycles.
+
+        '
+      source_file: entities/v1-alpha/dea:process-customer-insight-and-retention/dea:process-customer-insight-and-retention.yaml
+    dea:process-customer-journey-design:
+      name: Design Customer Journey
+      definition_or_outcome: 'A customer journey design with articulated stages, moments-of-truth, and handoff points is committed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-customer-journey-design/dea:process-customer-journey-design.yaml
+    dea:process-customer-strategy-conception:
+      name: Develop Customer Strategy
+      definition_or_outcome: 'A customer strategy document with bounded segment thesis, value exchange, and demand thesis is committed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-customer-strategy-conception/dea:process-customer-strategy-conception.yaml
+    dea:process-decommission:
+      name: Decommission Enterprise Asset
+      definition_or_outcome: The asset is withdrawn from operation, decommissioned and disposed of through executed retirement and disposal routes, with residual value, data and obligations resolved and
+        record
+      source_file: entities/v1-alpha/dea:process-decommission/dea:process-decommission.yaml
+    dea:process-define-enterprise-purpose-and-ambition:
+      name: Define Enterprise Purpose and Ambition
+      definition_or_outcome: 'Enterprise purpose and ambition are defined and committed. '
+      source_file: entities/v1-alpha/dea:process-define-enterprise-purpose-and-ambition/dea:process-define-enterprise-purpose-and-ambition.yaml
+    dea:process-demand-design:
+      name: Design Demand Model
+      definition_or_outcome: 'A demand model with articulated supply paths, capacity assumptions, and demand-shaping levers is committed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-demand-design/dea:process-demand-design.yaml
+    dea:process-demand-generation-build:
+      name: Build Demand Generation Programs
+      definition_or_outcome: 'A demand-generation engine is operational, integrated with the channels, and producing initial demand.
+
+        '
+      source_file: entities/v1-alpha/dea:process-demand-generation-build/dea:process-demand-generation-build.yaml
+    dea:process-design-agent-topology:
+      name: Design Agent Topology
+      definition_or_outcome: 'The agent topology is designed with human, artificial, and hybrid placement and coordination patterns. '
+      source_file: entities/v1-alpha/dea:process-design-agent-topology/dea:process-design-agent-topology.yaml
+    dea:process-design-competency-framework:
+      name: Design Competency Framework
+      definition_or_outcome: 'The competency framework is designed with proficiency levels and assessment anchors. '
+      source_file: entities/v1-alpha/dea:process-design-competency-framework/dea:process-design-competency-framework.yaml
+    dea:process-design-delivery-model:
+      name: Design Delivery Model
+      definition_or_outcome: 'The delivery model is designed with channel configurations and service levels. '
+      source_file: entities/v1-alpha/dea:process-design-delivery-model/dea:process-design-delivery-model.yaml
+    dea:process-design-facility-and-asset-blueprint:
+      name: Design Facility and Asset Blueprint
+      definition_or_outcome: 'The facility and asset blueprint is designed with layouts and capacity envelopes. '
+      source_file: entities/v1-alpha/dea:process-design-facility-and-asset-blueprint/dea:process-design-facility-and-asset-blueprint.yaml
+    dea:process-design-financial-controls-and-policies:
+      name: Design Financial Controls and Policies
+      definition_or_outcome: Financial controls and policies are designed to the approved financial architecture, with the policy framework ready for control implementation.
+      source_file: entities/v1-alpha/dea:process-design-financial-controls-and-policies/dea:process-design-financial-controls-and-policies.yaml
+    dea:process-design-financial-plan-structure:
+      name: Design Financial Plan Structure
+      definition_or_outcome: 'A financial plan structure with chart of accounts, cost allocation model, and financial controls design is committed. '
+      source_file: entities/v1-alpha/dea:process-design-financial-plan-structure/dea:process-design-financial-plan-structure.yaml
+    dea:process-design-governance-system:
+      name: Design Governance System
+      definition_or_outcome: 'A governance system design with articulated bodies, authority delegations, and decision rights is committed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-design-governance-system/dea:process-design-governance-system.yaml
+    dea:process-design-innovation-experiment:
+      name: Design Innovation Experiment
+      definition_or_outcome: 'The innovation experiment is designed with hypothesis, success criteria, and timebox. '
+      source_file: entities/v1-alpha/dea:process-design-innovation-experiment/dea:process-design-innovation-experiment.yaml
+    dea:process-design-logistics-and-routing:
+      name: Design Logistics and Routing
+      definition_or_outcome: 'Logistics and routing are designed with transport modes and network nodes. '
+      source_file: entities/v1-alpha/dea:process-design-logistics-and-routing/dea:process-design-logistics-and-routing.yaml
+    dea:process-design-objectives-and-targets:
+      name: Design Objectives and Targets
+      definition_or_outcome: 'Objectives and targets are designed with bounded measures and ownership. '
+      source_file: entities/v1-alpha/dea:process-design-objectives-and-targets/dea:process-design-objectives-and-targets.yaml
+    dea:process-design-operations-model:
+      name: Design Operations Model
+      definition_or_outcome: 'An operations model design with bounded delivery model, technology platform architecture, facility blueprint, and logistics routing is committed. '
+      source_file: entities/v1-alpha/dea:process-design-operations-model/dea:process-design-operations-model.yaml
+    dea:process-design-organization-structure:
+      name: Design Organization Structure
+      definition_or_outcome: 'An organization structure design with bounded authority chains, role catalogue, competency framework, and agent topology is committed. '
+      source_file: entities/v1-alpha/dea:process-design-organization-structure/dea:process-design-organization-structure.yaml
+    dea:process-design-packaging-and-configuration:
+      name: Design Packaging and Configuration
+      definition_or_outcome: 'Packaging and configuration are designed with segment-appropriate options. '
+      source_file: entities/v1-alpha/dea:process-design-packaging-and-configuration/dea:process-design-packaging-and-configuration.yaml
+    dea:process-design-policies-and-controls:
+      name: Design Policies and Controls
+      definition_or_outcome: 'A policy and control design with articulated policy artefacts, control objectives, and compliance regime is committed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-design-policies-and-controls/dea:process-design-policies-and-controls.yaml
+    dea:process-design-product-and-service-propositions:
+      name: Design Product and Service Propositions
+      definition_or_outcome: 'Product and service propositions are designed with bounded architecture, packaging, and configuration. '
+      source_file: entities/v1-alpha/dea:process-design-product-and-service-propositions/dea:process-design-product-and-service-propositions.yaml
+    dea:process-design-risk-framework:
+      name: Design Risk Framework
+      definition_or_outcome: The risk framework is designed with taxonomy, assessment scales, and governance integration committed, providing the risk direction for the build stage.
+      source_file: entities/v1-alpha/dea:process-design-risk-framework/dea:process-design-risk-framework.yaml
+    dea:process-design-role-catalogue:
+      name: Design Role Catalogue
+      definition_or_outcome: 'The role catalogue is designed with role families, levels, and accountability boundaries. '
+      source_file: entities/v1-alpha/dea:process-design-role-catalogue/dea:process-design-role-catalogue.yaml
+    dea:process-design-strategic-options:
+      name: Design Strategic Options
+      definition_or_outcome: 'A set of strategic option designs with bounded trade-offs and evaluation criteria is committed. '
+      source_file: entities/v1-alpha/dea:process-design-strategic-options/dea:process-design-strategic-options.yaml
+    dea:process-design-strategic-scenarios:
+      name: Design Strategic Scenarios
+      definition_or_outcome: 'Strategic scenarios are designed with bounded assumptions and signposts. '
+      source_file: entities/v1-alpha/dea:process-design-strategic-scenarios/dea:process-design-strategic-scenarios.yaml
+    dea:process-design-tax-position-and-strategy:
+      name: Design Tax Position and Strategy
+      definition_or_outcome: Tax position and strategy are designed with positions documented and the strategy ready for tax planning.
+      source_file: entities/v1-alpha/dea:process-design-tax-position-and-strategy/dea:process-design-tax-position-and-strategy.yaml
+    dea:process-design-technology-platform-architecture:
+      name: Design Technology Platform Architecture
+      definition_or_outcome: 'The technology platform architecture is designed with components and integration patterns. '
+      source_file: entities/v1-alpha/dea:process-design-technology-platform-architecture/dea:process-design-technology-platform-architecture.yaml
+    dea:process-design-treasury-and-funding-model:
+      name: Design Treasury and Funding Model
+      definition_or_outcome: Treasury and funding model is designed with cash, liquidity, and funding policy coordinated for treasury operations.
+      source_file: entities/v1-alpha/dea:process-design-treasury-and-funding-model/dea:process-design-treasury-and-funding-model.yaml
+    dea:process-develop-agents-and-organization:
+      name: Develop Agents and Organization
+      definition_or_outcome: 'Agents and organization are developed through engagement review, capability gap analysis, reorganization, and agent performance improvement. '
+      source_file: entities/v1-alpha/dea:process-develop-agents-and-organization/dea:process-develop-agents-and-organization.yaml
+    dea:process-develop-corporate-strategy:
+      name: Develop Corporate Strategy
+      definition_or_outcome: 'A corporate strategy with bounded ambition, strategic intent, and choice of trajectory is committed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-develop-corporate-strategy/dea:process-develop-corporate-strategy.yaml
+    dea:process-develop-governance-strategy:
+      name: Develop Governance Strategy
+      definition_or_outcome: 'A governance strategy document with bounded mandate, strategic posture, and policy direction is committed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-develop-governance-strategy/dea:process-develop-governance-strategy.yaml
+    dea:process-develop-product-variants:
+      name: Develop Product Variants
+      definition_or_outcome: 'Product variants are developed and ready for market readiness preparation. '
+      source_file: entities/v1-alpha/dea:process-develop-product-variants/dea:process-develop-product-variants.yaml
+    dea:process-effect-regulator-mandated-governance-unwind:
+      name: Effect Regulator-Mandated Governance Unwind
+      definition_or_outcome: 'The governance regime is wound down under the controlling regulator or court authority: governance bodies are reduced to wind-down quorum per the controlling statute or regulator
+        o'
+      source_file: entities/v1-alpha/dea:process-effect-regulator-mandated-governance-unwind/dea:process-effect-regulator-mandated-governance-unwind.yaml
+    dea:process-establish-governance-bodies:
+      name: Establish Governance Bodies
+      definition_or_outcome: 'Governance bodies are established, chartered, and ready to convene on a regular cycle.
+
+        '
+      source_file: entities/v1-alpha/dea:process-establish-governance-bodies/dea:process-establish-governance-bodies.yaml
+    dea:process-establish-risk-and-control-apparatus:
+      name: Establish Risk and Control Apparatus
+      definition_or_outcome: Risk and control apparatus is established with registers, monitoring tooling, and reporting lines delivered, ready to operate in the Operate context.
+      source_file: entities/v1-alpha/dea:process-establish-risk-and-control-apparatus/dea:process-establish-risk-and-control-apparatus.yaml
+    dea:process-evaluate-strategic-alternatives:
+      name: Evaluate Strategic Alternatives
+      definition_or_outcome: 'Strategic alternatives are evaluated and the preferred option is committed. '
+      source_file: entities/v1-alpha/dea:process-evaluate-strategic-alternatives/dea:process-evaluate-strategic-alternatives.yaml
+    dea:process-evolve-products-and-services:
+      name: Evolve Products and Services
+      definition_or_outcome: 'Products and services are evolved with bounded enhancements. '
+      source_file: entities/v1-alpha/dea:process-evolve-products-and-services/dea:process-evolve-products-and-services.yaml
+    dea:process-evolve-treasury-and-funding-model:
+      name: Evolve Treasury and Funding Model
+      definition_or_outcome: Treasury and funding model is evolved based on market shifts and exposure review, monitored for future funding posture.
+      source_file: entities/v1-alpha/dea:process-evolve-treasury-and-funding-model/dea:process-evolve-treasury-and-funding-model.yaml
+    dea:process-execute-payroll:
+      name: Execute Payroll
+      definition_or_outcome: Payroll is executed with compensation, withholdings, and statutory filings produced for each cycle.
+      source_file: entities/v1-alpha/dea:process-execute-payroll/dea:process-execute-payroll.yaml
+    dea:process-frame-delivery-model-conception:
+      name: Frame Delivery Model Conception
+      definition_or_outcome: 'The delivery model is conceived with channels, service levels, and fulfilment patterns. '
+      source_file: entities/v1-alpha/dea:process-frame-delivery-model-conception/dea:process-frame-delivery-model-conception.yaml
+    dea:process-frame-finance-strategy:
+      name: Frame Finance Strategy
+      definition_or_outcome: 'A finance strategy with bounded monetary model and funding and capital approach is committed. '
+      source_file: entities/v1-alpha/dea:process-frame-finance-strategy/dea:process-frame-finance-strategy.yaml
+    dea:process-frame-innovation-thesis:
+      name: Frame Innovation Thesis
+      definition_or_outcome: 'The innovation thesis is framed with focus areas and experimentation boundaries. '
+      source_file: entities/v1-alpha/dea:process-frame-innovation-thesis/dea:process-frame-innovation-thesis.yaml
+    dea:process-frame-operations-strategy:
+      name: Frame Operations Strategy
+      definition_or_outcome: 'An operations strategy with bounded delivery model, technology enablement approach, and physical asset approach is committed. '
+      source_file: entities/v1-alpha/dea:process-frame-operations-strategy/dea:process-frame-operations-strategy.yaml
+    dea:process-frame-organization-and-agent-strategy:
+      name: Frame Organization and Agent Strategy
+      definition_or_outcome: 'An organization and agent strategy with bounded agent capacity, organization model, and workforce-and-agent mix is committed. '
+      source_file: entities/v1-alpha/dea:process-frame-organization-and-agent-strategy/dea:process-frame-organization-and-agent-strategy.yaml
+    dea:process-frame-organization-model:
+      name: Frame Organization Model
+      definition_or_outcome: 'The organization model is framed with structure principles, reporting spans, and coordination boundaries. '
+      source_file: entities/v1-alpha/dea:process-frame-organization-model/dea:process-frame-organization-model.yaml
+    dea:process-frame-physical-asset-approach:
+      name: Frame Physical Asset Approach
+      definition_or_outcome: 'The physical asset approach is framed with footprint principles and lifecycle envelopes. '
+      source_file: entities/v1-alpha/dea:process-frame-physical-asset-approach/dea:process-frame-physical-asset-approach.yaml
+    dea:process-frame-portfolio-direction:
+      name: Frame Portfolio Direction
+      definition_or_outcome: 'Portfolio direction is framed with investment envelopes and priority orderings. '
+      source_file: entities/v1-alpha/dea:process-frame-portfolio-direction/dea:process-frame-portfolio-direction.yaml
+    dea:process-frame-risk-framework-direction:
+      name: Frame Risk Framework Direction
+      definition_or_outcome: Risk framework direction is framed with risk appetite, tolerance bands, and governance posture defined, setting the strategic direction for risk framework design.
+      source_file: entities/v1-alpha/dea:process-frame-risk-framework-direction/dea:process-frame-risk-framework-direction.yaml
+    dea:process-frame-strategic-horizons:
+      name: Frame Strategic Horizons
+      definition_or_outcome: 'Strategic horizons are framed with bounded timeframes. '
+      source_file: entities/v1-alpha/dea:process-frame-strategic-horizons/dea:process-frame-strategic-horizons.yaml
+    dea:process-frame-technology-enablement-approach:
+      name: Frame Technology Enablement Approach
+      definition_or_outcome: 'The technology enablement approach is framed with platform families and sourcing principles. '
+      source_file: entities/v1-alpha/dea:process-frame-technology-enablement-approach/dea:process-frame-technology-enablement-approach.yaml
+    dea:process-frame-value-proposition-thesis:
+      name: Frame Value Proposition Thesis
+      definition_or_outcome: 'A value proposition thesis with bounded scope, target parties, and value claim is committed. '
+      source_file: entities/v1-alpha/dea:process-frame-value-proposition-thesis/dea:process-frame-value-proposition-thesis.yaml
+    dea:process-implement-financial-systems-and-ledger:
+      name: Implement Financial Systems and Ledger
+      definition_or_outcome: Financial systems and ledger are implemented with chart of accounts, posting rules, and reports deployed to operate general ledger.
+      source_file: entities/v1-alpha/dea:process-implement-financial-systems-and-ledger/dea:process-implement-financial-systems-and-ledger.yaml
+    dea:process-improve-policy-and-control-framework:
+      name: Improve Policy and Control Framework
+      definition_or_outcome: The policy and control framework is improved with gaps measured, standards updated, and compliance posture strengthened.
+      source_file: entities/v1-alpha/dea:process-improve-policy-and-control-framework/dea:process-improve-policy-and-control-framework.yaml
+    dea:process-improve-technology-platforms:
+      name: Improve Technology Platforms
+      definition_or_outcome: 'Technology platforms are improved with reliability and capacity upgrades committed. '
+      source_file: entities/v1-alpha/dea:process-improve-technology-platforms/dea:process-improve-technology-platforms.yaml
+    dea:process-initiate-policy-and-charter:
+      name: Initiate Policy and Charter
+      definition_or_outcome: 'An initial policy and charter document with proposed scope, authority, and decision rights is committed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-initiate-policy-and-charter/dea:process-initiate-policy-and-charter.yaml
+    dea:process-institutionalize-regulated-strategic-plan:
+      name: Institutionalize Regulated Strategic Plan
+      definition_or_outcome: The regulated strategic plan is formally activated with the supervisor's acknowledgement on record, the filing receipt preserved, the operational monitoring framework live,
+        and the
+      source_file: entities/v1-alpha/dea:process-institutionalize-regulated-strategic-plan/dea:process-institutionalize-regulated-strategic-plan.yaml
+    dea:process-manage-cash-and-liquidity:
+      name: Manage Cash and Liquidity
+      definition_or_outcome: Cash and liquidity are managed with positions, forecasts, and investment decisions monitored against the treasury policy.
+      source_file: entities/v1-alpha/dea:process-manage-cash-and-liquidity/dea:process-manage-cash-and-liquidity.yaml
+    dea:process-manage-customer-relationship:
+      name: Manage Customer Relationship
+      definition_or_outcome: 'An active customer relationship is sustained across its
+
+        lifecycle through allocation of attention, escalation
+
+        handling, and renewal coordination.
+
+        '
+      source_file: entities/v1-alpha/dea:process-manage-customer-relationship/dea:process-manage-customer-relationship.yaml
+    dea:process-manage-portfolio-performance:
+      name: Manage Portfolio Performance
+      definition_or_outcome: 'Portfolio performance is managed with continuous visibility and rebalancing. '
+      source_file: entities/v1-alpha/dea:process-manage-portfolio-performance/dea:process-manage-portfolio-performance.yaml
+    dea:process-manage-proposition-lifecycle:
+      name: Manage Proposition Lifecycle
+      definition_or_outcome: 'The proposition lifecycle is managed with stage transitions and gate decisions. '
+      source_file: entities/v1-alpha/dea:process-manage-proposition-lifecycle/dea:process-manage-proposition-lifecycle.yaml
+    dea:process-manage-tax-compliance-and-filings:
+      name: Manage Tax Compliance and Filings
+      definition_or_outcome: Tax compliance and filings are managed with returns prepared, payments scheduled, and exposures monitored.
+      source_file: entities/v1-alpha/dea:process-manage-tax-compliance-and-filings/dea:process-manage-tax-compliance-and-filings.yaml
+    dea:process-market-and-demand-conception:
+      name: Develop Market Intelligence
+      definition_or_outcome: 'A market and demand thesis with testable hypotheses, initial segment targets, and a test plan is committed and ready to be designed.
+
+        '
+      source_file: entities/v1-alpha/dea:process-market-and-demand-conception/dea:process-market-and-demand-conception.yaml
+    dea:process-mobilize-licensed-workforce:
+      name: Mobilize Licensed Workforce
+      definition_or_outcome: The licensed or regulated workforce role is formally mobilized under the enterprise regulated-entity approval authority with the regulator-controlled scope preserved, the fitness-a
+      source_file: entities/v1-alpha/dea:process-mobilize-licensed-workforce/dea:process-mobilize-licensed-workforce.yaml
+    dea:process-monitor-strategic-performance:
+      name: Monitor Strategic Performance
+      definition_or_outcome: 'Strategic performance is monitored against the plan, environmental signals are sensed, and the initiative portfolio is steered in line with strategic intent. '
+      source_file: entities/v1-alpha/dea:process-monitor-strategic-performance/dea:process-monitor-strategic-performance.yaml
+    dea:process-onboard-regulated-party-relationship:
+      name: Onboard Regulated Party Relationship
+      definition_or_outcome: The party relationship is activated with verified identity, resolved beneficial ownership, an assigned risk classification, and a documented approval; declined applicants receive
+        a
+      source_file: entities/v1-alpha/dea:process-onboard-regulated-party-relationship/dea:process-onboard-regulated-party-relationship.yaml
+    dea:process-onboard-tax-and-compliance-capability:
+      name: Onboard Tax and Compliance Capability
+      definition_or_outcome: Tax and compliance capability is onboarded with filings, registrations, and controls operational for tax planning, supervised by the tax policy review.
+      source_file: entities/v1-alpha/dea:process-onboard-tax-and-compliance-capability/dea:process-onboard-tax-and-compliance-capability.yaml
+    dea:process-operate-agent-performance:
+      name: Operate Agent Performance
+      definition_or_outcome: 'Agent performance is operated substrate-neutrally across the agentive mix. '
+      source_file: entities/v1-alpha/dea:process-operate-agent-performance/dea:process-operate-agent-performance.yaml
+    dea:process-operate-asset-maintenance:
+      name: Operate Asset Maintenance
+      definition_or_outcome: 'Asset maintenance is operated with scheduled and reactive work completed. '
+      source_file: entities/v1-alpha/dea:process-operate-asset-maintenance/dea:process-operate-asset-maintenance.yaml
+    dea:process-operate-enterprise-risk-oversight:
+      name: Operate Enterprise Risk Oversight
+      definition_or_outcome: Enterprise risk oversight is operated with risk reviews executed, exposures surfaced, and mitigations delivered to the governance bodies.
+      source_file: entities/v1-alpha/dea:process-operate-enterprise-risk-oversight/dea:process-operate-enterprise-risk-oversight.yaml
+    dea:process-operate-facility-management:
+      name: Operate Facility Management
+      definition_or_outcome: 'Facilities are operated with safety and compliance maintained. '
+      source_file: entities/v1-alpha/dea:process-operate-facility-management/dea:process-operate-facility-management.yaml
+    dea:process-operate-financial-reporting-and-disclosure:
+      name: Operate Financial Reporting and Disclosure
+      definition_or_outcome: Financial reporting and disclosure are produced with statements, footnotes, and disclosures delivered for internal and external stakeholders.
+      source_file: entities/v1-alpha/dea:process-operate-financial-reporting-and-disclosure/dea:process-operate-financial-reporting-and-disclosure.yaml
+    dea:process-operate-general-ledger:
+      name: Operate General Ledger
+      definition_or_outcome: 'The general ledger is operated with accounts payable, accounts receivable, treasury, tax compliance, financial close, and reporting executed to period plan. '
+      source_file: entities/v1-alpha/dea:process-operate-general-ledger/dea:process-operate-general-ledger.yaml
+    dea:process-operate-governance-oversight:
+      name: Operate Governance Oversight
+      definition_or_outcome: 'Board and committee cycles run on schedule; risk is identified and mitigated; governance decisions are made.
+
+        '
+      source_file: entities/v1-alpha/dea:process-operate-governance-oversight/dea:process-operate-governance-oversight.yaml
+    dea:process-operate-learning-and-development:
+      name: Operate Learning and Development
+      definition_or_outcome: 'Learning and development are operated with scheduled delivery and completion recorded. '
+      source_file: entities/v1-alpha/dea:process-operate-learning-and-development/dea:process-operate-learning-and-development.yaml
+    dea:process-operate-logistics:
+      name: Operate Logistics
+      definition_or_outcome: 'Logistics are operated with on-time delivery and exception handling. '
+      source_file: entities/v1-alpha/dea:process-operate-logistics/dea:process-operate-logistics.yaml
+    dea:process-operate-payroll-and-benefits:
+      name: Operate Payroll and Benefits
+      definition_or_outcome: 'Payroll and benefits are operated with accurate, on-time disbursement. '
+      source_file: entities/v1-alpha/dea:process-operate-payroll-and-benefits/dea:process-operate-payroll-and-benefits.yaml
+    dea:process-operate-procurement-cycle:
+      name: Operate Procurement Cycle
+      definition_or_outcome: 'The procurement cycle is operated with purchase orders executed within policy. '
+      source_file: entities/v1-alpha/dea:process-operate-procurement-cycle/dea:process-operate-procurement-cycle.yaml
+    dea:process-operate-product-catalogue:
+      name: Operate Product Catalogue
+      definition_or_outcome: 'Product catalogue is operated with bounded portfolio performance and proposition lifecycle management. '
+      source_file: entities/v1-alpha/dea:process-operate-product-catalogue/dea:process-operate-product-catalogue.yaml
+    dea:process-operate-quality-control:
+      name: Operate Quality Control
+      definition_or_outcome: 'Quality control is operated with inspections and dispositions recorded. '
+      source_file: entities/v1-alpha/dea:process-operate-quality-control/dea:process-operate-quality-control.yaml
+    dea:process-operate-service-delivery:
+      name: Operate Service Delivery
+      definition_or_outcome: 'Service delivery is operated with production lines run to plan, logistics and inventory operated, and technology platforms and facilities maintained. '
+      source_file: entities/v1-alpha/dea:process-operate-service-delivery/dea:process-operate-service-delivery.yaml
+    dea:process-operate-strategic-review-cycle:
+      name: Operate Strategic Review Cycle
+      definition_or_outcome: 'The strategic review cycle is operated with cadence, inputs, and decisions recorded. '
+      source_file: entities/v1-alpha/dea:process-operate-strategic-review-cycle/dea:process-operate-strategic-review-cycle.yaml
+    dea:process-operate-technology-platforms:
+      name: Operate Technology Platforms
+      definition_or_outcome: 'Technology platforms are operated with availability targets met. '
+      source_file: entities/v1-alpha/dea:process-operate-technology-platforms/dea:process-operate-technology-platforms.yaml
+    dea:process-operate-time-and-attendance:
+      name: Operate Time and Attendance
+      definition_or_outcome: 'Time and attendance are operated with accurate capture and exception handling. '
+      source_file: entities/v1-alpha/dea:process-operate-time-and-attendance/dea:process-operate-time-and-attendance.yaml
+    dea:process-operate-warehouse-and-inventory:
+      name: Operate Warehouse and Inventory
+      definition_or_outcome: 'Warehouse and inventory are operated with accurate stock records. '
+      source_file: entities/v1-alpha/dea:process-operate-warehouse-and-inventory/dea:process-operate-warehouse-and-inventory.yaml
+    dea:process-optimize-asset-utilization:
+      name: Optimize Asset Utilization
+      definition_or_outcome: 'Asset utilization is optimized with redeployment decisions committed. '
+      source_file: entities/v1-alpha/dea:process-optimize-asset-utilization/dea:process-optimize-asset-utilization.yaml
+    dea:process-perform-financial-close:
+      name: Perform Financial Close
+      definition_or_outcome: Financial close is performed with period-end entries, reconciliations, and management reports produced for reporting.
+      source_file: entities/v1-alpha/dea:process-perform-financial-close/dea:process-perform-financial-close.yaml
+    dea:process-prepare-market-readiness:
+      name: Prepare Market Readiness
+      definition_or_outcome: 'Market readiness is prepared with go-to-market assets and pricing. '
+      source_file: entities/v1-alpha/dea:process-prepare-market-readiness/dea:process-prepare-market-readiness.yaml
+    dea:process-provision-facilities:
+      name: Provision Facilities
+      definition_or_outcome: 'Facilities are acquired, fitted, and provisioned. '
+      source_file: entities/v1-alpha/dea:process-provision-facilities/dea:process-provision-facilities.yaml
+    dea:process-rationalize-portfolio:
+      name: Rationalize Portfolio
+      definition_or_outcome: 'The portfolio is rationalized with retire-or-pivot decisions. '
+      source_file: entities/v1-alpha/dea:process-rationalize-portfolio/dea:process-rationalize-portfolio.yaml
+    dea:process-refine-financial-controls-and-policies:
+      name: Refine Financial Controls and Policies
+      definition_or_outcome: Financial controls and policies are refined based on audit findings and incidents, governed by the policy review cycle.
+      source_file: entities/v1-alpha/dea:process-refine-financial-controls-and-policies/dea:process-refine-financial-controls-and-policies.yaml
+    dea:process-refresh-objectives-and-targets:
+      name: Refresh Objectives and Targets
+      definition_or_outcome: 'Objectives and targets are refreshed against performance evidence. '
+      source_file: entities/v1-alpha/dea:process-refresh-objectives-and-targets/dea:process-refresh-objectives-and-targets.yaml
+    dea:process-reorganize-structures:
+      name: Reorganize Structures
+      definition_or_outcome: 'Structures are reorganized with transition sequencing and accountability handovers recorded. '
+      source_file: entities/v1-alpha/dea:process-reorganize-structures/dea:process-reorganize-structures.yaml
+    dea:process-review-governance-effectiveness:
+      name: Review Governance Effectiveness
+      definition_or_outcome: 'Effectiveness reviews with measured outcomes, lessons learned, and recommendations are delivered to the governance bodies.
+
+        '
+      source_file: entities/v1-alpha/dea:process-review-governance-effectiveness/dea:process-review-governance-effectiveness.yaml
+    dea:process-review-strategy-effectiveness:
+      name: Review Strategy Effectiveness
+      definition_or_outcome: 'Strategy effectiveness is reviewed with findings committed. '
+      source_file: entities/v1-alpha/dea:process-review-strategy-effectiveness/dea:process-review-strategy-effectiveness.yaml
+    dea:process-run-accounts-payable:
+      name: Run Accounts Payable
+      definition_or_outcome: Accounts payable is run with invoices matched, approvals recorded, and payments produced to plan.
+      source_file: entities/v1-alpha/dea:process-run-accounts-payable/dea:process-run-accounts-payable.yaml
+    dea:process-run-accounts-receivable:
+      name: Run Accounts Receivable
+      definition_or_outcome: Accounts receivable is run with invoices issued, collections managed, and cash applied to the ledger.
+      source_file: entities/v1-alpha/dea:process-run-accounts-receivable/dea:process-run-accounts-receivable.yaml
+    dea:process-run-production-line:
+      name: Run Production Line
+      definition_or_outcome: 'The production line is run to plan with output and quality recorded. '
+      source_file: entities/v1-alpha/dea:process-run-production-line/dea:process-run-production-line.yaml
+    dea:process-score-audit-findings:
+      name: Score Audit Findings
+      definition_or_outcome: Audit findings are scored for severity and recurrence, measured against standards, and quality trends reported to the governance bodies.
+      source_file: entities/v1-alpha/dea:process-score-audit-findings/dea:process-score-audit-findings.yaml
+    dea:process-secure-funding-facilities:
+      name: Secure Funding Facilities
+      definition_or_outcome: 'Funding lines are secured, the finance function is stood up, and the ERP finance module is deployed. '
+      source_file: entities/v1-alpha/dea:process-secure-funding-facilities/dea:process-secure-funding-facilities.yaml
+    dea:process-sense-environmental-signals:
+      name: Sense Environmental Signals
+      definition_or_outcome: 'Environmental signals are sensed, filtered, and routed. '
+      source_file: entities/v1-alpha/dea:process-sense-environmental-signals/dea:process-sense-environmental-signals.yaml
+    dea:process-set-resource-allocation-priorities:
+      name: Set Resource Allocation Priorities
+      definition_or_outcome: 'Resource allocation priorities are set with bounded envelopes per initiative. '
+      source_file: entities/v1-alpha/dea:process-set-resource-allocation-priorities/dea:process-set-resource-allocation-priorities.yaml
+    dea:process-steer-initiative-portfolio:
+      name: Steer Initiative Portfolio
+      definition_or_outcome: 'The initiative portfolio is steered with rebalancing decisions committed. '
+      source_file: entities/v1-alpha/dea:process-steer-initiative-portfolio/dea:process-steer-initiative-portfolio.yaml
+    dea:process-transition-out-of-service:
+      name: Transition Proposition Out of Service
+      definition_or_outcome: 'The proposition, product or service is no longer operationally relied upon; residual obligations are identified and routed. '
+      source_file: entities/v1-alpha/dea:process-transition-out-of-service/dea:process-transition-out-of-service.yaml
+    dea:process-transition-to-service:
+      name: Transition Proposition to Service
+      definition_or_outcome: 'The proposition, product or service is accepted into operational service and relied upon operationally. '
+      source_file: entities/v1-alpha/dea:process-transition-to-service/dea:process-transition-to-service.yaml
+    dea:process-translate-strategic-choices-into-initiatives:
+      name: Translate Strategic Choices into Initiatives
+      definition_or_outcome: 'Strategic choices are translated into bounded initiatives. '
+      source_file: entities/v1-alpha/dea:process-translate-strategic-choices-into-initiatives/dea:process-translate-strategic-choices-into-initiatives.yaml
+  dea-catalog-application-components:
+    dea:information-system-component-agent-orchestrator:
+      name: Agent Orchestrator
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/ai-native/components/agent-orchestrator/component.yaml
+    dea:information-system-component-ai-inference-platform:
+      name: AI Inference Platform
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/ai-native/components/information-system-component-ai-inference-platform/component.yaml
+    dea:information-system-component-api-gateway:
+      name: API Gateway
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/integration/components/information-system-component-api-gateway/component.yaml
+    dea:information-system-component-api-gateway-authenticator:
+      name: API Gateway Authenticator
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/integration/components/api-gateway-authenticator/component.yaml
+    dea:information-system-component-api-gateway-rate-limiter:
+      name: API Gateway Rate Limiter
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/integration/components/api-gateway-rate-limiter/component.yaml
+    dea:information-system-component-api-gateway-router:
+      name: API Gateway Router
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/integration/components/api-gateway-router/component.yaml
+    dea:information-system-component-artifact-repository:
+      name: Artifact Repository
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/development-platform/components/artifact-repository/component.yaml
+    dea:information-system-component-build-service:
+      name: Build Service
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/development-platform/components/build-service/component.yaml
+    dea:information-system-component-ci-cd-pipeline:
+      name: CI/CD Pipeline
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/development-platform/components/ci-cd-pipeline/component.yaml
+    dea:information-system-component-customer-facing-web-application-platform:
+      name: Customer-Facing Web Application Platform
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/customer-experience/components/information-system-component-customer-facing-web-application-platform/component.yaml
+    dea:information-system-component-customer-web-bff:
+      name: Customer Web Backend-for-Frontend
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/customer-experience/components/customer-web-bff/component.yaml
+    dea:information-system-component-customer-web-cdn:
+      name: Customer Web CDN
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/customer-experience/components/customer-web-cdn/component.yaml
+    dea:information-system-component-customer-web-frontend:
+      name: Customer Web Frontend
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/customer-experience/components/customer-web-frontend/component.yaml
+    dea:information-system-component-data-warehouse-catalog:
+      name: Data Warehouse Catalog
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/data-and-analytics/components/data-warehouse-catalog/component.yaml
+    dea:information-system-component-data-warehouse-loader:
+      name: Data Warehouse Loader
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/data-and-analytics/components/data-warehouse-loader/component.yaml
+    dea:information-system-component-data-warehouse-platform:
+      name: Data Warehouse Platform
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/data-and-analytics/components/information-system-component-data-warehouse-platform/component.yaml
+    dea:information-system-component-data-warehouse-query:
+      name: Data Warehouse Query
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/data-and-analytics/components/data-warehouse-query/component.yaml
+    dea:information-system-component-development-platform:
+      name: Development Platform
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/development-platform/components/information-system-component-development-platform/component.yaml
+    dea:information-system-component-distributed-tracer:
+      name: Distributed Tracer
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/observability/components/distributed-tracer/component.yaml
+    dea:information-system-component-employee-portal-bff:
+      name: Employee Portal Backend-for-Frontend
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/employee-experience/components/employee-portal-bff/component.yaml
+    dea:information-system-component-employee-portal-frontend:
+      name: Employee Portal Frontend
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/employee-experience/components/employee-portal-frontend/component.yaml
+    dea:information-system-component-employee-portal-platform:
+      name: Employee Portal Platform
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/employee-experience/components/information-system-component-employee-portal-platform/component.yaml
+    dea:information-system-component-identity-broker:
+      name: Identity Broker
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/security/components/information-system-component-identity-broker/component.yaml
+    dea:information-system-component-identity-broker-session-store:
+      name: Identity Broker Session Store
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/security/components/identity-broker-session-store/component.yaml
+    dea:information-system-component-identity-broker-token-issuer:
+      name: Identity Broker Token Issuer
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/security/components/identity-broker-token-issuer/component.yaml
+    dea:information-system-component-log-aggregator:
+      name: Log Aggregator
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/observability/components/log-aggregator/component.yaml
+    dea:information-system-component-metrics-collector:
+      name: Metrics Collector
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/observability/components/metrics-collector/component.yaml
+    dea:information-system-component-model-registry:
+      name: Model Registry
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/ai-native/components/model-registry/component.yaml
+    dea:information-system-component-model-serving-runtime:
+      name: Model Serving Runtime
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/ai-native/components/model-serving-runtime/component.yaml
+    dea:information-system-component-observability-platform:
+      name: Observability Platform
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/observability/components/information-system-component-observability-platform/component.yaml
+    dea:information-system-component-oidc-discovery:
+      name: OIDC Discovery
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/security/components/information-system-component-oidc-discovery/component.yaml
+    dea:information-system-component-order-fulfillment-worker:
+      name: Order Fulfillment Worker
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/core-operations/components/order-fulfillment-worker/component.yaml
+    dea:information-system-component-order-management-orchestrator:
+      name: Order Management Orchestrator
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/core-operations/components/order-management-orchestrator/component.yaml
+    dea:information-system-component-order-management-system:
+      name: Order Management System
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/core-operations/components/information-system-component-order-management-system/component.yaml
+    dea:information-system-component-partner-portal-data-exchange:
+      name: Partner Portal Data Exchange
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/partner-integration/components/partner-portal-data-exchange/component.yaml
+    dea:information-system-component-partner-portal-onboarding:
+      name: Partner Portal Onboarding
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/partner-integration/components/partner-portal-onboarding/component.yaml
+    dea:information-system-component-partner-portal-platform:
+      name: Partner Portal Platform
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/partner-integration/components/information-system-component-partner-portal-platform/component.yaml
+    dea:information-system-component-partner-portal-settlement:
+      name: Partner Portal Settlement
+      definition_or_outcome: ''
+      source_file: entities/v1-alpha/components/partner-integration/components/partner-portal-settlement/component.yaml
+counts:
+  dea-catalog-business-capabilities: 29
+  dea-catalog-processes: 139
+  dea-catalog-application-components: 38

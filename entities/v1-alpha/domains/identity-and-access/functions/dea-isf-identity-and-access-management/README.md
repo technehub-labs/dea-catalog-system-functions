@@ -116,19 +116,19 @@ The F2 function does NOT orchestrate the child functions. The orchestration is a
 ## 11. Business Alignment
 
 ### Realized Capabilities
-- `dea:business-capability-identity-assurance`
-- `dea:business-capability-access-control`
+- `capabilities:capability-security-management-wmzc7c`
+- `capabilities:capability-security-management-wmzc7c`
 
 ### Enabled Processes
-- `dea:business-process-onboarding-authenticated-individual`
-- `dea:business-process-employee-lifecycle`
-- `dea:business-process-third-party-onboarding`
+- `dea:process-acquire-and-onboard-agents`
+- `dea:process-mobilize-licensed-workforce`
+- `dea:process-onboard-regulated-party-relationship`
 
 ## 12. Executing Components
 
 - `dea:information-system-component-identity-broker`
-- `dea:information-system-component-policy-decision-point`
-- `dea:information-system-component-session-store`
+- `dea:information-system-component-identity-broker`
+- `dea:information-system-component-identity-broker-session-store`
 
 ## 13. Non-Functional Characteristics
 
