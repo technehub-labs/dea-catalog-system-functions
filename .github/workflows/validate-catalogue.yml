@@ -127,6 +127,12 @@ jobs:
                 ok = False
           sys.exit(0 if ok else 1)
           EOF
+      - name: "Step 7: F2 record shape parity (CR-IS-CAT-01C-P2H)"
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_f2_record_shape.py
+          echo "OK: F2 record shape parity holds."
+
 
       - name: "Step 7: Relationship endpoint validation (hard check)"
         run: |

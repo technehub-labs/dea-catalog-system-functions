@@ -194,7 +194,154 @@ F4_OUTPUT_TEMPLATES = {
 }
 
 
+
+# Per-domain composite input/output text (used to form the F2 composite input/output record).
+F2_INPUT_TEXT = {
+ 'communication-and-collaboration':    ('collaboration-and-collaboration-event', 'Collaboration event',     'A business event that triggers the collaboration and notification flow.',                  'Caller.',         True,  'non-sensitive'),
+ 'content-and-knowledge-management':   ('content-lifecycle-event',                'Content lifecycle event', 'A business event that triggers the content storage and retrieval flow.',               'Caller.',         True,  'non-sensitive'),
+ 'analytics-and-decision-support':     ('analytical-subject-area-event',          'Analytical event',        'A business event that triggers the analytics transformation and insight generation flow.', 'Caller.',        True,  'non-sensitive'),
+ 'security-privacy-and-trust':         ('security-and-trust-event',               'Security event',          'A business event that triggers the security-monitoring or threat-detection flow.',     'Caller.',         True,  'sensitive'),
+ 'monitoring-and-observability':       ('runtime-instrumentation-event',          'Runtime event',           'A business event that triggers the metric and log instrumentation flow.',                'Caller.',         True,  'non-sensitive'),
+ 'configuration-and-administration':   ('configuration-change-event',             'Configuration event',     'A business event that triggers the configuration deployment and validation flow.',       'Caller.',         True,  'non-sensitive'),
+}
+F2_OUTPUT_TEXT = {
+ 'communication-and-collaboration':    ('collaboration-and-collaboration-state', 'Collaboration state',     'A collaboration state composed from the F4 children.',                                   'Coordination store, audit log.'),
+ 'content-and-knowledge-management':   ('content-lifecycle-state',                'Content state',           'A content lifecycle state composed from the F4 children.',                              'Content store, audit log.'),
+ 'analytics-and-decision-support':     ('analytical-output-state',                'Analytical state',         'An analytical output state composed from the F4 children.',                              'Insight store, audit log.'),
+ 'security-privacy-and-trust':         ('security-monitoring-state',              'Security state',           'A security state composed from the F4 children.',                                        'Security store, audit log.'),
+ 'monitoring-and-observability':       ('observability-state',                    'Observability state',      'An observability state composed from the F4 children.',                                   'Observability store, audit log.'),
+ 'configuration-and-administration':   ('configuration-state',                    'Configuration state',      'A configuration state composed from the F4 children.',                                   'Configuration store, audit log.'),
+}
+F2_NON_FUNCTIONAL = {
+ 'availability': '99.95%',
+ 'performance_latency': 'p99 < 200ms (composed from F4 children)',
+ 'throughput': 'composed from F4 children',
+ 'scalability': 'horizontal',
+ 'resilience': 'active-active',
+ 'security': 'composed from F4 children',
+ 'privacy': 'composed from F4 children',
+ 'auditability': 'full',
+ 'recoverability': 'rto-15m-rpo-5m',
+ 'observability': 'prometheus-metrics',
+ 'compliance_constraints': [],
+}
+
+
+def _dedup(seq):
+    seen = set(); out = []
+    for x in seq:
+        if x in seen: continue
+        seen.add(x); out.append(x)
+    return out
+
+
+def build_f2_record(domain, f4_records):
+    """Compose the F2 record from the domain definition + its F4 children.
+
+    The F2 record shape is identical to the P1 hand-edited F2
+    `dea:information-system-function-identity-and-access-management` record, so P1 and
+    P2 F2 records are interchangeable for tooling (generator-emitted, no post-hoc
+    hand-patches).
+    """
+    domain_id  = domain['id']
+    domain_slug = domain_id.split(':')[-1]
+    f2_id      = domain['f2']['id']
+    f4_ids     = [r['id'] for r in f4_records]
+    # Compose from children: realized_capabilities / enabled_processes / executing_components
+    realized = _dedup(sum([((r.get('business_alignment') or {}).get('realized_capabilities') or []) for r in f4_records], []))
+    enabled  = _dedup(sum([((r.get('business_alignment') or {}).get('enabled_processes')  or []) for r in f4_records], []))
+    executing = _dedup(sum([(r.get('executing_components') or []) for r in f4_records], []))
+    in_tid, in_name, in_defn, in_src, in_req, in_sens = F2_INPUT_TEXT[domain_slug]
+    composite_input = {
+        'input_id': in_tid, 'name': in_name, 'definition': in_defn,
+        'data_or_event_reference': 'dea:event-' + domain_slug + '-invocation',
+        'source': in_src, 'required': in_req,
+        'validation_rules': [
+            f'The {in_name.lower()} MUST be the single composite input that fires the F2; '
+            'the F2 delegates per-F4 routing to the F4 children based on the event subtype.',
+            'All F4 children MUST be registered and reachable.',
+            'The audit log MUST be available.',
+        ],
+        'format_or_schema_reference': 'https://dea.example.org/schemas/' + domain_slug + '-invocation.v1.json',
+        'sensitivity_classification': in_sens,
+    }
+    out_id, out_name, out_defn, out_dest = F2_OUTPUT_TEXT[domain_slug]
+    composite_output = {
+        'output_id': out_id, 'name': out_name, 'definition': out_defn,
+        'data_or_event_reference': 'dea:data-entity-' + domain_slug + '-state',
+        'destination': out_dest, 'output_conditions': 'Always produced (or an error response).',
+        'quality_expectations': 'Consistent across the F4 children stores.',
+    }
+    return {
+        'id': f2_id,
+        'type': 'InformationSystemFunction',
+        'name': domain['f2']['name'],
+        'description': domain['f2']['description'],
+        'version': '1.0.0',
+        'lifecycle_status': 'planned',
+        'functional_domain': domain_id,
+        'category': domain_id,
+        'decomposition_level': 'F2',
+        'child_functions': f4_ids,
+        'decomposition_rationale': (
+            f'The F2 parent composes the named F4 children below. Each F4 captures an atomic responsibility; '
+            f'the F2 composes them without orchestrating them. The composition follows the CR-IS-CAT-01B section 3.3 '
+            f'distinction: the ISC orchestration pattern owns the inter-F4 ordering, retries, and compensation; '
+            f'the F2 exposes the composite.'
+        ),
+        'responsibility_allocation': [
+            {'child': f4_id, 'responsibility': f'Realize the {f4_id.split(":")[-1].replace("-", " ")} atomic responsibility.'}
+            for f4_id in f4_ids
+        ],
+        'orchestration_responsibility': (
+            'Not applicable to this function. The function composes child functions without orchestrating them; '
+            'orchestration is at the ISC layer, per the composition-vs-orchestration distinction in CR-IS-CAT-01B section 3.3.'
+        ),
+        'inputs': [composite_input],
+        'outputs': [composite_output],
+        'execution_characteristics': {
+            'execution_pattern': 'event-driven',
+            'trigger_mechanism': 'event',
+            'processing_mode': 'real-time',
+            'synchronous_asynchronous': 'asynchronous',
+            'idempotency': 'idempotent',
+            'retry_recovery': 'Each child function is idempotent; the parent flow is retry-safe.',
+            'error_handling': 'Each child function emits a structured error; the parent flow records the error and continues with the next step where possible.',
+            'transactional': False,
+            'concurrency': 'multi-threaded',
+        },
+        'business_alignment': {'realized_capabilities': realized, 'enabled_processes': enabled},
+        'executing_components': executing,
+        'non_functional_characteristics': F2_NON_FUNCTIONAL,
+        'governance': {
+            'functional_owner': domain['domain_name'] + ' team',
+            'steward': 'Architecture team',
+            'approval_status': 'proposed',
+            'criticality': 'mission-critical',
+            'review_date': '2027-10-19',
+            'lifecycle_history': [],
+            'source_and_evidence': (
+                f'Source: ISF taxonomy CR-IS-CAT-01A section 5; P2 population per CR-IS-CAT-01C-P2 (2026-10-19). '
+                f'The decomposition follows the F2 -> F4 pattern with explicit responsibility_allocation to the two atomic F4 children. '
+                f'Composition-vs-orchestration distinction: CR-IS-CAT-01B section 3.3.'
+            ),
+            'change_history': [],
+        },
+        'references': [],
+        'metadata': {
+            'cr': 'CR-IS-CAT-01C-P2',
+            'created_by': 'scripts/generate_p2_population.py',
+            'created_date': '2026-10-19',
+            'last_modified': '2026-10-19',
+            'notes': 'Generator-emitted (P1 F2 record shape parity). Re-run is idempotent.',
+        },
+    }
+
+
+
 def main():
+    import yaml as _yaml
+    WS2 = Path("entities/v1-alpha/domains")  # base for F2 compose-from-F4 reads
     total_files = 0
     for domain in P2_DOMAINS:
         domain_id = domain['id']
@@ -241,43 +388,20 @@ def main():
             functions_index.append({'id': f['id'], 'decomposition_level': 'F4', 'lifecycle_status': 'planned', 'parent': f['parent'], 'children': []})
         functions_index.insert(0, {'id': domain['f2']['id'], 'decomposition_level': 'F2', 'lifecycle_status': 'planned', 'parent': None, 'children': [f['id'] for f in f4_entries]})
 
-        from pathlib import Path
         # Hand-write the F2 stub record (p1's index emit only writes a stub; we write a full F2 record here)
         f2_id = domain['f2']['id']
         f2_funcs = [f['id'] for f in f4_entries]
         f2_dir = f'{domain_dir}/functions/dea-isf-{f2_id.split(":")[-1].replace("information-system-function-","")}'
         os.makedirs(f2_dir, exist_ok=True)
-        # Compose the F2 record. We mirror the hand-edited identity-and-access structure (canonical refs + version).
-        # Use the first F4 entry's processes/capabilities/components as a representative flavor for the F2 realized/enabled/executing.
-        # But more correctly: the F2 has child_functions, not full business_alignment. Keep minimal.
-        f2_record = {
-            'id': f2_id,
-            'type': 'InformationSystemFunction',
-            'name': domain['f2']['name'],
-            'description': domain['f2']['description'],
-            'version': '1.0.0',
-            'lifecycle_status': 'planned',
-            'functional_domain': domain_id,
-            'category': domain_id,
-            'decomposition_level': 'F2',
-            'child_functions': f2_funcs,
-            'decomposition_rationale': (
-                'The F2 parent composes the named F4 children below. Each F4 captures an atomic responsibility; the F2 composes them without orchestrating them.'
-            ),
-            'responsibility_allocation': 'Atomic responsibilities live in the F4 records; the F2 composes them.',
-            'orchestration_responsibility': 'Not applicable to this function. The function composes child functions without orchestrating them; orchestration is at the ISC layer.',
-            'inputs': [],
-            'outputs': [],
-            'execution_characteristics': EXEC_CHAR,
-            'business_alignment': {'realized_capabilities': [], 'enabled_processes': []},
-            'executing_components': [],
-            'non_functional_characteristics': {},
-            'governance': {'functional_owner': f'{domain_name} team', 'steward': 'Architecture team', 'approval_status': 'proposed', 'criticality': 'mission-critical', 'lifecycle_history': [], 'source_and_evidence': f'Source: ISF taxonomy CR-IS-CAT-01A section 5; P2 population per CR-IS-CAT-01C-P2.'},
-            'references': [],
-            'metadata': {},
-        }
-        # Set F2 domain code in metadata
-        f2_record['metadata'] = {'domain_code': domain_code, 'p2_population_cr': 'CR-IS-CAT-01C-P2'}
+        # Build F2 record by compositing from F4 children (canonical P1 F2 record shape parity).
+        # First emit F4 records to disk, then load them back so the F2 composition reads from the
+        # canonical F4 source (G-10: single source of truth).
+        f4_records_for_compose = []
+        for fid in f2_funcs:
+            f4_slug = fid.split(':')[-1].replace('information-system-function-', '')
+            f4_path = WS2 / domain_slug / 'functions' / ('dea-isf-' + f4_slug) / 'function.yaml'
+            f4_records_for_compose.append(_yaml.safe_load(open(f4_path)))
+        f2_record = build_f2_record(domain, f4_records_for_compose)
         with open(f'{f2_dir}/function.yaml', 'w') as fp:
             from yaml import safe_dump
             fp.write(safe_dump(f2_record, default_flow_style=False, sort_keys=False, allow_unicode=True, width=200))

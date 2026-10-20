@@ -10,15 +10,36 @@ decomposition_level: F2
 child_functions:
 - dea:information-system-function-metric-collection
 - dea:information-system-function-log-aggregation
-decomposition_rationale: The F2 parent composes the named F4 children below. Each F4 captures an atomic responsibility; the F2 composes them without orchestrating them.
+decomposition_rationale: 'The F2 parent composes the named F4 children below. Each F4 captures an atomic responsibility; the F2 composes them without orchestrating them. The composition follows the CR-IS-CAT-01B
+  section 3.3 distinction: the ISC orchestration pattern owns the inter-F4 ordering, retries, and compensation; the F2 exposes the composite.'
 responsibility_allocation:
 - child: dea:information-system-function-metric-collection
-  responsibility: The Metric Collection child function is responsible for its atomic role within the Monitoring And Observability domain.
+  responsibility: Realize the information system function metric collection atomic responsibility.
 - child: dea:information-system-function-log-aggregation
-  responsibility: The Log Aggregation child function is responsible for its atomic role within the Monitoring And Observability domain.
-orchestration_responsibility: Not applicable to this function. The function composes child functions without orchestrating them; orchestration is at the ISC layer.
-inputs: []
-outputs: []
+  responsibility: Realize the information system function log aggregation atomic responsibility.
+orchestration_responsibility: Not applicable to this function. The function composes child functions without orchestrating them; orchestration is at the ISC layer, per the composition-vs-orchestration distinction
+  in CR-IS-CAT-01B section 3.3.
+inputs:
+- input_id: runtime-instrumentation-event
+  name: Runtime event
+  definition: A business event that triggers the metric and log instrumentation flow.
+  data_or_event_reference: dea:event-monitoring-and-observability-invocation
+  source: Caller.
+  required: true
+  validation_rules:
+  - The runtime event MUST be the single composite input that fires the F2; the F2 delegates per-F4 routing to the F4 children based on the event subtype.
+  - All F4 children MUST be registered and reachable.
+  - The audit log MUST be available.
+  format_or_schema_reference: https://dea.example.org/schemas/monitoring-and-observability-invocation.v1.json
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: observability-state
+  name: Observability state
+  definition: An observability state composed from the F4 children.
+  data_or_event_reference: dea:data-entity-monitoring-and-observability-state
+  destination: Observability store, audit log.
+  output_conditions: Always produced (or an error response).
+  quality_expectations: Consistent across the F4 children stores.
 execution_characteristics:
   execution_pattern: event-driven
   trigger_mechanism: event
@@ -30,21 +51,40 @@ execution_characteristics:
   transactional: false
   concurrency: multi-threaded
 business_alignment:
-  realized_capabilities: []
-  enabled_processes: []
-executing_components: []
-non_functional_characteristics: {}
+  realized_capabilities:
+  - capabilities:capability-continuity-management-v3rn6u
+  enabled_processes:
+  - dea:process-operate-technology-platforms
+executing_components:
+- dea:information-system-component-observability-platform
+- dea:information-system-component-metrics-collector
+- dea:information-system-component-log-aggregator
+non_functional_characteristics:
+  availability: 99.95%
+  performance_latency: p99 < 200ms (composed from F4 children)
+  throughput: composed from F4 children
+  scalability: horizontal
+  resilience: active-active
+  security: composed from F4 children
+  privacy: composed from F4 children
+  auditability: full
+  recoverability: rto-15m-rpo-5m
+  observability: prometheus-metrics
+  compliance_constraints: []
 governance:
   functional_owner: Monitoring and Observability team
   steward: Architecture team
   approval_status: proposed
   criticality: mission-critical
+  review_date: '2027-10-19'
   lifecycle_history: []
   source_and_evidence: 'Source: ISF taxonomy CR-IS-CAT-01A section 5; P2 population per CR-IS-CAT-01C-P2 (2026-10-19). The decomposition follows the F2 -> F4 pattern with explicit responsibility_allocation
-    to the two atomic F4 children.'
-  review_date: '2027-10-19'
+    to the two atomic F4 children. Composition-vs-orchestration distinction: CR-IS-CAT-01B section 3.3.'
   change_history: []
 references: []
 metadata:
-  domain_code: ISF-10
-  p2_population_cr: CR-IS-CAT-01C-P2
+  cr: CR-IS-CAT-01C-P2
+  created_by: scripts/generate_p2_population.py
+  created_date: '2026-10-19'
+  last_modified: '2026-10-19'
+  notes: Generator-emitted (P1 F2 record shape parity). Re-run is idempotent.

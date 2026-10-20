@@ -11,8 +11,8 @@ by_type:
   dea:consumes: 1
   dea:produces: 2
   dea:measured_by: 1
-by_source_domain: !!python/object/apply:collections.Counter
-- isf:domain:identity-and-access: 8
+by_source_domain:
+  isf:domain:identity-and-access: 8
   external: 8
   isf:domain:communication-and-collaboration: 8
   isf:domain:content-and-knowledge-management: 8
@@ -20,6 +20,6 @@ by_source_domain: !!python/object/apply:collections.Counter
   isf:domain:security-privacy-and-trust: 8
   isf:domain:monitoring-and-observability: 8
   isf:domain:configuration-and-administration: 8
-by_target_kind: !!python/object/apply:collections.Counter
-- external: 58
+by_target_kind:
+  external: 58
   internal: 6

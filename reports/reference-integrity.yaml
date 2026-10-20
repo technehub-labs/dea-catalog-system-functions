@@ -6,8 +6,8 @@ target_repo_pinning:
   dea-catalog-business-capabilities: 848b16356e81dcfdc34782b7ad5f083c0600045e
   dea-catalog-processes: 390e73eb24d0070a40a3ae804ee61b42611f7664
   dea-catalog-application-components: f7fb7b3c121c95fd25b2131aa758987958ea25bd
-total_references_classified: 206
-resolved_count: 200
+total_references_classified: 237
+resolved_count: 231
 forward_count: 6
 unresolved_count: 0
 unresolved: []
@@ -494,6 +494,26 @@ resolved:
   record_id: dea:information-system-function-knowledge-retrieval.executing_components
   kind: external
   target_repo: dea-catalog-application-components
+- target_id: capabilities:capability-information-management-6vjgdh
+  record_id: dea:information-system-function-content-and-knowledge-management.realized_capabilities
+  kind: external
+  target_repo: dea-catalog-business-capabilities
+- target_id: dea:process-operate-service-delivery
+  record_id: dea:information-system-function-content-and-knowledge-management.enabled_processes
+  kind: external
+  target_repo: dea-catalog-processes
+- target_id: dea:information-system-component-data-warehouse-platform
+  record_id: dea:information-system-function-content-and-knowledge-management.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-customer-facing-web-application-platform
+  record_id: dea:information-system-function-content-and-knowledge-management.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-data-warehouse-catalog
+  record_id: dea:information-system-function-content-and-knowledge-management.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
 - target_id: dea:information-system-function-content-management
   record_id: dea:information-system-function-content-and-knowledge-management.child_functions
   kind: internal
@@ -530,6 +550,22 @@ resolved:
   target_repo: dea-catalog-application-components
 - target_id: dea:information-system-component-api-gateway
   record_id: dea:information-system-function-notification-dispatch.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: capabilities:capability-workforce-management-9e8d8s
+  record_id: dea:information-system-function-communication-and-collaboration.realized_capabilities
+  kind: external
+  target_repo: dea-catalog-business-capabilities
+- target_id: dea:process-coordinate-collaboration
+  record_id: dea:information-system-function-communication-and-collaboration.enabled_processes
+  kind: external
+  target_repo: dea-catalog-processes
+- target_id: dea:information-system-component-employee-portal-platform
+  record_id: dea:information-system-function-communication-and-collaboration.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-api-gateway
+  record_id: dea:information-system-function-communication-and-collaboration.executing_components
   kind: external
   target_repo: dea-catalog-application-components
 - target_id: dea:information-system-function-collaboration-coordination
@@ -570,6 +606,26 @@ resolved:
   record_id: dea:information-system-function-metric-collection.executing_components
   kind: external
   target_repo: dea-catalog-application-components
+- target_id: capabilities:capability-continuity-management-v3rn6u
+  record_id: dea:information-system-function-monitoring-and-observability.realized_capabilities
+  kind: external
+  target_repo: dea-catalog-business-capabilities
+- target_id: dea:process-operate-technology-platforms
+  record_id: dea:information-system-function-monitoring-and-observability.enabled_processes
+  kind: external
+  target_repo: dea-catalog-processes
+- target_id: dea:information-system-component-observability-platform
+  record_id: dea:information-system-function-monitoring-and-observability.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-metrics-collector
+  record_id: dea:information-system-function-monitoring-and-observability.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-log-aggregator
+  record_id: dea:information-system-function-monitoring-and-observability.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
 - target_id: dea:information-system-function-metric-collection
   record_id: dea:information-system-function-monitoring-and-observability.child_functions
   kind: internal
@@ -606,6 +662,30 @@ resolved:
   target_repo: dea-catalog-application-components
 - target_id: dea:information-system-component-data-warehouse-query
   record_id: dea:information-system-function-data-analysis.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: capabilities:capability-insight-management-ms4n9d
+  record_id: dea:information-system-function-analytics-and-decision-support.realized_capabilities
+  kind: external
+  target_repo: dea-catalog-business-capabilities
+- target_id: dea:process-operate-financial-reporting-and-disclosure
+  record_id: dea:information-system-function-analytics-and-decision-support.enabled_processes
+  kind: external
+  target_repo: dea-catalog-processes
+- target_id: dea:process-customer-insight-and-retention
+  record_id: dea:information-system-function-analytics-and-decision-support.enabled_processes
+  kind: external
+  target_repo: dea-catalog-processes
+- target_id: dea:information-system-component-data-warehouse-platform
+  record_id: dea:information-system-function-analytics-and-decision-support.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-data-warehouse-query
+  record_id: dea:information-system-function-analytics-and-decision-support.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-ai-inference-platform
+  record_id: dea:information-system-function-analytics-and-decision-support.executing_components
   kind: external
   target_repo: dea-catalog-application-components
 - target_id: dea:information-system-function-data-analysis
@@ -703,6 +783,30 @@ resolved:
   record_id: dea:information-system-function-security-monitoring.executing_components
   kind: external
   target_repo: dea-catalog-application-components
+- target_id: capabilities:capability-security-management-wmzc7c
+  record_id: dea:information-system-function-security-privacy-and-trust.realized_capabilities
+  kind: external
+  target_repo: dea-catalog-business-capabilities
+- target_id: dea:process-audit-policy-compliance
+  record_id: dea:information-system-function-security-privacy-and-trust.enabled_processes
+  kind: external
+  target_repo: dea-catalog-processes
+- target_id: dea:process-improve-policy-and-control-framework
+  record_id: dea:information-system-function-security-privacy-and-trust.enabled_processes
+  kind: external
+  target_repo: dea-catalog-processes
+- target_id: dea:information-system-component-observability-platform
+  record_id: dea:information-system-function-security-privacy-and-trust.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-distributed-tracer
+  record_id: dea:information-system-function-security-privacy-and-trust.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-identity-broker
+  record_id: dea:information-system-function-security-privacy-and-trust.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
 - target_id: dea:information-system-function-security-monitoring
   record_id: dea:information-system-function-security-privacy-and-trust.child_functions
   kind: internal
@@ -739,6 +843,26 @@ resolved:
   target_repo: dea-catalog-application-components
 - target_id: dea:information-system-component-build-service
   record_id: dea:information-system-function-configuration-validation.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: capabilities:capability-change-management-hukdeq
+  record_id: dea:information-system-function-configuration-and-administration.realized_capabilities
+  kind: external
+  target_repo: dea-catalog-business-capabilities
+- target_id: dea:process-improve-technology-platforms
+  record_id: dea:information-system-function-configuration-and-administration.enabled_processes
+  kind: external
+  target_repo: dea-catalog-processes
+- target_id: dea:information-system-component-development-platform
+  record_id: dea:information-system-function-configuration-and-administration.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-ci-cd-pipeline
+  record_id: dea:information-system-function-configuration-and-administration.executing_components
+  kind: external
+  target_repo: dea-catalog-application-components
+- target_id: dea:information-system-component-build-service
+  record_id: dea:information-system-function-configuration-and-administration.executing_components
   kind: external
   target_repo: dea-catalog-application-components
 - target_id: dea:information-system-function-configuration-deployment
