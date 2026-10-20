@@ -11,9 +11,15 @@ Usage:
 This script is the source of truth for the P1 population. Do not hand-edit
 the generated files; edit this script and re-run.
 """
-import os
+import os, sys
+from pathlib import Path
 import textwrap
 import yaml
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _f2_record_helper as _f2_helper
+build_f2_record = _f2_helper.build_f2_record
+build_f2_readme = _f2_helper.build_f2_readme
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(REPO_ROOT)
@@ -683,21 +689,55 @@ FUNCTIONS = {
 
 
 def main():
+    import yaml as _yaml
     total_files = 0
     for domain_id, domain_data in FUNCTIONS.items():
         domain_slug = domain_id.split(':')[-1]
         domain_dir = f'entities/v1-alpha/domains/{domain_slug}'
         os.makedirs(domain_dir, exist_ok=True)
 
+        # Step 1: emit F4 children first (they are the building blocks for the F2)
         for f in domain_data['functions']:
+            if f.get('level') == 'F2':
+                continue  # F2 is composed from F4 children via the shared helper
             func_slug = f['id'].split(':')[-1].replace('information-system-function-', '')
             func_dir = f'{domain_dir}/functions/dea-isf-{func_slug}'
             os.makedirs(func_dir, exist_ok=True)
-
             with open(f'{func_dir}/function.yaml', 'w') as fp:
                 fp.write(generate_function_yaml(f, domain_id, domain_data['domain_name']))
             with open(f'{func_dir}/README.md', 'w') as fp:
                 fp.write(generate_readme(f, domain_id, domain_data['domain_name'], domain_data['domain_code']))
+            total_files += 2
+
+        # Step 2: emit F2 records via the shared helper (P1 hand-edited parity).
+        # The helper composes from the freshly-emitted F4 children.
+        for f in domain_data['functions']:
+            if f.get('level') != 'F2':
+                continue
+            func_slug = f['id'].split(':')[-1].replace('information-system-function-', '')
+            func_dir = f'{domain_dir}/functions/dea-isf-{func_slug}'
+            os.makedirs(func_dir, exist_ok=True)
+            child_ids = f.get('children') or []
+            f4_records = []
+            for cid in child_ids:
+                cslug = cid.split(':')[-1].replace('information-system-function-', '')
+                f4_path = Path(f'{domain_dir}/functions/dea-isf-{cslug}/function.yaml')
+                f4_records.append(_yaml.safe_load(open(f4_path)))
+            domain_for_helper = {
+                'id': domain_id,
+                'domain_name': domain_data['domain_name'],
+                'domain_code': domain_data['domain_code'],
+                'f2': {
+                    'id': f['id'],
+                    'name': f['name'],
+                    'description': f['description'],
+                },
+            }
+            f2_record = build_f2_record(domain_for_helper, f4_records, f2_slug=func_slug)
+            with open(f'{func_dir}/function.yaml', 'w') as fp:
+                fp.write(_yaml.safe_dump(f2_record, default_flow_style=False, sort_keys=False, allow_unicode=True, width=200))
+            with open(f'{func_dir}/README.md', 'w') as fp:
+                fp.write(build_f2_readme(f2_record, domain_id, domain_data['domain_name'], domain_data['domain_code']))
             total_files += 2
 
         # Per-domain index.yaml
@@ -750,24 +790,58 @@ def main():
         with open(f'{domain_dir}/index.yaml', 'w') as fp:
             yaml.dump(index_data, fp, default_flow_style=False, sort_keys=False, allow_unicode=True, width=200)
 
-    # Catalog-level index
-    catalog_index = {
-        'catalog': 'dea-catalog-information-system-functions',
-        'version': '1.0',
-        'cr': 'CR-IS-CAT-01C',
-        'date': '2026-10-18',
-        'domains': [
-            {'code': d['domain_code'], 'id': did, 'name': d['domain_name'], 'index': f"domains/{did.split(':')[-1]}/index.yaml", 'function_count': sum(1 for f in d['functions']) + (2 if did == 'isf:domain:identity-and-access' else 0)}
-            for did, d in FUNCTIONS.items()
-        ],
-        'change_history': [
-            {'version': '1.0', 'date': '2026-10-18', 'cr': 'CR-IS-CAT-01C', 'note': f"Initial P1 population. {sum(1 + len(d['functions']) + (2 if did == 'isf:domain:identity-and-access' else 0) for did, d in FUNCTIONS.items())} functions across {len(FUNCTIONS)} P1 domains."},
-        ],
-    }
-    with open('entities/v1-alpha/index.yaml', 'w') as fp:
-        yaml.dump(catalog_index, fp, default_flow_style=False, sort_keys=False, allow_unicode=True, width=200)
+    # Catalog-level index: merge with existing (P2/P3 domains may already be present).
+    # Only emit P1 domain entries; do not clobber P2/P3.
+    p1_domain_entries = []
+    for did, d in FUNCTIONS.items():
+        fc = sum(1 for f in d['functions']) + (2 if did == 'isf:domain:identity-and-access' else 0)
+        p1_domain_entries.append({'code': d['domain_code'], 'id': did, 'name': d['domain_name'], 'index': f"domains/{did.split(':')[-1]}/index.yaml", 'function_count': fc})
+    p1_codes = {e['code'] for e in p1_domain_entries}
+    p1_ids   = {e['id'] for e in p1_domain_entries}
+    catalog_index_path = 'entities/v1-alpha/index.yaml'
+    existing = None
+    if Path(catalog_index_path).exists():
+        existing = _yaml.safe_load(open(catalog_index_path)) or {}
+    if existing and any(e.get('code') not in p1_codes and e.get('id') not in p1_ids for e in (existing.get('domains') or [])):
+        # Merge: keep non-P1 entries, replace P1 entries with the freshly-computed values.
+        merged_domains = []
+        seen_codes = set()
+        for e in (existing.get('domains') or []):
+            if e.get('code') in p1_codes:
+                # find replacement
+                rep = next((x for x in p1_domain_entries if x['code'] == e.get('code')), None)
+                if rep: merged_domains.append(rep)
+                seen_codes.add(e.get('code'))
+            else:
+                merged_domains.append(e)
+        for x in p1_domain_entries:
+            if x['code'] not in seen_codes: merged_domains.append(x)
+        catalog_index = dict(existing)
+        catalog_index['domains'] = merged_domains
+        # add a change history entry for P1H
+        ch = catalog_index.get('change_history') or []
+        ch = [h for h in ch if h.get('cr') != 'CR-IS-CAT-01C-P1H']
+        ch.append({'version': catalog_index.get('version','1.0'),
+                   'date': '2026-10-19',
+                   'cr': 'CR-IS-CAT-01C-P1H',
+                   'note': 'P1 authoring hygiene: P1 F2 records now use the canonical F2 shape (shared helper). Catalog merged (P1 + P2 + P3).'})
+        catalog_index['change_history'] = ch
+    else:
+        # First-time emission (no P2/P3 yet): write the P1-only catalog index
+        catalog_index = {
+            'catalog': 'dea-catalog-information-system-functions',
+            'version': '1.0',
+            'cr': 'CR-IS-CAT-01C',
+            'date': '2026-10-18',
+            'domains': p1_domain_entries,
+            'change_history': [
+                {'version': '1.0', 'date': '2026-10-18', 'cr': 'CR-IS-CAT-01C', 'note': f"Initial P1 population. {sum(1 + len(d['functions']) + (2 if did == 'isf:domain:identity-and-access' else 0) for did, d in FUNCTIONS.items())} functions across {len(FUNCTIONS)} P1 domains."},
+            ],
+        }
+    with open(catalog_index_path, 'w') as fp:
+        _yaml.safe_dump(catalog_index, fp, default_flow_style=False, sort_keys=False, allow_unicode=True, width=200)
 
-    print(f"Generated {total_files} function records (yaml + md) + {len(FUNCTIONS)} domain indexes + 1 catalog index")
+    print(f"Generated {total_files} function records (yaml + md) + {len(FUNCTIONS)} domain indexes + 1 catalog index (merged)")
 
 
 if __name__ == '__main__':

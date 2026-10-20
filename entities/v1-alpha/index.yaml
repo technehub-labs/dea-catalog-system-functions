@@ -91,3 +91,7 @@ change_history:
   date: '2026-10-19'
   cr: CR-IS-CAT-01C-P3
   note: 'P3 population. 12 functions across ISF-12..15. Total: 50 functions across 15/15 domains. ISF complete.'
+- version: '1.2'
+  date: '2026-10-19'
+  cr: CR-IS-CAT-01C-P1H
+  note: 'P1 authoring hygiene: P1 F2 records now use the canonical F2 shape (shared helper). Catalog merged (P1 + P2 + P3).'

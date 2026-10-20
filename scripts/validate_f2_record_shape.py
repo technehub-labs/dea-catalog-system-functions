@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """F2 record shape parity validator.
 
-Asserts that every F2 record in the catalogue has the same shape. Used to enforce
-"P1 F2 parity": the P1 F2 `identity-and-access-management` is the canonical shape,
-P2 F2s emitted by `generate_p2_population.py` match it. CI may invoke this via
-`.github/workflows/validate-catalogue.yml`.
+Asserts that every F2 record in the catalogue matches the canonical F2 shape
+originally hand-authored in CR-IS-CAT-01B (`identity-and-access-management`).
+Since CR-IS-CAT-01C-P2H (P2/P3) and CR-IS-CAT-01C-P1H (P1) every F2 record in
+the catalogue is generator-emitted via `scripts/_f2_record_helper.py`, so all
+15 F2 records are blockers with no out-of-scope set. CI invokes this as step 7
+in `.github/workflows/validate-catalogue.yml`.
 
 Usage: python3 scripts/validate_f2_record_shape.py
 """
@@ -84,10 +86,14 @@ def check_f2_record(d):
 
 
 def main():
-    """Run F2 record shape parity. Returns 1 if any P2-domain F2 record fails; P1 findings are warnings only (covered by CR-IS-CAT-01C-P1H)."""
+    """Run F2 record shape parity. Every F2 record in the catalogue must match
+    the canonical shape (P1 hand-edited F2 parity, per CR-IS-CAT-01C-P2H).
+    Returns 1 if any F2 record fails; the catalogue has no out-of-scope set
+    (P1 records were brought to shape under CR-IS-CAT-01C-P1H)."""
     repo = Path('.').resolve()
-    p1_failures = []; p2_failures = []
-    p1_records = 0; p2_records = 0
+    failures = []
+    p2_records = 0
+    p1_records = 0
     for f in glob.glob(str(repo / 'entities' / 'v1-alpha' / 'domains' / '*' / 'functions' / '*' / 'function.yaml')):
         d = yaml.safe_load(open(f))
         if d.get('decomposition_level') != 'F2': continue
@@ -95,32 +101,24 @@ def main():
         is_p2 = any(s in domain_id for s in [
             'communication-and-collaboration','content-and-knowledge-management',
             'analytics-and-decision-support','security-privacy-and-trust',
-            'monitoring-and-observability','configuration-and-administration'])
+            'monitoring-and-observability','configuration-and-administration',
+            'resource-and-capacity-management','ai-and-intelligent-processing',
+            'experience-and-interaction','search-and-discovery'])
         if is_p2: p2_records += 1
         else:     p1_records += 1
         errors = check_f2_record(d)
-        if not errors: continue
-        if is_p2: p2_failures.append((f, errors))
-        else:     p1_failures.append((f, errors))
+        if errors: failures.append((f, errors))
     print()
-    if p2_failures:
-        print('P2 F2 record failures (must fix in CR-IS-CAT-01C-P2H):')
-        for f, errs in p2_failures:
+    if failures:
+        print('F2 record shape failures (all F2 records are blockers):')
+        for f, errs in failures:
             print(f'  FAIL: {f}')
             for e in errs:
                 print(f'      - {e}')
-    if p1_failures:
-        print('P1 F2 record findings (separate slice CR-IS-CAT-01C-P1H; warning not blocker):')
-        for f, errs in p1_failures:
-            print(f'  WARN: {f}')
-            for e in errs:
-                print(f'      - {e}')
     print()
-    print(f'P2 F2 records checked: {p2_records} (failures: {len(p2_failures)})')
-    print(f'P1 F2 records checked: {p1_records} (warnings: {len(p1_failures)})')
-    return 0 if len(p2_failures) == 0 else 1
-
-
+    print(f'P2/P3 F2 records checked: {p2_records} (failures: {sum(1 for f,_ in failures if any(s in f for s in ["communication","content-and","analytics","security-privacy","monitoring","configuration-and","resource-and","ai-and","experience-and","search-and"]))})')
+    print(f'P1 F2 records checked: {p1_records} (failures: {len(failures) - sum(1 for f,_ in failures if any(s in f for s in ["information-and-data","transaction-processing","workflow-and","integration-and","identity-and-access"]))})')
+    return 0 if len(failures) == 0 else 1
 
 if __name__ == '__main__':
     sys.exit(main())
