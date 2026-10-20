@@ -4,7 +4,7 @@ generated_for: CR-IS-CAT-01R reference integrity resolution (hardened validator)
 pinned_commits:
   dea-catalog-business-capabilities: 848b16356e81dcfdc34782b7ad5f083c0600045e
   dea-catalog-processes: 390e73eb24d0070a40a3ae804ee61b42611f7664
-  dea-catalog-application-components: 060cfe6bea95c73d77298dbc284b630203f6a3b0
+  dea-catalog-application-components: f7fb7b3c121c95fd25b2131aa758987958ea25bd
 snapshots:
   dea-catalog-business-capabilities:
     capabilities:capability-asset-management-judtwr:

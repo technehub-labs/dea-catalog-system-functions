@@ -1,0 +1,66 @@
+id: dea:information-system-function-content-management
+type: InformationSystemFunction
+name: "Content Management"
+description: |
+  The atomic function that stores, versions, and indexes unstructured content (documents, images, knowledge articles) and emits the content-stored event.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:content-and-knowledge-management
+category: isf:domain:content-and-knowledge-management
+decomposition_level: F4
+parent_function: dea:information-system-function-content-and-knowledge-management
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-content-and-knowledge-management).
+inputs:
+- input_id: content-body
+  name: "Content body"
+  definition: "The content body (text, image, structured document) with metadata."
+  source: "Caller or upload service."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: storage-policy
+  name: "Storage policy"
+  definition: "The retention, encryption, and access policy for the content."
+  source: "Policy store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: stored-content
+  name: "Stored content"
+  definition: "A stored-content record with the content id, version, location, and storage-policy reference."
+  destination: "Content store, audit log."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-information-management-6vjgdh
+  enabled_processes:
+    - dea:process-operate-service-delivery
+executing_components:
+  - dea:information-system-component-data-warehouse-platform
+  - dea:information-system-component-customer-facing-web-application-platform
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Content and Knowledge Management domain. CR-IS-CAT-01C P1 population.

@@ -1,5 +1,5 @@
 catalog: dea-catalog-information-system-functions
-version: '1.0'
+version: '1.1'
 cr: CR-IS-CAT-01C
 date: '2026-10-18'
 domains:
@@ -28,8 +28,42 @@ domains:
   name: Integration and Interoperability
   index: domains/integration-and-interoperability/index.yaml
   function_count: 4
+- code: ISF-06
+  id: isf:domain:communication-and-collaboration
+  name: Communication and Collaboration
+  index: domains/communication-and-collaboration/index.yaml
+  function_count: 3
+- code: ISF-07
+  id: isf:domain:content-and-knowledge-management
+  name: Content and Knowledge Management
+  index: domains/content-and-knowledge-management/index.yaml
+  function_count: 3
+- code: ISF-08
+  id: isf:domain:analytics-and-decision-support
+  name: Analytics and Decision Support
+  index: domains/analytics-and-decision-support/index.yaml
+  function_count: 3
+- code: ISF-09
+  id: isf:domain:security-privacy-and-trust
+  name: Security, Privacy and Trust
+  index: domains/security-privacy-and-trust/index.yaml
+  function_count: 3
+- code: ISF-10
+  id: isf:domain:monitoring-and-observability
+  name: Monitoring and Observability
+  index: domains/monitoring-and-observability/index.yaml
+  function_count: 3
+- code: ISF-11
+  id: isf:domain:configuration-and-administration
+  name: Configuration and Administration
+  index: domains/configuration-and-administration/index.yaml
+  function_count: 3
 change_history:
 - version: '1.0'
   date: '2026-10-18'
   cr: CR-IS-CAT-01C
   note: Initial P1 population. 25 functions across 5 P1 domains.
+- version: '1.1'
+  date: '2026-10-19'
+  cr: CR-IS-CAT-01C-P2
+  note: 'P2 population. 18 functions across ISF-06..11. Total: 38 functions across 11/15 domains.'

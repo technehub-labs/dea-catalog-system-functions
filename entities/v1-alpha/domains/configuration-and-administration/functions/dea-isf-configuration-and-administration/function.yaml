@@ -1,0 +1,50 @@
+id: dea:information-system-function-configuration-and-administration
+type: InformationSystemFunction
+name: Configuration and Administration
+description: The parent function that composes the configuration-and-administration sub-tree. It manages the configuration, change, and lifecycle of the technology estate.
+version: 1.0.0
+lifecycle_status: planned
+functional_domain: isf:domain:configuration-and-administration
+category: isf:domain:configuration-and-administration
+decomposition_level: F2
+child_functions:
+- dea:information-system-function-configuration-deployment
+- dea:information-system-function-configuration-validation
+decomposition_rationale: The F2 parent composes the named F4 children below. Each F4 captures an atomic responsibility; the F2 composes them without orchestrating them.
+responsibility_allocation:
+- child: dea:information-system-function-configuration-deployment
+  responsibility: The Configuration Deployment child function is responsible for its atomic role within the Configuration And Administration domain.
+- child: dea:information-system-function-configuration-validation
+  responsibility: The Configuration Validation child function is responsible for its atomic role within the Configuration And Administration domain.
+orchestration_responsibility: Not applicable to this function. The function composes child functions without orchestrating them; orchestration is at the ISC layer.
+inputs: []
+outputs: []
+execution_characteristics:
+  execution_pattern: event-driven
+  trigger_mechanism: event
+  processing_mode: real-time
+  synchronous_asynchronous: asynchronous
+  idempotency: idempotent
+  retry_recovery: Each child function is idempotent; the parent flow is retry-safe.
+  error_handling: Each child function emits a structured error; the parent flow records the error and continues with the next step where possible.
+  transactional: false
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities: []
+  enabled_processes: []
+executing_components: []
+non_functional_characteristics: {}
+governance:
+  functional_owner: Configuration and Administration team
+  steward: Architecture team
+  approval_status: proposed
+  criticality: mission-critical
+  lifecycle_history: []
+  source_and_evidence: 'Source: ISF taxonomy CR-IS-CAT-01A section 5; P2 population per CR-IS-CAT-01C-P2 (2026-10-19). The decomposition follows the F2 -> F4 pattern with explicit responsibility_allocation
+    to the two atomic F4 children.'
+  review_date: '2027-10-19'
+  change_history: []
+references: []
+metadata:
+  domain_code: ISF-11
+  p2_population_cr: CR-IS-CAT-01C-P2

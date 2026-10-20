@@ -1,0 +1,66 @@
+id: dea:information-system-function-insight-generation
+type: InformationSystemFunction
+name: "Insight Generation"
+description: |
+  The atomic function that produces an insight (forecast, anomaly, recommendation) from analytical outputs and emits the insight-ready event.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:analytics-and-decision-support
+category: isf:domain:analytics-and-decision-support
+decomposition_level: F4
+parent_function: dea:information-system-function-analytics-and-decision-support
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-analytics-and-decision-support).
+inputs:
+- input_id: analytical-output
+  name: "Analytical output"
+  definition: "An analytical output produced by the data-analysis function."
+  source: "Data analysis store."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: insight-model
+  name: "Insight model"
+  definition: "The model or rule that produces an insight from the analytical output."
+  source: "Model store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: insight-record
+  name: "Insight record"
+  definition: "An insight record (insight type, value, confidence, provenance)."
+  destination: "Insight store."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-insight-management-ms4n9d
+  enabled_processes:
+    - dea:process-customer-insight-and-retention
+executing_components:
+  - dea:information-system-component-data-warehouse-platform
+  - dea:information-system-component-ai-inference-platform
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Analytics and Decision Support domain. CR-IS-CAT-01C P1 population.

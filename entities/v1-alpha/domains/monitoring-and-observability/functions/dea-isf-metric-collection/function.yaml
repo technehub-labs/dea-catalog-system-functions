@@ -1,0 +1,66 @@
+id: dea:information-system-function-metric-collection
+type: InformationSystemFunction
+name: "Metric Collection"
+description: |
+  The atomic function that samples a runtime metric (counter, gauge, histogram) at the configured cadence and produces a metric data-point.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:monitoring-and-observability
+category: isf:domain:monitoring-and-observability
+decomposition_level: F4
+parent_function: dea:information-system-function-monitoring-and-observability
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-monitoring-and-observability).
+inputs:
+- input_id: metric-source
+  name: "Metric source"
+  definition: "A runtime source for a metric (counter, gauge, histogram)."
+  source: "Runtime instrumentation."
+  required: true
+  sensitivity_classification: non-sensitive
+- input_id: sampling-policy
+  name: "Sampling policy"
+  definition: "The sampling cadence and aggregation rule."
+  source: "Policy store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: metric-data-point
+  name: "Metric data point"
+  definition: "A metric data-point with timestamp, labels, and value."
+  destination: "Metric store."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-continuity-management-v3rn6u
+  enabled_processes:
+    - dea:process-operate-technology-platforms
+executing_components:
+  - dea:information-system-component-observability-platform
+  - dea:information-system-component-metrics-collector
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Monitoring and Observability domain. CR-IS-CAT-01C P1 population.

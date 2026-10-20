@@ -1,0 +1,27 @@
+domain: isf:domain:communication-and-collaboration
+code: ISF-06
+cr: CR-IS-CAT-01C-P2
+version: '1.0'
+functions:
+- id: dea:information-system-function-communication-and-collaboration
+  decomposition_level: F2
+  lifecycle_status: planned
+  parent: null
+  children:
+  - dea:information-system-function-collaboration-coordination
+  - dea:information-system-function-notification-dispatch
+- id: dea:information-system-function-collaboration-coordination
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-communication-and-collaboration
+  children: []
+- id: dea:information-system-function-notification-dispatch
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-communication-and-collaboration
+  children: []
+change_history:
+- version: '1.0'
+  date: '2026-10-19'
+  cr: CR-IS-CAT-01C-P2
+  note: P2 population. 3 functions in Communication and Collaboration domain.

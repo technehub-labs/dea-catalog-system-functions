@@ -1,0 +1,66 @@
+id: dea:information-system-function-configuration-validation
+type: InformationSystemFunction
+name: "Configuration Validation"
+description: |
+  The atomic function that validates a configuration change against the policy and invariant rules before deployment and produces a validation result.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:configuration-and-administration
+category: isf:domain:configuration-and-administration
+decomposition_level: F4
+parent_function: dea:information-system-function-configuration-and-administration
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-configuration-and-administration).
+inputs:
+- input_id: configuration-candidate
+  name: "Configuration candidate"
+  definition: "A candidate configuration under validation."
+  source: "Configuration store."
+  required: true
+  sensitivity_classification: non-sensitive
+- input_id: validation-rules
+  name: "Validation rules"
+  definition: "The validation rules (policy, invariants, schemas)."
+  source: "Policy store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: validation-decision
+  name: "Validation decision"
+  definition: "A validation decision (pass, fail, with reasons)."
+  destination: "Validation store."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-change-management-hukdeq
+  enabled_processes:
+    - dea:process-improve-technology-platforms
+executing_components:
+  - dea:information-system-component-development-platform
+  - dea:information-system-component-build-service
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Configuration and Administration domain. CR-IS-CAT-01C P1 population.

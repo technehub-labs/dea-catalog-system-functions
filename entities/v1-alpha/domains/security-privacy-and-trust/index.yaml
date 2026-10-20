@@ -1,0 +1,27 @@
+domain: isf:domain:security-privacy-and-trust
+code: ISF-09
+cr: CR-IS-CAT-01C-P2
+version: '1.0'
+functions:
+- id: dea:information-system-function-security-privacy-and-trust
+  decomposition_level: F2
+  lifecycle_status: planned
+  parent: null
+  children:
+  - dea:information-system-function-security-monitoring
+  - dea:information-system-function-threat-detection
+- id: dea:information-system-function-security-monitoring
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-security-privacy-and-trust
+  children: []
+- id: dea:information-system-function-threat-detection
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-security-privacy-and-trust
+  children: []
+change_history:
+- version: '1.0'
+  date: '2026-10-19'
+  cr: CR-IS-CAT-01C-P2
+  note: P2 population. 3 functions in Security, Privacy and Trust domain.

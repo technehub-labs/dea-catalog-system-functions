@@ -1,0 +1,66 @@
+id: dea:information-system-function-security-monitoring
+type: InformationSystemFunction
+name: "Security Monitoring"
+description: |
+  The atomic function that collects security telemetry from the runtime, evaluates detection rules, and produces a security-monitoring result.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:security-privacy-and-trust
+category: isf:domain:security-privacy-and-trust
+decomposition_level: F4
+parent_function: dea:information-system-function-security-privacy-and-trust
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-security-privacy-and-trust).
+inputs:
+- input_id: security-telemetry
+  name: "Security telemetry"
+  definition: "A security telemetry record (audit event, alert, network signal)."
+  source: "Runtime instrumentation."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: detection-rule
+  name: "Detection rule"
+  definition: "The detection rule set (signatures, patterns, thresholds)."
+  source: "Threat store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: monitoring-result
+  name: "Monitoring result"
+  definition: "A security-monitoring result (rules fired, evidence, severity)."
+  destination: "Monitoring store, audit log."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-security-management-wmzc7c
+  enabled_processes:
+    - dea:process-audit-policy-compliance
+executing_components:
+  - dea:information-system-component-observability-platform
+  - dea:information-system-component-distributed-tracer
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Security, Privacy and Trust domain. CR-IS-CAT-01C P1 population.
