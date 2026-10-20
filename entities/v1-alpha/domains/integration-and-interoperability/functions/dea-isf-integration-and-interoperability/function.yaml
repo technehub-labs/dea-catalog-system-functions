@@ -1,67 +1,92 @@
 id: dea:information-system-function-integration-and-interoperability
 type: InformationSystemFunction
-name: "Integration and Interoperability"
-description: |
-  The parent function that composes the integration sub-tree. It coordinates the API interaction, protocol mediation, message transformation, event distribution and external-system synchronization.
-version: "1.0.0"
+name: Integration and Interoperability
+description: The parent function that composes the integration sub-tree. It coordinates the API interaction, protocol mediation, message transformation, event distribution and external-system synchronization.
+version: 1.0.0
 lifecycle_status: planned
 functional_domain: isf:domain:integration-and-interoperability
 category: isf:domain:integration-and-interoperability
 decomposition_level: F2
 child_functions:
-  - dea:information-system-function-api-request-handling
-  - dea:information-system-function-event-publication
-  - dea:information-system-function-interface-validation
+- dea:information-system-function-api-request-handling
+- dea:information-system-function-event-publication
+- dea:information-system-function-interface-validation
+decomposition_rationale: 'The F2 parent composes the named F4 children below. Each F4 captures an atomic responsibility; the F2 composes them without orchestrating them. The composition follows the CR-IS-CAT-01B
+  section 3.3 distinction: the ISC orchestration pattern owns the inter-F4 ordering, retries, and compensation; the F2 exposes the composite.'
 responsibility_allocation:
-  - child: dea:information-system-function-api-request-handling
-    responsibility: "See child function record."
-  - child: dea:information-system-function-event-publication
-    responsibility: "See child function record."
-  - child: dea:information-system-function-interface-validation
-    responsibility: "See child function record."
+- child: dea:information-system-function-api-request-handling
+  responsibility: Realize the information system function api request handling atomic responsibility.
+- child: dea:information-system-function-event-publication
+  responsibility: Realize the information system function event publication atomic responsibility.
+- child: dea:information-system-function-interface-validation
+  responsibility: Realize the information system function interface validation atomic responsibility.
+orchestration_responsibility: Not applicable to this function. The function composes child functions without orchestrating them; orchestration is at the ISC layer, per the composition-vs-orchestration distinction
+  in CR-IS-CAT-01B section 3.3.
 inputs:
 - input_id: integration-event
-  name: "Integration event"
-  definition: "A business event that triggers integration (an API call, a message, an event)."
-  source: "Caller systems (via API gateway or message broker)."
+  name: Integration event
+  definition: A business event that triggers an integration flow (e.g., API request received, event published, schema validated).
+  data_or_event_reference: dea:event-integration-and-interoperability-invocation
+  source: Caller.
   required: true
-  sensitivity_classification: sensitive
+  validation_rules:
+  - The integration event MUST be the single composite input that fires the F2; the F2 delegates per-F4 routing to the F4 children based on the event subtype.
+  - All F4 children MUST be registered and reachable.
+  - The audit log MUST be available.
+  format_or_schema_reference: https://dea.example.org/schemas/integration-and-interoperability-invocation.v1.json
+  sensitivity_classification: non-sensitive
 outputs:
 - output_id: integration-state
-  name: "Integration state"
-  definition: "The state of the integration: received, validated, transformed, dispatched, acknowledged."
-  destination: "Integration store, audit log, downstream systems."
-  output_conditions: "Updated on every child function execution."
+  name: Integration state
+  definition: The state of the integration flows (request handling, event publication, interface validation).
+  data_or_event_reference: dea:data-entity-integration-and-interoperability-state
+  destination: Integration store, audit log.
+  output_conditions: Always produced (or an error response).
+  quality_expectations: Consistent across the F4 children stores.
 execution_characteristics:
   execution_pattern: event-driven
   trigger_mechanism: event
   processing_mode: real-time
   synchronous_asynchronous: asynchronous
   idempotency: idempotent
+  retry_recovery: Each child function is idempotent; the parent flow is retry-safe.
+  error_handling: Each child function emits a structured error; the parent flow records the error and continues with the next step where possible.
   transactional: false
   concurrency: multi-threaded
 business_alignment:
   realized_capabilities:
-    - capabilities:capability-technology-enablement-y6nkws
+  - capabilities:capability-technology-enablement-y6nkws
   enabled_processes:
-    - dea:process-operate-technology-platforms
+  - dea:process-operate-technology-platforms
 executing_components:
-  - dea:information-system-component-api-gateway
-  - dea:information-system-component-api-gateway-router
+- dea:information-system-component-api-gateway
+- dea:information-system-component-api-gateway-router
 non_functional_characteristics:
-  criticality: mission-critical
+  availability: 99.95%
+  performance_latency: p99 < 200ms (composed from F4 children)
+  throughput: composed from F4 children
+  scalability: horizontal
+  resilience: active-active
+  security: composed from F4 children
+  privacy: composed from F4 children
+  auditability: full
+  recoverability: rto-15m-rpo-5m
+  observability: prometheus-metrics
+  compliance_constraints: []
 governance:
-  functional_owner: "Architecture team"
-  steward: "Architecture team"
+  functional_owner: Integration and Interoperability team
+  steward: Architecture team
   approval_status: proposed
   criticality: mission-critical
-  review_date: "2027-10-18"
-references:
-  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+  review_date: '2027-10-19'
+  lifecycle_history: []
+  source_and_evidence: 'Source: ISF taxonomy CR-IS-CAT-01A section 5; P3 population per CR-IS-CAT-01C-P3 (2026-10-19). The decomposition follows the F2 -> F4 pattern with explicit responsibility_allocation
+    to the two atomic F4 children. Composition-vs-orchestration distinction: CR-IS-CAT-01B section 3.3.'
+  change_history: []
+references: []
 metadata:
-  created_by: Emmanuel A. Otchere
-  created_date: "2026-10-18"
-  last_modified: "2026-10-18"
-  cr: CR-IS-CAT-01C
-  notes: |
-    F2 record in the Integration and Interoperability domain. CR-IS-CAT-01C P1 population.
+  cr: CR-IS-CAT-01C-P3
+  created_by: scripts/generate_p3_population.py
+  created_date: '2026-10-19'
+  last_modified: '2026-10-19'
+  notes: Generator-emitted (P1 F2 record shape parity). Re-run is idempotent.

@@ -1,114 +1,95 @@
 # Integration and Interoperability
 
 ## 1. Identity
+
 - Canonical ID: `dea:information-system-function-integration-and-interoperability`
 - Version: 1.0.0
 - Lifecycle: planned
 - Functional Domain: ISF-05 Integration and Interoperability (`isf:domain:integration-and-interoperability`)
-- Category: ISF-05 Integration and Interoperability (categories populated in CR-IS-CAT-01B; v1.0 has no categories yet)
-- Decomposition Level: F2
-- Parent Function: None (top of the Integration and Interoperability sub-tree)
+- Category: ISF-05 Integration and Interoperability
+- Decomposition Level: F2 (parent function)
+- Parent Function: None (F2 is the top of the integration-and-interoperability sub-tree)
 
 ## 2. Definition
 
-The parent function that composes the integration sub-tree. It coordinates the API interaction, protocol mediation, message transformation, event distribution and external-system synchronization.
+The parent function that composes the integration-and-interoperability sub-tree. It exposes a composite view of the F4 children below.
 
 ## 3. Purpose and Responsibility
 
-Responsibility: The parent function that composes the integration sub-tree. It coordinates the API interaction, protocol mediation, message transformation, event distribution and external-system synchronization.
+Responsibility: provide a coherent integration and interoperability capability for the enterprise. The function composes the F4 children into a single responsibility that is exposed to upstream business processes.
 
 ## 4. Functional Scope
+
 ### In Scope
-- Integration event (inputs)
-- Integration state (outputs)
+- Compose the 3 F4 atomic functions under a single responsibility.
+- Expose the composite to upstream business processes.
 
 ### Out of Scope
-- Workflow coordination (separate domain: ISF-04)
-- Data persistence (separate domain: ISF-02 if cross-domain; otherwise child of this domain)
-- Identity and access (separate domain: ISF-01)
+- Orchestration of the F4 children (owned by the ISC orchestration pattern; per CR-IS-CAT-01B section 3.3).
 
 ## 5. Behavioural Specification
+
 ### Trigger
-event (event-driven)
+A business event that triggers the integration-and-interoperability flow.
 
 ### Preconditions
-- All required inputs are present
-- The executing component is reachable
-- The audit log is available
+- All F4 children are registered and reachable.
+- The audit log is available.
 
 ### Main Behaviour
-The parent function that composes the integration sub-tree. It coordinates the API interaction, protocol mediation, message transformation, event distribution and external-system synchronization.
+The F2 function is a composition; it does not have its own main behaviour. The main behaviour is the composition of the child functions, orchestrated at the ISC layer.
 
 ### Alternative Behaviour
-Not applicable to this function.
+Not applicable.
 
 ### Exception Behaviour
-- Failure of the executing component produces a structured error response
-- The audit log records every error
+The F2 function inherits the exception behaviour of the child functions. A child failure is recorded against the child.
 
 ### Postconditions
-- The output is produced (or an error response)
-- An audit event is recorded
+- The integration-and-interoperability state is consistent.
+- An audit event is recorded for every state change.
 
 ## 6. Inputs
 
-| Input ID | Name | Definition | Source | Required | Sensitivity |
-|---|---|---|---|---|---|
-| `integration-event` | Integration event | A business event that triggers integration (an API call, a message, an event). | Caller systems (via API gateway or message broker). | Yes | sensitive |
+The F2 parent composes inputs from its F4 children. Per-domain input specifications are in the F4 records.
 
 ## 7. Outputs
 
-| Output ID | Name | Definition | Destination | Conditions |
-|---|---|---|---|---|
-| `integration-state` | Integration state | The state of the integration: received, validated, transformed, dispatched, acknowledged. | Integration store, audit log, downstream systems. | Updated on every child function execution. |
+The F2 parent composes outputs from its F4 children.
 
 ## 8. Data and Event Interaction
-### Consumed Data
-- (see inputs above)
 
-### Produced Data
-- (see outputs above)
-
-### Consumed Events
-None.
-
-### Produced Events
-- `dea:event-information-system-function-integration-and-interoperability-completed` (on success)
-- `dea:event-information-system-function-integration-and-interoperability-failed` (on failure)
+- Consumed Data: composed from F4 children.
+- Produced Data: composed from F4 children.
+- Consumed Events: composed from F4 children.
+- Produced Events: composed from F4 children.
 
 ## 9. Composition and Dependencies
+
 ### Parent
-None (top of the Integration and Interoperability sub-tree)
+None (F2 is the parent of the integration-and-interoperability sub-tree).
 
 ### Child Functions
-1. `dea:information-system-function-api-request-handling`
-2. `dea:information-system-function-event-publication`
-3. `dea:information-system-function-interface-validation`
 
-### Dependencies
-- The executing component(s)
-- The audit log
-
-### Orchestration
-Not applicable to this function. The function composes child functions without orchestrating them; orchestration is at the ISC layer.
+- `dea:information-system-function-api-request-handling`
+- `dea:information-system-function-event-publication`
+- `dea:information-system-function-interface-validation`
 
 ## 10. Execution Characteristics
 
-| Characteristic | Value |
-|---|---|
-| Execution pattern | event-driven |
-| Trigger mechanism | event |
-| Processing mode | real-time |
-| Idempotency | idempotent |
-| Transactional | False |
-| Concurrency | multi-threaded |
+- Execution Pattern: event-driven
+- Trigger Mechanism: event
+- Processing Mode: real-time
+- Synchronous/Asynchronous: asynchronous
+- Idempotency: idempotent (each child function is idempotent)
+- Retry/Recovery: Each child function is idempotent; the parent flow is retry-safe.
+- Error Handling: Each child function emits a structured error; the parent flow records the error.
+- Transactional: false
+- Concurrency: multi-threaded
 
 ## 11. Business Alignment
-### Realized Capabilities
-- `capabilities:capability-technology-enablement-y6nkws`
 
-### Enabled Processes
-- `dea:process-operate-technology-platforms`
+The realised capabilities and enabled processes of the F2 are the union of the children's. See the F4 records for the per-capability and per-process references.
 
 ## 12. Executing Components
 
@@ -117,51 +98,46 @@ Not applicable to this function. The function composes child functions without o
 
 ## 13. Non-Functional Characteristics
 
-| Characteristic | Value |
-|---|---|
-| Criticality | mission-critical |
+- Availability: 99.95%
+- Performance Latency: p99 < 200ms (composed from F4 children)
+- Throughput: composed from F4 children
+- Scalability: horizontal
+- Resilience: active-active
+- Security: composed from F4 children
+- Privacy: composed from F4 children
+- Auditability: full
+- Recoverability: RTO 15m, RPO 5m
+- Observability: prometheus-metrics
+- Compliance Constraints: per F4 child
 
 ## 14. Security and Governance
 
-- Functional owner: Architecture team
+- Functional owner: Integration and Interoperability team
 - Steward: Architecture team
 - Approval status: proposed
 - Criticality: mission-critical
+- Review date: 2027-10-19
+- Change history: see CHANGELOG.md
 
 ## 15. Measurement and Observability
-### Relevant Metrics
-- Request rate
-- Success rate
-- Latency (p50, p95, p99)
-- Error rate
 
-### Monitoring Expectations
-- Dashboard: Integration and Interoperability health (request rate, success rate, latency, error rate)
-- Alerts: error rate > 1% for 5m; p99 latency exceeded for 10m
-
-### Evidence Sources
-- Request log
-- Response log
-- Audit event stream
+Composed from F4 children.
 
 ## 16. Examples and Use Cases
 
-- Use case 1: a standard invocation by a caller via the API gateway
-- Use case 2: a high-volume invocation under load with horizontal scaling
-- Use case 3: an exceptional case (timeout, validation failure) with the error response
+See the F4 records for atomic use cases.
 
 ## 17. Limitations and Assumptions
 
-- The function depends on the executing component being available
-- The function does not own identity (separate domain: ISF-01)
-- The function does not own the persistence of the output (the caller persists if needed)
+The F2 function does not orchestrate the F4 children. The composition is exposed to the ISC layer.
 
 ## 18. References
 
-- `technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md`
-- `technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01B-decomposition.md`
-- `technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01A-taxonomy.md`
+- CR-IS-CAT-01A section 5 (taxonomy classification).
+- CR-IS-CAT-01B section 3 (composition vs orchestration).
+- CR-IS-CAT-01C-P3 P3 population brief.
 
 ## 19. Change History
 
-- 2026-10-18: Initial creation (CR-IS-CAT-01C; P1 population).
+- 2026-10-19: CR-IS-CAT-01C-P3 initial P3 population.
+- 2026-10-19: CR-IS-CAT-01C-P2H F2 record shape parity (canonical P1 F2 shape).

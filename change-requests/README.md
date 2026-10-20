@@ -27,3 +27,8 @@ Snapshot: `~/.hermes/profiles/coder/kanban/dea-metamodel-is-snapshot-2026-10-18.
 ## CR-IS-CAT-01C-P2H
 
 - **CR-IS-CAT-01C-P2H -- P2 authoring hygiene** (P1 F2 record shape parity). See [CR-IS-CAT-01C-P2H](./CR-IS-CAT-01C-P2H-p2-authoring-hygiene.md).
+
+
+## CR-IS-CAT-01C-P1H
+
+- **CR-IS-CAT-01C-P1H -- P1 authoring hygiene** (F2 record shape parity for the 4 P1 generator-emitted F2 records; also fixes a latent catalog-index clobber defect in the P1 generator). See [CR-IS-CAT-01C-P1H](./CR-IS-CAT-01C-P1H-p1-authoring-hygiene.md).

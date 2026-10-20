@@ -27,6 +27,12 @@ F2_INPUT_TEXT = {
  'ai-and-intelligent-processing':      ('ai-and-intelligence-event',               'AI event',                'A business event that triggers the model-management or inference-execution flow.',         'Caller.',         True,  'non-sensitive'),
  'experience-and-interaction':         ('experience-and-interaction-event',        'Experience event',        'A business event that triggers the interaction or experience-delivery flow.',              'Caller.',         True,  'non-sensitive'),
  'search-and-discovery':               ('search-and-discovery-event',             'Search event',            'A business event that triggers the index-management or query-dispatch flow.',              'Caller.',         True,  'non-sensitive'),
+ # P1 keys
+ 'identity-and-access-management':    ('identity-lifecycle-event',                'Identity lifecycle event','A business event that triggers an identity and access flow (e.g., new hire, role change, termination).', 'HR system (via ISC integration).', True, 'sensitive'),
+ 'data-management':                    ('data-lifecycle-event',                    'Data lifecycle event',    'A business event that triggers a data management flow (e.g., new record creation, schema change, retention trigger).', 'Source systems (via ISC integration).', True, 'sensitive'),
+ 'transaction-processing':             ('transaction-event',                       'Transaction event',       'A business event that triggers a transaction processing flow (e.g., order placed, payment captured, refund issued).', 'Caller.', True, 'sensitive'),
+ 'workflow-orchestration':             ('workflow-event',                          'Workflow event',          'A business event that triggers a workflow execution (e.g., a state-machine transition, a task routing decision).', 'Caller.', True, 'non-sensitive'),
+ 'integration-and-interoperability':   ('integration-event',                       'Integration event',       'A business event that triggers an integration flow (e.g., API request received, event published, schema validated).', 'Caller.', True, 'non-sensitive'),
 }
 F2_OUTPUT_TEXT = {
  'communication-and-collaboration':    ('collaboration-and-collaboration-state', 'Collaboration state',     'A collaboration state composed from the F4 children.',                                   'Coordination store, audit log.'),
@@ -39,6 +45,12 @@ F2_OUTPUT_TEXT = {
  'ai-and-intelligent-processing':      ('inference-state',                        'Inference state',         'An inference state composed from the F4 children (model version, prediction confidence).','Model store, audit log.'),
  'experience-and-interaction':         ('experience-state',                       'Experience state',        'An experience state composed from the F4 children (interaction record, experience signal).','Experience store, audit log.'),
  'search-and-discovery':               ('discovery-state',                        'Discovery state',         'A discovery state composed from the F4 children (index version, query result).',         'Search store, audit log.'),
+ # P1 keys
+ 'identity-and-access-management':    ('identity-and-access-state',                'Identity and access state','The state of the identity record, the credentials, the active sessions, and the access policy decisions.', 'Identity store, audit log, downstream systems.'),
+ 'data-management':                    ('data-state',                              'Data state',              'The state of the data records (acquisition, transformation, retrieval lineage).', 'Data store, audit log.'),
+ 'transaction-processing':             ('transaction-state',                       'Transaction state',       'The state of the transactions (initiation, execution, reconciliation).', 'Transaction store, audit log.'),
+ 'workflow-orchestration':             ('workflow-state',                          'Workflow state',          'The state of the workflows (execution, task routing, completion).', 'Workflow store, audit log.'),
+ 'integration-and-interoperability':   ('integration-state',                       'Integration state',       'The state of the integration flows (request handling, event publication, interface validation).', 'Integration store, audit log.'),
 }
 F2_NON_FUNCTIONAL = {
  'availability': '99.95%',
@@ -63,11 +75,12 @@ def _dedup(seq):
     return out
 
 
-def build_f2_record(domain, f4_records):
+def build_f2_record(domain, f4_records, f2_slug=None):
     """Compose the canonical F2 record (P1 hand-edited shape parity) from the domain
-    definition plus its F4 children."""
+    definition plus its F4 children. f2_slug defaults to the domain_id suffix
+    but may be overridden for cases where the domain slug differs from the F2 record slug."""
     domain_id = domain['id']
-    domain_slug = domain_id.split(':')[-1]
+    domain_slug = f2_slug if f2_slug else domain_id.split(':')[-1]
     f2_id = domain['f2']['id']
     f4_ids = [r['id'] for r in f4_records]
     realized = _dedup(sum([((r.get('business_alignment') or {}).get('realized_capabilities') or []) for r in f4_records], []))

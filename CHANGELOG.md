@@ -33,3 +33,13 @@
 - Reference-integrity: 328 resolved + 6 forward + 0 unresolved.
 - ISF-14 `experience-and-interaction` resolves the last ISC-side forward ref `customer-experience-management`.
 - New `scripts/_f2_record_helper.py` (shared F2 record + README shape) and `scripts/generate_p3_population.py` (P3 generator; imports the helper).
+
+
+## CR-IS-CAT-01C-P1H (2026-10-19)
+
+- P1 authoring hygiene. The 4 P1 generator-emitted F2 records now match the canonical F2 shape.
+- `scripts/generate_p1_population.py`: separate F4 and F2 emit paths; F2 composed via the shared `_f2_record_helper`.
+- `scripts/_f2_record_helper.py`: `f2_slug` parameter (P1 domain slug differs from F2 record slug); 5 P1 input/output text entries.
+- Fixed latent defect: the P1 generator unconditionally overwrote `entities/v1-alpha/index.yaml` with P1-only data, truncating the catalogue from 15 domains / 50 functions to 5 / 20. Now merges. Latent since CR-IS-CAT-01C-P2 (P2/P3 each ran after P1, so CI never saw it).
+- `scripts/validate_f2_record_shape.py`: single blocker class (the P1-warnings carve-out is removed). 15/15 F2 records pass.
+- Population unchanged: 15 domains, 50 functions, 96 relationships, 328 resolved / 6 forward / 0 unresolved.
