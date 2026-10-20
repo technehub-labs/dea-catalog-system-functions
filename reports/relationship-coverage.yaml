@@ -1,11 +1,11 @@
 version: '1.0'
 date: '2026-10-18'
 cr: CR-IS-CAT-01D
-total_relationships: 64
+total_relationships: 96
 by_type:
-  dea:realizes: 15
-  dea:enables: 13
-  dea:executes: 30
+  dea:realizes: 23
+  dea:enables: 21
+  dea:executes: 46
   dea:provides: 1
   dea:exposes: 1
   dea:consumes: 1
@@ -20,6 +20,10 @@ by_source_domain:
   isf:domain:security-privacy-and-trust: 8
   isf:domain:monitoring-and-observability: 8
   isf:domain:configuration-and-administration: 8
+  isf:domain:resource-and-capacity-management: 8
+  isf:domain:ai-and-intelligent-processing: 8
+  isf:domain:experience-and-interaction: 8
+  isf:domain:search-and-discovery: 8
 by_target_kind:
-  external: 58
+  external: 90
   internal: 6

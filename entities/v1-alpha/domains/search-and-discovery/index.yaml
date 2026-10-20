@@ -1,0 +1,27 @@
+domain: isf:domain:search-and-discovery
+code: ISF-15
+cr: CR-IS-CAT-01C-P3
+version: '1.0'
+functions:
+- id: dea:information-system-function-search-and-discovery
+  decomposition_level: F2
+  lifecycle_status: planned
+  parent: null
+  children:
+  - dea:information-system-function-index-management
+  - dea:information-system-function-query-dispatch
+- id: dea:information-system-function-index-management
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-search-and-discovery
+  children: []
+- id: dea:information-system-function-query-dispatch
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: dea:information-system-function-search-and-discovery
+  children: []
+change_history:
+- version: '1.0'
+  date: '2026-10-19'
+  cr: CR-IS-CAT-01C-P3
+  note: P3 population. 3 functions in Search and Discovery domain.

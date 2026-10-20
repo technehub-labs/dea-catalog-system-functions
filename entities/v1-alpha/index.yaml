@@ -1,5 +1,5 @@
 catalog: dea-catalog-information-system-functions
-version: '1.1'
+version: '1.2'
 cr: CR-IS-CAT-01C
 date: '2026-10-18'
 domains:
@@ -58,6 +58,26 @@ domains:
   name: Configuration and Administration
   index: domains/configuration-and-administration/index.yaml
   function_count: 3
+- code: ISF-12
+  id: isf:domain:resource-and-capacity-management
+  name: Resource and Capacity Management
+  index: domains/resource-and-capacity-management/index.yaml
+  function_count: 3
+- code: ISF-13
+  id: isf:domain:ai-and-intelligent-processing
+  name: AI and Intelligent Processing
+  index: domains/ai-and-intelligent-processing/index.yaml
+  function_count: 3
+- code: ISF-14
+  id: isf:domain:experience-and-interaction
+  name: Experience and Interaction
+  index: domains/experience-and-interaction/index.yaml
+  function_count: 3
+- code: ISF-15
+  id: isf:domain:search-and-discovery
+  name: Search and Discovery
+  index: domains/search-and-discovery/index.yaml
+  function_count: 3
 change_history:
 - version: '1.0'
   date: '2026-10-18'
@@ -67,3 +87,7 @@ change_history:
   date: '2026-10-19'
   cr: CR-IS-CAT-01C-P2
   note: 'P2 population. 18 functions across ISF-06..11. Total: 38 functions across 11/15 domains.'
+- version: '1.2'
+  date: '2026-10-19'
+  cr: CR-IS-CAT-01C-P3
+  note: 'P3 population. 12 functions across ISF-12..15. Total: 50 functions across 15/15 domains. ISF complete.'

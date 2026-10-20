@@ -1,0 +1,66 @@
+id: dea:information-system-function-index-management
+type: InformationSystemFunction
+name: "Index Management"
+description: |
+  The atomic function that builds and refreshes an index over a content corpus and emits the index-rebuilt event.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:search-and-discovery
+category: isf:domain:search-and-discovery
+decomposition_level: F4
+parent_function: dea:information-system-function-search-and-discovery
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-search-and-discovery).
+inputs:
+- input_id: corpus-snapshot
+  name: "Corpus snapshot"
+  definition: "A snapshot of the corpus to index (delta or full)."
+  source: "Content store."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: index-policy
+  name: "Index policy"
+  definition: "The index policy (tokenization, fields, scoring, retention)."
+  source: "Policy store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: index-record
+  name: "Index record"
+  definition: "An index-rebuilt record (corpus version, index version, retention)."
+  destination: "Index store, audit log."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-information-management-6vjgdh
+  enabled_processes:
+    - dea:process-operate-service-delivery
+executing_components:
+  - dea:information-system-component-data-warehouse-platform
+  - dea:information-system-component-data-warehouse-catalog
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Search and Discovery domain. CR-IS-CAT-01C P1 population.

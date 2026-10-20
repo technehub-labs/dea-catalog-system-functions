@@ -1,0 +1,66 @@
+id: dea:information-system-function-query-dispatch
+type: InformationSystemFunction
+name: "Query Dispatch"
+description: |
+  The atomic function that resolves a query against an index and returns ranked results with provenance.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:search-and-discovery
+category: isf:domain:search-and-discovery
+decomposition_level: F4
+parent_function: dea:information-system-function-search-and-discovery
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-search-and-discovery).
+inputs:
+- input_id: query
+  name: "Query"
+  definition: "The query (free text or structured expression)."
+  source: "Caller."
+  required: true
+  sensitivity_classification: non-sensitive
+- input_id: scope-policy
+  name: "Scope policy"
+  definition: "The query scope (corpus, tenant, role)."
+  source: "Policy store."
+  required: true
+  sensitivity_classification: non-sensitive
+outputs:
+- output_id: query-result
+  name: "Query result"
+  definition: "A ranked query result list with provenance for each entry."
+  destination: "Caller, audit log."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-insight-management-ms4n9d
+  enabled_processes:
+    - dea:process-customer-insight-and-retention
+executing_components:
+  - dea:information-system-component-data-warehouse-platform
+  - dea:information-system-component-data-warehouse-query
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Search and Discovery domain. CR-IS-CAT-01C P1 population.

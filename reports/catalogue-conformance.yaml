@@ -1,9 +1,9 @@
 version: '1.0'
 date: '2026-10-18'
 cr: CR-IS-CAT-01D
-total_functions: 38
+total_functions: 50
 total_domains: 15
-total_relationships: 64
+total_relationships: 96
 domains:
 - id: isf:domain:identity-and-access
   code: ISF-01
@@ -64,21 +64,21 @@ domains:
   code: ISF-12
   name: Resource and Capacity Management
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:ai-and-intelligent-processing
   code: ISF-13
   name: AI and Intelligent Processing
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:experience-and-interaction
   code: ISF-14
   name: Experience and Interaction
   status: active
-  function_count: 0
+  function_count: 3
 - id: isf:domain:search-and-discovery
   code: ISF-15
   name: Search and Discovery
   status: active
-  function_count: 0
+  function_count: 3
 conformance_level: P1-populated (5/15 domains populated)
 governance: G-01..G-12 acknowledged; see change-requests/CR-IS-CAT-01D-integration.md

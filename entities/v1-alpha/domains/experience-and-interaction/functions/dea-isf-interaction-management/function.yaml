@@ -1,0 +1,66 @@
+id: dea:information-system-function-interaction-management
+type: InformationSystemFunction
+name: "Interaction Management"
+description: |
+  The atomic function that records a single interaction (page view, click, conversation turn) and emits the interaction-recorded event.
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:experience-and-interaction
+category: isf:domain:experience-and-interaction
+decomposition_level: F4
+parent_function: dea:information-system-function-experience-and-interaction
+decomposition_rationale: |
+  Not applicable to this function. F4 is a leaf; the rationale lives on the
+  F2 parent (dea:information-system-function-experience-and-interaction).
+inputs:
+- input_id: interaction-record
+  name: "Interaction record"
+  definition: "A single interaction (page view, click, conversation turn) with timestamp, channel, identity."
+  source: "Channel instrumentation."
+  required: true
+  sensitivity_classification: sensitive
+- input_id: identity-reference
+  name: "Identity reference"
+  definition: "The identity reference (subject id, session id) for the interaction."
+  source: "Identity store."
+  required: true
+  sensitivity_classification: sensitive
+outputs:
+- output_id: interaction-event
+  name: "Interaction event"
+  definition: "An interaction-recorded event with channel, identity, and content metadata."
+  destination: "Event store, audit log."
+  output_conditions: "Always produced (or an error response)."
+execution_characteristics:
+  execution_pattern: synchronous
+  trigger_mechanism: api-call
+  processing_mode: real-time
+  synchronous_asynchronous: synchronous
+  idempotency: idempotent
+  transactional: true
+  concurrency: multi-threaded
+business_alignment:
+  realized_capabilities:
+    - capabilities:capability-customer-management-f3n8wb
+  enabled_processes:
+    - dea:process-customer-insight-and-retention
+executing_components:
+  - dea:information-system-component-customer-facing-web-application-platform
+  - dea:information-system-component-api-gateway
+non_functional_characteristics:
+  criticality: mission-critical
+governance:
+  functional_owner: "Architecture team"
+  steward: "Architecture team"
+  approval_status: proposed
+  criticality: mission-critical
+  review_date: "2027-10-18"
+references:
+  - technehub-labs/dea-metamodel/change-requests/CR-018-information-system-function.md
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-10-18"
+  last_modified: "2026-10-18"
+  cr: CR-IS-CAT-01C
+  notes: |
+    F4 record in the Experience and Interaction domain. CR-IS-CAT-01C P1 population.

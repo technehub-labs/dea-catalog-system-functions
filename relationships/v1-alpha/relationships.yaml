@@ -670,6 +670,326 @@ relationships:
   effective_version: '1.0'
   evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P2 population
   metadata: {}
+- id: rel:capacity-planning-executes-information-system-component-observability-platform
+  source_id: dea:information-system-function-capacity-planning
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-observability-platform
+  relationship_description: The Capacity Planning function is executed by the information-system-component-observability-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-observability-platform component exists).
+  metadata: {}
+- id: rel:capacity-planning-executes-information-system-component-development-platform
+  source_id: dea:information-system-function-capacity-planning
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-development-platform
+  relationship_description: The Capacity Planning function is executed by the information-system-component-development-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-development-platform component exists).
+  metadata: {}
+- id: rel:capacity-planning-enables-process-improve-technology-platforms
+  source_id: dea:information-system-function-capacity-planning
+  relationship_type: dea:enables
+  target_id: dea:process-improve-technology-platforms
+  relationship_description: The Capacity Planning function enables the process improve technology platforms process.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:capacity-planning-realizes-capability-technology-management-maus5n
+  source_id: dea:information-system-function-capacity-planning
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-technology-management-maus5n
+  relationship_description: The Capacity Planning function realizes the capability technology management maus5n business capability.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:resource-provisioning-executes-information-system-component-development-platform
+  source_id: dea:information-system-function-resource-provisioning
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-development-platform
+  relationship_description: The Resource Provisioning function is executed by the information-system-component-development-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-development-platform component exists).
+  metadata: {}
+- id: rel:resource-provisioning-executes-information-system-component-ci-cd-pipeline
+  source_id: dea:information-system-function-resource-provisioning
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-ci-cd-pipeline
+  relationship_description: The Resource Provisioning function is executed by the information-system-component-ci-cd-pipeline component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-ci-cd-pipeline component exists).
+  metadata: {}
+- id: rel:resource-provisioning-enables-process-operate-technology-platforms
+  source_id: dea:information-system-function-resource-provisioning
+  relationship_type: dea:enables
+  target_id: dea:process-operate-technology-platforms
+  relationship_description: The Resource Provisioning function enables the process operate technology platforms process.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:resource-provisioning-realizes-capability-technology-enablement-y6nkws
+  source_id: dea:information-system-function-resource-provisioning
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-technology-enablement-y6nkws
+  relationship_description: The Resource Provisioning function realizes the capability technology enablement y6nkws business capability.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:model-management-executes-information-system-component-ai-inference-platform
+  source_id: dea:information-system-function-model-management
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-ai-inference-platform
+  relationship_description: The Model Management function is executed by the information-system-component-ai-inference-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-ai-inference-platform component exists).
+  metadata: {}
+- id: rel:model-management-executes-information-system-component-model-registry
+  source_id: dea:information-system-function-model-management
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-model-registry
+  relationship_description: The Model Management function is executed by the information-system-component-model-registry component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-model-registry component exists).
+  metadata: {}
+- id: rel:model-management-enables-process-improve-technology-platforms
+  source_id: dea:information-system-function-model-management
+  relationship_type: dea:enables
+  target_id: dea:process-improve-technology-platforms
+  relationship_description: The Model Management function enables the process improve technology platforms process.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:model-management-realizes-capability-insight-management-ms4n9d
+  source_id: dea:information-system-function-model-management
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-insight-management-ms4n9d
+  relationship_description: The Model Management function realizes the capability insight management ms4n9d business capability.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:inference-execution-executes-information-system-component-ai-inference-platform
+  source_id: dea:information-system-function-inference-execution
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-ai-inference-platform
+  relationship_description: The Inference Execution function is executed by the information-system-component-ai-inference-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-ai-inference-platform component exists).
+  metadata: {}
+- id: rel:inference-execution-executes-information-system-component-model-serving-runtime
+  source_id: dea:information-system-function-inference-execution
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-model-serving-runtime
+  relationship_description: The Inference Execution function is executed by the information-system-component-model-serving-runtime component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-model-serving-runtime component exists).
+  metadata: {}
+- id: rel:inference-execution-enables-process-customer-insight-and-retention
+  source_id: dea:information-system-function-inference-execution
+  relationship_type: dea:enables
+  target_id: dea:process-customer-insight-and-retention
+  relationship_description: The Inference Execution function enables the process customer insight and retention process.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:inference-execution-realizes-capability-insight-management-ms4n9d
+  source_id: dea:information-system-function-inference-execution
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-insight-management-ms4n9d
+  relationship_description: The Inference Execution function realizes the capability insight management ms4n9d business capability.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:interaction-management-executes-information-system-component-customer-facing-web-application-platform
+  source_id: dea:information-system-function-interaction-management
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-customer-facing-web-application-platform
+  relationship_description: The Interaction Management function is executed by the information-system-component-customer-facing-web-application-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-customer-facing-web-application-platform component exists).
+  metadata: {}
+- id: rel:interaction-management-executes-information-system-component-api-gateway
+  source_id: dea:information-system-function-interaction-management
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-api-gateway
+  relationship_description: The Interaction Management function is executed by the information-system-component-api-gateway component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-api-gateway component exists).
+  metadata: {}
+- id: rel:interaction-management-enables-process-customer-insight-and-retention
+  source_id: dea:information-system-function-interaction-management
+  relationship_type: dea:enables
+  target_id: dea:process-customer-insight-and-retention
+  relationship_description: The Interaction Management function enables the process customer insight and retention process.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:interaction-management-realizes-capability-customer-management-f3n8wb
+  source_id: dea:information-system-function-interaction-management
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-customer-management-f3n8wb
+  relationship_description: The Interaction Management function realizes the capability customer management f3n8wb business capability.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:experience-delivery-executes-information-system-component-customer-facing-web-application-platform
+  source_id: dea:information-system-function-experience-delivery
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-customer-facing-web-application-platform
+  relationship_description: The Experience Delivery function is executed by the information-system-component-customer-facing-web-application-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-customer-facing-web-application-platform component exists).
+  metadata: {}
+- id: rel:experience-delivery-executes-information-system-component-employee-portal-platform
+  source_id: dea:information-system-function-experience-delivery
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-employee-portal-platform
+  relationship_description: The Experience Delivery function is executed by the information-system-component-employee-portal-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-employee-portal-platform component exists).
+  metadata: {}
+- id: rel:experience-delivery-enables-process-customer-insight-and-retention
+  source_id: dea:information-system-function-experience-delivery
+  relationship_type: dea:enables
+  target_id: dea:process-customer-insight-and-retention
+  relationship_description: The Experience Delivery function enables the process customer insight and retention process.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:experience-delivery-realizes-capability-customer-management-f3n8wb
+  source_id: dea:information-system-function-experience-delivery
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-customer-management-f3n8wb
+  relationship_description: The Experience Delivery function realizes the capability customer management f3n8wb business capability.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:index-management-executes-information-system-component-data-warehouse-platform
+  source_id: dea:information-system-function-index-management
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-data-warehouse-platform
+  relationship_description: The Index Management function is executed by the information-system-component-data-warehouse-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-data-warehouse-platform component exists).
+  metadata: {}
+- id: rel:index-management-executes-information-system-component-data-warehouse-catalog
+  source_id: dea:information-system-function-index-management
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-data-warehouse-catalog
+  relationship_description: The Index Management function is executed by the information-system-component-data-warehouse-catalog component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-data-warehouse-catalog component exists).
+  metadata: {}
+- id: rel:index-management-enables-process-operate-service-delivery
+  source_id: dea:information-system-function-index-management
+  relationship_type: dea:enables
+  target_id: dea:process-operate-service-delivery
+  relationship_description: The Index Management function enables the process operate service delivery process.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:index-management-realizes-capability-information-management-6vjgdh
+  source_id: dea:information-system-function-index-management
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-information-management-6vjgdh
+  relationship_description: The Index Management function realizes the capability information management 6vjgdh business capability.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:query-dispatch-executes-information-system-component-data-warehouse-platform
+  source_id: dea:information-system-function-query-dispatch
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-data-warehouse-platform
+  relationship_description: The Query Dispatch function is executed by the information-system-component-data-warehouse-platform component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-data-warehouse-platform component exists).
+  metadata: {}
+- id: rel:query-dispatch-executes-information-system-component-data-warehouse-query
+  source_id: dea:information-system-function-query-dispatch
+  relationship_type: dea:executes
+  target_id: dea:information-system-component-data-warehouse-query
+  relationship_description: The Query Dispatch function is executed by the information-system-component-data-warehouse-query component.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-02 (ISC catalogue; the information-system-component-data-warehouse-query component exists).
+  metadata: {}
+- id: rel:query-dispatch-enables-process-customer-insight-and-retention
+  source_id: dea:information-system-function-query-dispatch
+  relationship_type: dea:enables
+  target_id: dea:process-customer-insight-and-retention
+  relationship_description: The Query Dispatch function enables the process customer insight and retention process.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
+- id: rel:query-dispatch-realizes-capability-insight-management-ms4n9d
+  source_id: dea:information-system-function-query-dispatch
+  relationship_type: dea:realizes
+  target_id: capabilities:capability-insight-management-ms4n9d
+  relationship_description: The Query Dispatch function realizes the capability insight management ms4n9d business capability.
+  provenance: CR-IS-CAT-01C-P3 P3 population (2026-10-19)
+  validity_status: planned
+  effective_version: '1.0'
+  evidence: CR-IS-CAT-01A taxonomy + CR-IS-CAT-01C-P3 population
+  metadata: {}
 change_history:
 - version: '1.0'
   date: 2026-10-18
