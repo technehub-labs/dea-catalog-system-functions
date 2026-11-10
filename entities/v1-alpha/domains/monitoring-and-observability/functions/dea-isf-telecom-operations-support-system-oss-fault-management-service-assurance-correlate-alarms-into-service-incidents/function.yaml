@@ -1,0 +1,39 @@
+id: dea:information-system-function-telecom-operations-support-system-oss-fault-management-service-assurance-correlate-alarms-into-service-incidents
+type: InformationSystemFunction
+name: Correlate alarms into service incidents
+description: |
+  Executes the 'Correlate alarms into service incidents' function within the Fault Management &
+  Service Assurance sub-system of a Telecom Operations Support System (OSS). Operating through
+  the Correlation Service and the Event Correlation Component, it processes information, applies
+  the business logic and rules defined for Fault Management & Service Assurance, and contributes
+  to revenue-accurate service delivery over a high-availability network. Vendor-neutral record:
+  vendor corroboration (3 distinct vendor systems) is recorded in
+  governance.source_and_evidence; no vendor product is canonical (per G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:monitoring-and-observability
+category: isf:domain:monitoring-and-observability
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-telecom-operations-support-system-oss-fault-management-service-assurance-event-correlation-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: Ericsson OSS & Network Management (Fault Management & Service Assurance; identifier ERO-FM-002); corroborated by Nokia (Fault Management (NetAct); identifier NOK-FM-002) and Huawei (iManager M2000; identifier HWE-FM-002). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-telecom-operations-support-system-oss-fault-management-service-assurance-event-correlation-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Fault Management & Service Assurance sub-system of the Telecom
+    Operations Support System (OSS). Grouping is by functional_domain; the crawl to the executing
+    component is via executing_components (per G-06 and G-12). Vendor corroboration (at least 3
+    distinct vendor systems) is recorded in governance.source_and_evidence; evidence only, no
+    vendor product is canonical.
