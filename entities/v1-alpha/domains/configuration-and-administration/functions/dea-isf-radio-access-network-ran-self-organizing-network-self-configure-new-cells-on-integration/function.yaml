@@ -1,0 +1,39 @@
+id: dea:information-system-function-radio-access-network-ran-self-organizing-network-self-configure-new-cells-on-integration
+type: InformationSystemFunction
+name: Self-configure new cells on integration
+description: |
+  Executes the 'Self-configure new cells on integration' function within the Self-Organizing
+  Network sub-system of a Radio Access Network (RAN). Operating through the Self-Configuration
+  Service and the SON Engine Component, it processes information, applies the business logic and
+  rules defined for Self-Organizing Network, and contributes to revenue-accurate service
+  delivery over a high-availability network. Vendor-neutral record: vendor corroboration (3
+  distinct vendor systems) is recorded in governance.source_and_evidence; no vendor product is
+  canonical (per G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:configuration-and-administration
+category: isf:domain:configuration-and-administration
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-radio-access-network-ran-self-organizing-network-son-engine-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: Huawei RAN & Network Management (Self-Organizing Network; identifier HWR-SO-001); corroborated by Ericsson (SON; identifier ERI-SO-001) and Nokia (SON; identifier NOK-SO-001). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-radio-access-network-ran-self-organizing-network-son-engine-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Self-Organizing Network sub-system of the Radio Access Network
+    (RAN). Grouping is by functional_domain; the crawl to the executing component is via
+    executing_components (per G-06 and G-12). Vendor corroboration (at least 3 distinct vendor
+    systems) is recorded in governance.source_and_evidence; evidence only, no vendor product is
+    canonical.
