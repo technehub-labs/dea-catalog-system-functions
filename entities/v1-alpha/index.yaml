@@ -1,38 +1,38 @@
 catalog: dea-catalog-information-system-functions
-version: '1.2'
+version: '1.3'
 cr: CR-IS-CAT-01C
-date: '2026-10-18'
+date: '2026-11-10'
 domains:
 - code: ISF-01
   id: isf:domain:identity-and-access
   name: Identity and Access
   index: domains/identity-and-access/index.yaml
-  function_count: 5
+  function_count: 30
 - code: ISF-02
   id: isf:domain:information-and-data-management
   name: Information and Data Management
   index: domains/information-and-data-management/index.yaml
-  function_count: 4
+  function_count: 82
 - code: ISF-03
   id: isf:domain:transaction-processing
   name: Transaction Processing
   index: domains/transaction-processing/index.yaml
-  function_count: 4
+  function_count: 187
 - code: ISF-04
   id: isf:domain:workflow-and-orchestration
   name: Workflow and Orchestration
   index: domains/workflow-and-orchestration/index.yaml
-  function_count: 3
+  function_count: 175
 - code: ISF-05
   id: isf:domain:integration-and-interoperability
   name: Integration and Interoperability
   index: domains/integration-and-interoperability/index.yaml
-  function_count: 4
+  function_count: 47
 - code: ISF-06
   id: isf:domain:communication-and-collaboration
   name: Communication and Collaboration
   index: domains/communication-and-collaboration/index.yaml
-  function_count: 3
+  function_count: 13
 - code: ISF-07
   id: isf:domain:content-and-knowledge-management
   name: Content and Knowledge Management
@@ -52,17 +52,17 @@ domains:
   id: isf:domain:monitoring-and-observability
   name: Monitoring and Observability
   index: domains/monitoring-and-observability/index.yaml
-  function_count: 3
+  function_count: 15
 - code: ISF-11
   id: isf:domain:configuration-and-administration
   name: Configuration and Administration
   index: domains/configuration-and-administration/index.yaml
-  function_count: 3
+  function_count: 19
 - code: ISF-12
   id: isf:domain:resource-and-capacity-management
   name: Resource and Capacity Management
   index: domains/resource-and-capacity-management/index.yaml
-  function_count: 3
+  function_count: 40
 - code: ISF-13
   id: isf:domain:ai-and-intelligent-processing
   name: AI and Intelligent Processing
@@ -72,13 +72,17 @@ domains:
   id: isf:domain:experience-and-interaction
   name: Experience and Interaction
   index: domains/experience-and-interaction/index.yaml
-  function_count: 3
+  function_count: 21
 - code: ISF-15
   id: isf:domain:search-and-discovery
   name: Search and Discovery
   index: domains/search-and-discovery/index.yaml
   function_count: 3
 change_history:
+- version: '1.3'
+  date: '2026-11-10'
+  cr: CR-IS-CAT-01C-P4
+  note: 'P4 vendor-neutral corroborated population. 594 F4 records across 10 domains. Total: 644 functions across 15/15 domains.'
 - version: '1.0'
   date: '2026-10-18'
   cr: CR-IS-CAT-01C

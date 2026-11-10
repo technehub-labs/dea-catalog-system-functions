@@ -20,8 +20,63 @@ functions:
   lifecycle_status: planned
   parent: dea:information-system-function-communication-and-collaboration
   children: []
+- id: dea:information-system-function-communications-platform-cpaas-programmable-communications-control-voice-calls-via-call-control-markup-instructions
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-communications-platform-cpaas-programmable-communications-handle-inbound-message-webhooks
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-communications-platform-cpaas-programmable-communications-originate-outbound-sms-messages
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-communications-platform-cpaas-programmable-communications-provision-phone-numbers-to-projects
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-communications-platform-cpaas-programmable-communications-register-campaigns-for-a2p-10dlc-compliance
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-communications-platform-cpaas-programmable-communications-verify-users-via-otp-service
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-email-delivery-platform-email-delivery-manage-suppression-and-unsubscribe-lists
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-email-delivery-platform-email-delivery-post-engagement-events-to-webhooks
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-email-delivery-platform-email-delivery-send-transactional-email-via-api
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-email-delivery-platform-email-delivery-track-opens-and-clicks-for-campaigns
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+
 change_history:
 - version: '1.0'
   date: '2026-10-19'
   cr: CR-IS-CAT-01C-P2
   note: P2 population. 3 functions in Communication and Collaboration domain.
+- version: '1.1'
+  date: '2026-11-10'
+  cr: CR-IS-CAT-01C-P4
+  note: 'P4 vendor-neutral corroborated population. 10 F4 records added. Total 13 records.'

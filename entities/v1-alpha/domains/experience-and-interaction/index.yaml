@@ -20,8 +20,103 @@ functions:
   lifecycle_status: planned
   parent: dea:information-system-function-experience-and-interaction
   children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-bill-asset-service-agreements
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-consolidate-unified-customer-profiles-from-source-systems
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-create-and-triage-customer-service-case
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-execute-customer-segmentation-for-journeys
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-execute-entitlement-validation-on-case
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-execute-predictive-lead-scoring-model
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-integrate-sales-order-to-invoice-with-enterprise-financials
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-perform-customer-health-snapshot-scoring
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-perform-routing-rule-dispatch-to-queues
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-run-customer-engagement-analytics-insights
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-schedule-field-service-work-orders-and-resources
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-send-and-score-customer-survey-feedback
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-send-real-time-marketing-email-journeys
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-suggest-knowledge-articles-to-agents
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-customer-relationship-management-crm-system-customer-service-marketing-synchronize-business-records-bidirectionally-across-applications
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-electronic-health-record-ehr-system-patient-engagement-population-health-deliver-patient-portal-secure-messaging
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-electronic-health-record-ehr-system-patient-engagement-population-health-triage-patient-questionnaires-and-e-visits
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-electronic-health-record-ehr-system-patient-engagement-population-health-update-population-health-registries
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+
 change_history:
 - version: '1.0'
   date: '2026-10-19'
   cr: CR-IS-CAT-01C-P3
   note: P3 population. 3 functions in Experience and Interaction domain.
+- version: '1.1'
+  date: '2026-11-10'
+  cr: CR-IS-CAT-01C-P4
+  note: 'P4 vendor-neutral corroborated population. 18 F4 records added. Total 21 records.'
