@@ -1,0 +1,38 @@
+id: dea:information-system-function-core-banking-system-trade-finance-treasury-run-eod-eom-batch-processing-and-accruals
+type: InformationSystemFunction
+name: Run EOD/EOM batch processing and accruals
+description: |
+  Executes the 'Run EOD/EOM batch processing and accruals' function within the Trade Finance &
+  Treasury sub-system of a Core Banking System. Operating through the Trade Service and the LC
+  Component, it processes information, applies the business logic and rules defined for Trade
+  Finance & Treasury, and contributes to safe, compliant and settled movement of money, risk and
+  financial messages. Vendor-neutral record: vendor corroboration (3 distinct vendor systems) is
+  recorded in governance.source_and_evidence; no vendor product is canonical (per G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:transaction-processing
+category: isf:domain:transaction-processing
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-core-banking-system-trade-finance-treasury-lc-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: Oracle FLEXCUBE Universal Banking (Trade Finance & Treasury; identifier FC-TRF-007); corroborated by Temenos Transact (T24 Core Banking) (Treasury; identifier TT-TRF-007) and FIS Core Banking (Treasury Solutions; identifier FIS-TRF-007). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-core-banking-system-trade-finance-treasury-lc-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Trade Finance & Treasury sub-system of the Core Banking System.
+    Grouping is by functional_domain; the crawl to the executing component is via
+    executing_components (per G-06 and G-12). Vendor corroboration (at least 3 distinct vendor
+    systems) is recorded in governance.source_and_evidence; evidence only, no vendor product is
+    canonical.
