@@ -1,0 +1,39 @@
+id: dea:information-system-function-telecom-business-support-system-bss-rating-billing-process-payments-and-account-balances
+type: InformationSystemFunction
+name: Process payments and account balances
+description: |
+  Executes the 'Process payments and account balances' function within the Rating & Billing sub-
+  system of a Telecom Business Support System (BSS). Operating through the Discounting Service
+  and the Rating Engine Component, it processes information, applies the business logic and
+  rules defined for Rating & Billing, and contributes to revenue-accurate service delivery over
+  a high-availability network. Vendor-neutral record: vendor corroboration (3 distinct vendor
+  systems) is recorded in governance.source_and_evidence; no vendor product is canonical (per
+  G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:transaction-processing
+category: isf:domain:transaction-processing
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-telecom-business-support-system-bss-rating-billing-rating-engine-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: Amdocs BSS Suite (Rating & Billing; identifier AMB-RB-004); corroborated by Ericsson (Ericsson Billing; identifier ERI-RB-004) and Oracle Communications (Billing and Revenue Management; identifier OCO-RB-004). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-telecom-business-support-system-bss-rating-billing-rating-engine-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Rating & Billing sub-system of the Telecom Business Support
+    System (BSS). Grouping is by functional_domain; the crawl to the executing component is via
+    executing_components (per G-06 and G-12). Vendor corroboration (at least 3 distinct vendor
+    systems) is recorded in governance.source_and_evidence; evidence only, no vendor product is
+    canonical.

@@ -20,8 +20,73 @@ functions:
   lifecycle_status: planned
   parent: dea:information-system-function-monitoring-and-observability
   children: []
+- id: dea:information-system-function-supply-chain-visibility-platform-visibility-network-automate-bill-of-lading-documentation
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-supply-chain-visibility-platform-visibility-network-ingest-track-and-trace-events-from-carriers
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-supply-chain-visibility-platform-visibility-network-normalize-multi-carrier-api-data-to-milestones
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-supply-chain-visibility-platform-visibility-network-predict-shipment-arrival-delays
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-supply-chain-visibility-platform-visibility-network-surface-customs-clearance-status-updates
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-fault-management-service-assurance-collect-alarms-and-events-from-network-elements
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-fault-management-service-assurance-correlate-alarms-into-service-incidents
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-fault-management-service-assurance-dispatch-field-teams-for-network-repairs
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-fault-management-service-assurance-track-service-degradation-against-slas
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-performance-management-aggregate-and-report-network-performance
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-performance-management-collect-performance-counters-and-kpis
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-performance-management-detect-performance-threshold-breaches
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+
 change_history:
 - version: '1.0'
   date: '2026-10-19'
   cr: CR-IS-CAT-01C-P2
   note: P2 population. 3 functions in Monitoring and Observability domain.
+- version: '1.1'
+  date: '2026-11-10'
+  cr: CR-IS-CAT-01C-P4
+  note: 'P4 vendor-neutral corroborated population. 12 F4 records added. Total 15 records.'

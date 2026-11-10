@@ -1,0 +1,37 @@
+id: dea:information-system-function-payment-processing-platform-payments-calculate-and-remit-transaction-tax
+type: InformationSystemFunction
+name: Calculate and remit transaction tax
+description: |
+  Executes the 'Calculate and remit transaction tax' function within the Payments sub-system of
+  a Payment Processing Platform. Operating through the Dispute Service and the Tokenization
+  Component, it processes information, applies the business logic and rules defined for
+  Payments, and contributes to safe, compliant and settled movement of money, risk and financial
+  messages. Vendor-neutral record: vendor corroboration (3 distinct vendor systems) is recorded
+  in governance.source_and_evidence; no vendor product is canonical (per G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:transaction-processing
+category: isf:domain:transaction-processing
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-payment-processing-platform-payments-tokenization-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: Stripe Payments Platform (Payments; identifier ST-PMT-009); corroborated by PayPal (Checkout Payments; identifier PP-PMT-009) and Adyen Payments Platform (Card Payments; identifier ADY-PMT-009). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-payment-processing-platform-payments-tokenization-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Payments sub-system of the Payment Processing Platform. Grouping
+    is by functional_domain; the crawl to the executing component is via executing_components (per
+    G-06 and G-12). Vendor corroboration (at least 3 distinct vendor systems) is recorded in
+    governance.source_and_evidence; evidence only, no vendor product is canonical.

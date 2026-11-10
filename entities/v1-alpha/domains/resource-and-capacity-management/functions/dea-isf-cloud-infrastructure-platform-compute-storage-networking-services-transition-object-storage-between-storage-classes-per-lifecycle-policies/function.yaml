@@ -1,0 +1,40 @@
+id: dea:information-system-function-cloud-infrastructure-platform-compute-storage-networking-services-transition-object-storage-between-storage-classes-per-lifecycle-policies
+type: InformationSystemFunction
+name: Transition object storage between storage classes per lifecycle policies
+description: |
+  Executes the 'Transition object storage between storage classes per lifecycle policies'
+  function within the Compute, Storage & Networking Services sub-system of a Cloud
+  Infrastructure Platform. Operating through the Storage Service and the Monitoring Component,
+  it processes information, applies the business logic and rules defined for Compute, Storage &
+  Networking Services, and contributes to reliable, repeatable and observable delivery of
+  software and infrastructure. Vendor-neutral record: vendor corroboration (3 distinct vendor
+  systems) is recorded in governance.source_and_evidence; no vendor product is canonical (per
+  G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:resource-and-capacity-management
+category: isf:domain:resource-and-capacity-management
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-cloud-infrastructure-platform-compute-storage-networking-services-monitoring-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: Amazon Web Services Core Platform (Compute, Storage & Networking Services; identifier AW-CSN-002); corroborated by Microsoft Azure (Compute, Storage & Networking; identifier AZR-CSN-002) and Google Cloud Platform (Compute, Storage & Networking; identifier GCP-CSN-002). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-cloud-infrastructure-platform-compute-storage-networking-services-monitoring-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Compute, Storage & Networking Services sub-system of the Cloud
+    Infrastructure Platform. Grouping is by functional_domain; the crawl to the executing
+    component is via executing_components (per G-06 and G-12). Vendor corroboration (at least 3
+    distinct vendor systems) is recorded in governance.source_and_evidence; evidence only, no
+    vendor product is canonical.

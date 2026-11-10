@@ -1,5 +1,14 @@
 # Changelog
 
+## CR-IS-CAT-01C-P4 (2026-11-10)
+
+- ISF P4 population: 594 vendor-neutral F4 records across 10 of 15 functional domains (34 generic system classes; 63 generic sub-systems; 141 composite components).
+- Corroboration rule: every function cites at least 3 distinct vendor systems as external evidence in governance.source_and_evidence (per G-12 no vendor product is canonical).
+- Decomposition: F4 leaves grouped by functional_domain; executing_components crawl to the CR-IS-CAT-02C-P4 component records; no synthetic F2 parents (per G-06).
+- Reference-integrity: 922 resolved + 6 forward + 0 unresolved; the 594 new executing_components references resolve against the P4 ISC snapshot pin.
+- New scripts/generate_p4_population.py + scripts/p4_function_data.json (deterministic and idempotent; per G-10).
+- Telecommunications extension: BSS, OSS, mobile core and radio access network classes (embargo-clean generic terminology).
+
 ## CR-IS-CAT-01C-P2 (2026-10-19)
 
 - ISF P2 population: 6 new domains (ISF-06..11); 1 F2 + 2 F4 per domain = 18 records.

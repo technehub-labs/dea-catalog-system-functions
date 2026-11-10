@@ -32,3 +32,7 @@ Snapshot: `~/.hermes/profiles/coder/kanban/dea-metamodel-is-snapshot-2026-10-18.
 ## CR-IS-CAT-01C-P1H
 
 - **CR-IS-CAT-01C-P1H -- P1 authoring hygiene** (F2 record shape parity for the 4 P1 generator-emitted F2 records; also fixes a latent catalog-index clobber defect in the P1 generator). See [CR-IS-CAT-01C-P1H](./CR-IS-CAT-01C-P1H-p1-authoring-hygiene.md).
+
+## CR-IS-CAT-01C-P4
+
+- **CR-IS-CAT-01C-P4 -- P4 vendor-neutral corroborated population** (594 F4 records across 10 of 15 functional domains; corroboration rule: at least 3 distinct vendor systems per function, evidence only per G-12). See [CR-IS-CAT-01C-P4](./CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md).

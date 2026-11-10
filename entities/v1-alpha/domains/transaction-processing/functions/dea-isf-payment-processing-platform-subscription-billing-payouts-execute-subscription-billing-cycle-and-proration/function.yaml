@@ -1,0 +1,39 @@
+id: dea:information-system-function-payment-processing-platform-subscription-billing-payouts-execute-subscription-billing-cycle-and-proration
+type: InformationSystemFunction
+name: Execute subscription billing cycle and proration
+description: |
+  Executes the 'Execute subscription billing cycle and proration' function within the
+  Subscription Billing & Payouts sub-system of a Payment Processing Platform. Operating through
+  the Subscription Service and the Billing Cycle Component, it processes information, applies
+  the business logic and rules defined for Subscription Billing & Payouts, and contributes to
+  safe, compliant and settled movement of money, risk and financial messages. Vendor-neutral
+  record: vendor corroboration (3 distinct vendor systems) is recorded in
+  governance.source_and_evidence; no vendor product is canonical (per G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:transaction-processing
+category: isf:domain:transaction-processing
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-payment-processing-platform-subscription-billing-payouts-billing-cycle-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: Stripe Payments Platform (Subscription Billing & Payouts; identifier ST-BIL-001); corroborated by PayPal (Subscriptions; identifier PP-BIL-001) and Zuora Billing (Subscription Billing; identifier ZUO-BIL-001). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-payment-processing-platform-subscription-billing-payouts-billing-cycle-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Subscription Billing & Payouts sub-system of the Payment
+    Processing Platform. Grouping is by functional_domain; the crawl to the executing component is
+    via executing_components (per G-06 and G-12). Vendor corroboration (at least 3 distinct vendor
+    systems) is recorded in governance.source_and_evidence; evidence only, no vendor product is
+    canonical.

@@ -20,8 +20,93 @@ functions:
   lifecycle_status: planned
   parent: dea:information-system-function-configuration-and-administration
   children: []
+- id: dea:information-system-function-infrastructure-as-code-iac-platform-infrastructure-as-code-apply-configuration-to-reconcile-real-infrastructure
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-infrastructure-as-code-iac-platform-infrastructure-as-code-detect-configuration-drift-against-state
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-infrastructure-as-code-iac-platform-infrastructure-as-code-inject-workspace-variables-per-environment
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-infrastructure-as-code-iac-platform-infrastructure-as-code-lock-and-persist-remote-state
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-infrastructure-as-code-iac-platform-infrastructure-as-code-plan-infrastructure-changes-for-review
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-infrastructure-as-code-iac-platform-infrastructure-as-code-refresh-provider-schemas-and-state-drift
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-mobile-core-network-epc-5gc-policy-control-apply-usage-quotas-and-spending-limits
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-mobile-core-network-epc-5gc-policy-control-deliver-policy-decisions-to-network-elements
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-mobile-core-network-epc-5gc-policy-control-enforce-quality-of-service-policies-per-subscription
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-radio-access-network-ran-self-organizing-network-detect-and-mitigate-interference-automatically
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-radio-access-network-ran-self-organizing-network-self-configure-new-cells-on-integration
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-radio-access-network-ran-self-organizing-network-self-optimize-coverage-and-capacity
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-service-provisioning-activation-activate-service-features-per-subscriber-profile
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-service-provisioning-activation-configure-services-on-network-elements
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-service-provisioning-activation-roll-back-failed-provisioning-transactions
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+- id: dea:information-system-function-telecom-operations-support-system-oss-service-provisioning-activation-validate-service-configuration-prerequisites
+  decomposition_level: F4
+  lifecycle_status: planned
+  parent: null
+  children: []
+
 change_history:
 - version: '1.0'
   date: '2026-10-19'
   cr: CR-IS-CAT-01C-P2
   note: P2 population. 3 functions in Configuration and Administration domain.
+- version: '1.1'
+  date: '2026-11-10'
+  cr: CR-IS-CAT-01C-P4
+  note: 'P4 vendor-neutral corroborated population. 16 F4 records added. Total 19 records.'

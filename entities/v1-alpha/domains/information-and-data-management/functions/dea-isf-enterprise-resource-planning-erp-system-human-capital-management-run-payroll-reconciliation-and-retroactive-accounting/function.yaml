@@ -1,0 +1,39 @@
+id: dea:information-system-function-enterprise-resource-planning-erp-system-human-capital-management-run-payroll-reconciliation-and-retroactive-accounting
+type: InformationSystemFunction
+name: Run payroll reconciliation and retroactive accounting
+description: |
+  Executes the 'Run payroll reconciliation and retroactive accounting' function within the Human
+  Capital Management sub-system of a Enterprise Resource Planning (ERP) System. Operating
+  through the Personnel Administration Service and the Employee Master Component, it processes
+  information, applies the business logic and rules defined for Human Capital Management, and
+  contributes to integrated enterprise resource, customer, and workforce outcomes with a single
+  source of record. Vendor-neutral record: vendor corroboration (3 distinct vendor systems) is
+  recorded in governance.source_and_evidence; no vendor product is canonical (per G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:information-and-data-management
+category: isf:domain:information-and-data-management
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-enterprise-resource-planning-erp-system-human-capital-management-employee-master-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: SAP S/4HANA (Human Capital Management (HCM); identifier S4-HCM-009); corroborated by Oracle Fusion Cloud Applications (Financials, HCM, SCM) (Human Capital Management; identifier OFU-HCM-009) and Workday (HCM & Financials) (Human Capital Management; identifier WD-HCM-009). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-enterprise-resource-planning-erp-system-human-capital-management-employee-master-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Human Capital Management sub-system of the Enterprise Resource
+    Planning (ERP) System. Grouping is by functional_domain; the crawl to the executing component
+    is via executing_components (per G-06 and G-12). Vendor corroboration (at least 3 distinct
+    vendor systems) is recorded in governance.source_and_evidence; evidence only, no vendor
+    product is canonical.
