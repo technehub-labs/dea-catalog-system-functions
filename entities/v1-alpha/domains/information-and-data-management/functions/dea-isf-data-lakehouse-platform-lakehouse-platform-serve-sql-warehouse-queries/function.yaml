@@ -1,0 +1,38 @@
+id: dea:information-system-function-data-lakehouse-platform-lakehouse-platform-serve-sql-warehouse-queries
+type: InformationSystemFunction
+name: Serve SQL warehouse queries
+description: |
+  Executes the 'Serve SQL warehouse queries' function within the Lakehouse Platform sub-system
+  of a Data Lakehouse Platform. Operating through the Jobs Service and the Cluster Component, it
+  processes information, applies the business logic and rules defined for Lakehouse Platform,
+  and contributes to governed, timely and reliable data products for analytics and ML. Vendor-
+  neutral record: vendor corroboration (3 distinct vendor systems) is recorded in
+  governance.source_and_evidence; no vendor product is canonical (per G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:information-and-data-management
+category: isf:domain:information-and-data-management
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-data-lakehouse-platform-lakehouse-platform-cluster-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: Databricks (Lakehouse Platform; identifier DB-LKP-007); corroborated by Microsoft Fabric (Lakehouse; identifier MSF-LKP-007) and Cloudera Data Platform (Lakehouse; identifier CDP-LKP-007). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-data-lakehouse-platform-lakehouse-platform-cluster-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Lakehouse Platform sub-system of the Data Lakehouse Platform.
+    Grouping is by functional_domain; the crawl to the executing component is via
+    executing_components (per G-06 and G-12). Vendor corroboration (at least 3 distinct vendor
+    systems) is recorded in governance.source_and_evidence; evidence only, no vendor product is
+    canonical.
