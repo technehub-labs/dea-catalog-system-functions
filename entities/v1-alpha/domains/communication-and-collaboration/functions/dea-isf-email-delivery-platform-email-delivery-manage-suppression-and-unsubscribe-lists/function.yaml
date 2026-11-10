@@ -1,0 +1,38 @@
+id: dea:information-system-function-email-delivery-platform-email-delivery-manage-suppression-and-unsubscribe-lists
+type: InformationSystemFunction
+name: Manage suppression and unsubscribe lists
+description: |
+  Executes the 'Manage suppression and unsubscribe lists' function within the Email Delivery
+  sub-system of a Email Delivery Platform. Operating through the Event Service and the Template
+  Component, it processes information, applies the business logic and rules defined for Email
+  Delivery, and contributes to dependable customer communications at scale. Vendor-neutral
+  record: vendor corroboration (3 distinct vendor systems) is recorded in
+  governance.source_and_evidence; no vendor product is canonical (per G-12).
+version: "1.0.0"
+lifecycle_status: planned
+functional_domain: isf:domain:communication-and-collaboration
+category: isf:domain:communication-and-collaboration
+decomposition_level: F4
+executing_components:
+- dea:information-system-component-email-delivery-platform-email-delivery-template-component
+governance:
+  functional_owner: "IS Semantic Architecture programme"
+  steward: "IS Semantic Architecture programme"
+  approval_status: proposed
+  criticality: business-critical
+  source_and_evidence: 'Primary vendor evidence: SendGrid (Email Delivery; identifier SG-EML-002); corroborated by Mailgun (Transactional Email; identifier MLG-EML-002) and Amazon SES (Transactional Email; identifier AWS-EML-002). Corroboration rule: at least 3 distinct vendor systems; evidence only per G-12; no vendor product is canonical.'
+  review_date: "2027-11-10"
+references:
+- technehub-labs/dea-catalog-system-functions/change-requests/CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md
+- technehub-labs/dea-catalog-application-components (executing component catalogue; component dea:information-system-component-email-delivery-platform-email-delivery-template-component)
+metadata:
+  created_by: Emmanuel A. Otchere
+  created_date: "2026-11-10"
+  last_modified: "2026-11-10"
+  cr: CR-IS-CAT-01C-P4
+  notes: |
+    F4 vendor-neutral leaf of the Email Delivery sub-system of the Email Delivery Platform.
+    Grouping is by functional_domain; the crawl to the executing component is via
+    executing_components (per G-06 and G-12). Vendor corroboration (at least 3 distinct vendor
+    systems) is recorded in governance.source_and_evidence; evidence only, no vendor product is
+    canonical.
