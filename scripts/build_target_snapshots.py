@@ -29,12 +29,14 @@ TARGET_REPOS = {
     'dea-catalog-business-capabilities':     '/home/hermes/dea-work/dea-catalog-business-capabilities',
     'dea-catalog-processes':                 '/home/hermes/dea-work/dea-catalog-processes',
     'dea-catalog-application-components':    '/home/hermes/dea-work/dea-catalog-application-components',
+    'dea-catalog-metrics':                   '/home/hermes/dea-work/dea-catalog-metrics',
 }
 
 ID_PREFIX = {
     'dea-catalog-business-capabilities':     'capabilities:',
     'dea-catalog-processes':                 'dea:process-',
     'dea-catalog-application-components':    'dea:information-system-component-',
+    'dea-catalog-metrics':                   'dea:metric-',
 }
 
 
@@ -42,6 +44,13 @@ def git_short_sha(repo_path: Path) -> str:
     try:
         return subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=str(repo_path)).decode().strip()
     except Exception:
+        # Git-less environments (CR-IS-CAT-01C-P5): the pinned HEAD SHA of the
+        # target repo is recorded in a HEAD_SHA file inside the clone directory.
+        # The file is written by the operator from the target repo's GitHub
+        # main SHA; the snapshot stays deterministic and offline-safe (G-10).
+        head_file = repo_path / 'HEAD_SHA'
+        if head_file.exists():
+            return head_file.read_text().strip()
         return 'unknown'
 
 

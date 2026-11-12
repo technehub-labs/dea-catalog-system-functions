@@ -36,3 +36,7 @@ Snapshot: `~/.hermes/profiles/coder/kanban/dea-metamodel-is-snapshot-2026-10-18.
 ## CR-IS-CAT-01C-P4
 
 - **CR-IS-CAT-01C-P4 -- P4 vendor-neutral corroborated population** (594 F4 records across 10 of 15 functional domains; corroboration rule: at least 3 distinct vendor systems per function, evidence only per G-12). See [CR-IS-CAT-01C-P4](./CR-IS-CAT-01C-P4-vendor-neutral-corroborated-population.md).
+
+## CR-IS-CAT-01C-P5
+
+- **CR-IS-CAT-01C-P5 -- relationship registry population and metrics vendoring** (594 dea:executes edges from the CR-IS-CAT-01C-P4 executing_components evidence + 594 dea:measured_by edges via the curated 34-row system anchor metric bridge, scripts/p5_registry_data.json; target-id snapshots re-pinned: ISC 8508b867 to 316931db with 735 ids including the CR-IS-CAT-02C-P5 F3 atoms, dea-catalog-metrics vendored at 50e0e670 with 4433 ids; per G-11 the measured_by rows are OpenDEAM allocation declarations). See [CR-IS-CAT-01C-P5](./CR-IS-CAT-01C-P5-registry-relationships-and-metrics-vendoring.md).

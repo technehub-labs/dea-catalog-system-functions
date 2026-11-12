@@ -3,7 +3,7 @@ date: '2026-10-18'
 cr: CR-IS-CAT-01D
 total_functions: 644
 total_domains: 15
-total_relationships: 96
+total_relationships: 1284
 domains:
 - id: isf:domain:identity-and-access
   code: ISF-01
