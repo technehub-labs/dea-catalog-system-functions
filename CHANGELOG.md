@@ -1,5 +1,13 @@
 # Changelog
 
+## CR-IS-CAT-01C-P5 (2026-11-12)
+
+- ISF P5 registry population: 1188 new relationship records (594 dea:executes edges from the CR-IS-CAT-01C-P4 executing_components evidence + 594 dea:measured_by edges via the curated 34-row system anchor metric bridge).
+- Registry: 96 to 1284 records; measured_by coverage 594 of 594 P4 functions; executes coverage 594 of 594 (per G-09 evidence-driven; per G-11 the measured_by rows are OpenDEAM v0.7.0 allocation declarations, metric definitions owned by the Metric catalogue).
+- Target-id snapshots re-pinned: dea-catalog-application-components 8508b867 to 316931db (276 to 735 ids, includes the CR-IS-CAT-02C-P5 F3 atoms); dea-catalog-metrics vendored for the first time (4433 ids at 50e0e670); dea-catalog-business-capabilities 848b1635 to 92a9b6d9 (29 to 40 ids, strictly additive); dea-catalog-processes pin held at 390e73eb (identity-scheme rebasing is a separate CR).
+- Reference-integrity: 2116 classified, 2110 resolved, 6 forward, 0 unresolved.
+- New scripts/generate_p5_registry.py + scripts/p5_registry_data.json (deterministic and idempotent; per G-10); scripts/build_target_snapshots.py extended with the metrics target repo and a git-less HEAD_SHA pin fallback.
+
 ## CR-IS-CAT-01C-P4 (2026-11-10)
 
 - ISF P4 population: 594 vendor-neutral F4 records across 10 of 15 functional domains (34 generic system classes; 63 generic sub-systems; 141 composite components).

@@ -1,0 +1,250 @@
+{
+  "cr": "CR-IS-CAT-01C-P5",
+  "date": "2026-11-12",
+  "author": "Emmanuel A. Otchere",
+  "description": "Curated system-archetype to anchor-metric bridge for the CR-IS-CAT-01C-P5 measured_by registry population. Each of the 34 vendor-neutral P4 system archetypes maps to one anchor metric record of the pinned dea-catalog-metrics snapshot. Selection criteria: the anchor is the canonical operational or outcome measure of the archetype, vendor-neutral, and present in the vendored metric snapshot. Applied deterministically by scripts/generate_p5_registry.py (per G-10).",
+  "pins": {
+    "dea-catalog-application-components": "316931db94724697874b73dae4ab55b6e84b0cbf",
+    "dea-catalog-metrics": "50e0e67029c09ff27b45172f8d2eda98a7c19a4a"
+  },
+  "system_anchor_metrics": [
+    {
+      "system": "Enterprise Resource Planning (ERP) System",
+      "metric_id": "dea:metric-erp-batch-job-success-rate",
+      "metric_name": "ERP Batch Job Success Rate",
+      "metric_domain": "erp_enterprise_application_operations",
+      "rationale": "ERP batch operations are the operational heartbeat of the ERP system archetype; batch job success measures the reliability of its period-end and mass-processing functions."
+    },
+    {
+      "system": "Customer Relationship Management (CRM) System",
+      "metric_id": "dea:metric-customer-satisfaction-score",
+      "metric_name": "Customer Satisfaction Score",
+      "metric_domain": "customer",
+      "rationale": "The CRM system archetype exists to steward customer relationships; the customer satisfaction score is its canonical outcome metric."
+    },
+    {
+      "system": "Core Banking System",
+      "metric_id": "dea:metric-payment-success-rate",
+      "metric_name": "Payment Success Rate",
+      "metric_domain": "banking_financial_services",
+      "rationale": "Core banking executes payment posting and settlement; payment success rate measures the reliability of its transactional functions."
+    },
+    {
+      "system": "Electronic Health Record (EHR) System",
+      "metric_id": "dea:metric-medication-error-rate",
+      "metric_name": "Medication Error Rate",
+      "metric_domain": "healthcare",
+      "rationale": "The EHR system archetype stewards clinical records at the point of care; the medication error rate is the canonical patient-safety outcome measure of record integrity."
+    },
+    {
+      "system": "Identity and Access Management (IAM) Platform",
+      "metric_id": "dea:metric-access-request-fulfilment-cycle-time",
+      "metric_name": "Access Request Fulfilment Cycle Time",
+      "metric_domain": "identity_access_management_operations",
+      "rationale": "The IAM platform archetype fulfils access requests across the identity lifecycle; fulfilment cycle time measures its core operational flow."
+    },
+    {
+      "system": "Human Capital Management (HCM) System",
+      "metric_id": "dea:metric-performance-review-completion-rate",
+      "metric_name": "Performance Review Completion Rate",
+      "metric_domain": "human_resources",
+      "rationale": "The HCM system archetype runs the hire-to-retire cycle; performance review completion is the canonical periodic HCM process metric."
+    },
+    {
+      "system": "E-Commerce Platform",
+      "metric_id": "dea:metric-checkout-completion-rate",
+      "metric_name": "Checkout Completion Rate",
+      "metric_domain": "retail_e_commerce",
+      "rationale": "The e-commerce platform archetype converts browsing into orders; checkout completion rate measures its revenue-critical funnel reliability."
+    },
+    {
+      "system": "Payment Processing Platform",
+      "metric_id": "dea:metric-payment-processing-uptime",
+      "metric_name": "Payment Processing Uptime",
+      "metric_domain": "payments_fintech",
+      "rationale": "A payment processing platform is an always-on utility; processing uptime measures the availability its functions depend on."
+    },
+    {
+      "system": "Telecom Business Support System (BSS)",
+      "metric_id": "dea:metric-billing-accuracy-rate-telecom",
+      "metric_name": "Billing Accuracy Rate (Telecom)",
+      "metric_domain": "telecom_customer_experience_billing",
+      "rationale": "BSS runs billing, ordering and customer management for telecom operators; billing accuracy is its canonical operational measure."
+    },
+    {
+      "system": "Container Orchestration Platform",
+      "metric_id": "dea:metric-container-image-scan-gate-pass-rate",
+      "metric_name": "Container Image Scan Gate Pass Rate",
+      "metric_domain": "devsecops_application_security_engineering",
+      "rationale": "The container orchestration platform archetype admits workloads as schedulable images; the image scan gate pass rate measures the admission hygiene of its scheduling functions."
+    },
+    {
+      "system": "IT Service Management (ITSM) Platform",
+      "metric_id": "dea:metric-service-level-attainment",
+      "metric_name": "Service Level Attainment",
+      "metric_domain": "it_service_management",
+      "rationale": "The ITSM platform archetype commits to service levels for incidents, problems and changes; service level attainment is its canonical service measure."
+    },
+    {
+      "system": "Mobile Core Network (EPC/5GC)",
+      "metric_id": "dea:metric-core-network-availability",
+      "metric_name": "Core Network Availability",
+      "metric_domain": "telecom_network_operations",
+      "rationale": "The mobile core network archetype signs, routes and charges subscriber traffic; core network availability is its canonical operational measure."
+    },
+    {
+      "system": "Telecom Operations Support System (OSS)",
+      "metric_id": "dea:metric-cell-outage-rate",
+      "metric_name": "Cell Outage Rate",
+      "metric_domain": "telecom_network_operations",
+      "rationale": "The OSS archetype provisions, inventories and assures the network; the cell outage rate measures the network health its functions maintain."
+    },
+    {
+      "system": "IoT Device Management Platform",
+      "metric_id": "dea:metric-firmware-currency-rate",
+      "metric_name": "Firmware Currency Rate",
+      "metric_domain": "network_change_configuration_management",
+      "rationale": "The IoT device management archetype governs device fleets; firmware currency is the canonical fleet-management measure."
+    },
+    {
+      "system": "Warehouse Management System (WMS)",
+      "metric_id": "dea:metric-order-picking-accuracy",
+      "metric_name": "Order Picking Accuracy",
+      "metric_domain": "warehousing",
+      "rationale": "The WMS archetype runs inbound, storage and outbound warehouse flows; order picking accuracy is its canonical operational measure."
+    },
+    {
+      "system": "Cloud Data Warehouse",
+      "metric_id": "dea:metric-query-p95-latency",
+      "metric_name": "Query P95 Latency",
+      "metric_domain": "database_data_platform_operations",
+      "rationale": "The cloud data warehouse archetype serves analytical query workloads; p95 query latency is its canonical service measure."
+    },
+    {
+      "system": "Cloud Infrastructure Platform",
+      "metric_id": "dea:metric-mean-time-to-provision-resource",
+      "metric_name": "Mean Time to Provision Resource",
+      "metric_domain": "data_center_cloud_operations",
+      "rationale": "The cloud infrastructure archetype provisions compute, storage and network resources; mean time to provision measures its core fulfilment flow."
+    },
+    {
+      "system": "Event Streaming Platform",
+      "metric_id": "dea:metric-data-pipeline-freshness-sla-attainment",
+      "metric_name": "Data Pipeline Freshness SLA Attainment",
+      "metric_domain": "mlops_model_lifecycle_operations",
+      "rationale": "The event streaming archetype moves data with bounded freshness; pipeline freshness SLA attainment is its canonical delivery measure."
+    },
+    {
+      "system": "Financial Messaging Network",
+      "metric_id": "dea:metric-settlement-window-compliance-rate",
+      "metric_name": "Settlement Window Compliance Rate",
+      "metric_domain": "payments_cards_deep_dive",
+      "rationale": "A financial messaging network carries inter-institutional payment messages inside settlement windows; settlement window compliance is its canonical operational measure."
+    },
+    {
+      "system": "Manufacturing Execution System (MES)",
+      "metric_id": "dea:metric-production-plan-attainment",
+      "metric_name": "Production Plan Attainment",
+      "metric_domain": "manufacturing",
+      "rationale": "The MES archetype executes production plans on the shop floor; production plan attainment is its canonical operational measure."
+    },
+    {
+      "system": "Radio Access Network (RAN)",
+      "metric_id": "dea:metric-radio-access-network-utilization",
+      "metric_name": "Radio Access Network Utilization",
+      "metric_domain": "telecom_network_operations",
+      "rationale": "The RAN archetype provides radio capacity; radio access network utilization is its canonical capacity measure."
+    },
+    {
+      "system": "Card Payment Network",
+      "metric_id": "dea:metric-authorization-approval-rate-deep-dive",
+      "metric_name": "Authorization Approval Rate (Deep Dive)",
+      "metric_domain": "payments_cards_deep_dive",
+      "rationale": "The card payment network archetype authorizes card transactions; the authorization approval rate is its canonical throughput-quality measure."
+    },
+    {
+      "system": "Continuous Integration / Continuous Delivery (CI/CD) Platform",
+      "metric_id": "dea:metric-ci-pipeline-success-rate",
+      "metric_name": "CI Pipeline Success Rate",
+      "metric_domain": "continuous_integration",
+      "rationale": "The CI/CD platform archetype builds and delivers software changes; CI pipeline success rate is its canonical reliability measure."
+    },
+    {
+      "system": "Data Lakehouse Platform",
+      "metric_id": "dea:metric-data-platform-sla-compliance",
+      "metric_name": "Data Platform SLA Compliance",
+      "metric_domain": "database_data_platform_operations",
+      "rationale": "The lakehouse archetype unifies storage and analytics under service levels; data platform SLA compliance is its canonical service measure."
+    },
+    {
+      "system": "Issue Tracking Platform",
+      "metric_id": "dea:metric-issue-aging-index",
+      "metric_name": "Issue Aging Index",
+      "metric_domain": "project_risk_issue_management",
+      "rationale": "The issue tracking archetype manages issue backlogs; the issue aging index is its canonical flow-health measure."
+    },
+    {
+      "system": "Policy Administration System",
+      "metric_id": "dea:metric-digital-policy-issuance-rate",
+      "metric_name": "Digital Policy Issuance Rate",
+      "metric_domain": "insurance_distribution_direct_digital",
+      "rationale": "The policy administration archetype issues and services insurance policies; the policy issuance rate is its canonical production measure."
+    },
+    {
+      "system": "Transportation Management System (TMS)",
+      "metric_id": "dea:metric-on-time-delivery-rate",
+      "metric_name": "On-Time Delivery Rate",
+      "metric_domain": "logistics_transportation",
+      "rationale": "The TMS archetype plans and executes freight movements; on-time delivery is its canonical operational measure."
+    },
+    {
+      "system": "Claims Management System",
+      "metric_id": "dea:metric-claims-cycle-time-deep-dive",
+      "metric_name": "Claims Cycle Time (Deep Dive)",
+      "metric_domain": "insurance_claims_deep_dive",
+      "rationale": "The claims management archetype runs the claims lifecycle; claims cycle time is its canonical operational measure."
+    },
+    {
+      "system": "Communications Platform (CPaaS)",
+      "metric_id": "dea:metric-first-attempt-delivery-success",
+      "metric_name": "First-Attempt Delivery Success",
+      "metric_domain": "postal_courier",
+      "rationale": "The CPaaS archetype delivers programmatic messages on behalf of applications; first-attempt delivery success is its canonical delivery measure."
+    },
+    {
+      "system": "Customer Service Ticketing Platform",
+      "metric_id": "dea:metric-first-contact-resolution",
+      "metric_name": "First Contact Resolution",
+      "metric_domain": "customer",
+      "rationale": "The customer service ticketing archetype resolves service cases; first contact resolution is its canonical resolution measure."
+    },
+    {
+      "system": "Infrastructure as Code (IaC) Platform",
+      "metric_id": "dea:metric-infrastructure-as-code-coverage",
+      "metric_name": "Infrastructure-as-Code Coverage",
+      "metric_domain": "continuous_delivery_deployment",
+      "rationale": "The IaC archetype provisions infrastructure from declarative code; infrastructure-as-code coverage is its canonical automation measure."
+    },
+    {
+      "system": "Workflow Orchestration Platform",
+      "metric_id": "dea:metric-pipeline-orchestration-success-rate",
+      "metric_name": "Pipeline Orchestration Success Rate",
+      "metric_domain": "mlops_model_lifecycle_operations",
+      "rationale": "The workflow orchestration archetype sequences multi-step executions; orchestration success rate is its canonical reliability measure."
+    },
+    {
+      "system": "Supply Chain Visibility Platform",
+      "metric_id": "dea:metric-inventory-accuracy",
+      "metric_name": "Inventory Accuracy",
+      "metric_domain": "supply_chain",
+      "rationale": "The supply chain visibility archetype exposes inventory and movement truth; inventory accuracy is its canonical visibility measure."
+    },
+    {
+      "system": "Email Delivery Platform",
+      "metric_id": "dea:metric-email-deliverability-rate",
+      "metric_name": "Email Deliverability Rate",
+      "metric_domain": "marketing",
+      "rationale": "The email delivery archetype transmits messaging at scale; deliverability is its canonical delivery measure."
+    }
+  ]
+}

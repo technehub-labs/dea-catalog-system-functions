@@ -1,29 +1,33 @@
 version: '1.0'
 date: '2026-10-18'
 cr: CR-IS-CAT-01D
-total_relationships: 96
+total_relationships: 1284
 by_type:
   dea:realizes: 23
   dea:enables: 21
-  dea:executes: 46
+  dea:executes: 640
   dea:provides: 1
   dea:exposes: 1
   dea:consumes: 1
   dea:produces: 2
-  dea:measured_by: 1
+  dea:measured_by: 595
 by_source_domain:
-  isf:domain:identity-and-access: 8
+  isf:domain:identity-and-access: 58
   external: 8
-  isf:domain:communication-and-collaboration: 8
+  isf:domain:communication-and-collaboration: 28
   isf:domain:content-and-knowledge-management: 8
   isf:domain:analytics-and-decision-support: 8
   isf:domain:security-privacy-and-trust: 8
-  isf:domain:monitoring-and-observability: 8
-  isf:domain:configuration-and-administration: 8
-  isf:domain:resource-and-capacity-management: 8
+  isf:domain:monitoring-and-observability: 32
+  isf:domain:configuration-and-administration: 40
+  isf:domain:resource-and-capacity-management: 82
   isf:domain:ai-and-intelligent-processing: 8
-  isf:domain:experience-and-interaction: 8
+  isf:domain:experience-and-interaction: 44
   isf:domain:search-and-discovery: 8
+  isf:domain:transaction-processing: 366
+  isf:domain:workflow-and-orchestration: 344
+  isf:domain:information-and-data-management: 156
+  isf:domain:integration-and-interoperability: 86
 by_target_kind:
-  external: 90
+  external: 1278
   internal: 6
